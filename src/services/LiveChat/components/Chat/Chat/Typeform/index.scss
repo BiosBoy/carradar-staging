@@ -1,0 +1,45 @@
+:global {
+  .rcw-sender {
+    align-items: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    background-color: #f4f7f9;
+    height: 60px !important;
+    padding: 5px;
+    border-radius: 0 0 10px 10px;
+    margin: 0;
+    width: inherit;
+  }
+
+  #input.rcw-new-message {
+    width: 100%;
+    border: 0;
+    background-color: #f4f7f9;
+    height: 30px;
+    padding-left: 15px;
+    resize: none;
+  }
+
+  .rcw-send {
+    background: #f4f7f9;
+    border: 0;
+  }
+
+  .rcw-send-icon {
+    height: 25px;
+    transition: filter .1s linear;
+
+    &:hover {
+      filter: invert(1)
+    }
+  }
+
+  .active {
+    cursor: pointer;
+
+    .rcw-send-icon {
+      filter: invert(1)
+    }
+  }
+}

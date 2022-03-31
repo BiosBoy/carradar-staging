@@ -1,0 +1,200 @@
+:global {
+  .rcw-messages-container {
+    position: relative;
+    background-color: #fff;
+    height: 50vh;
+    max-height: 410px;
+    overflow-y: scroll;
+    padding-top: 10px;
+  }
+
+  .rcw-message {
+    margin: 10px;
+    display: -ms-flexbox;
+    display: flex;
+    word-wrap: break-word
+  }
+
+  .rcw-timestamp {
+      font-size: 10px;
+      margin-top: 5px;
+      font-family: Arial, sans-serif;
+  }
+
+  .rcw-client {
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      margin-left: auto
+  }
+
+  .rcw-client .rcw-message-text {
+      background-color: #a3eaf7;
+      border-radius: 10px;
+      padding: 15px;
+      max-width: 215px;
+      text-align: left
+  }
+
+  .rcw-client .rcw-timestamp {
+      -ms-flex-item-align: end;
+      align-self: flex-end
+  }
+
+  .rcw-response {
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      -ms-flex-align: start;
+      align-items: flex-start;
+  }
+
+  .agent {
+    .senderBlock {
+      margin-right: 8px;
+    }
+
+    .rcw-response {
+      margin-top: 18px;
+    }
+  }
+
+  .user {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    flex-direction: column;
+
+    .senderBlock {
+      margin-right: 2px;
+      margin-bottom: 4px;
+    }
+  }
+
+  .rcw-response .rcw-message-text {
+      background-color: #f4f7f9;
+      border-radius: 10px;
+      padding: 15px;
+      max-width: 215px;
+      text-align: left
+  }
+
+  .rcw-message-text p {
+      margin: 0;
+      font-family: Arial;
+      font-size: 14px;
+      color: #827e7e;
+  }
+
+  .rcw-message-text img {
+      width: 100%;
+      object-fit: contain
+  }
+
+  .rcw-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 100%;
+      margin-right: 10px
+  }
+
+  .rcw-snippet {
+      background-color: #f4f7f9;
+      border-radius: 10px;
+      padding: 15px;
+      max-width: 215px;
+      text-align: left
+  }
+
+  .rcw-snippet-title {
+      margin: 0
+  }
+
+  .rcw-snippet-details {
+      border-left: 2px solid #35e65d;
+      margin-top: 5px;
+      padding-left: 10px
+  }
+
+  .rcw-sender.expand {
+    height: 60px;
+  }
+
+  #input.rcw-new-message {
+      width: 100%;
+      border: 0;
+      background-color: #f4f7f9;
+      height: 30px;
+      padding-left: 15px;
+      resize: none;
+      margin: 0;
+      font-size: 14px;
+
+      &::placeholder {
+        color: #9f9f9f;
+      }
+  }
+
+  #input.rcw-new-message:focus {
+      outline: none
+  }
+
+  #input.rcw-new-message.expand {
+      height: 40px
+  }
+
+  .rcw-send {
+      background: #f4f7f9;
+      border: 0
+  }
+
+  .rcw-send .rcw-send-icon {
+      height: 25px
+  }
+
+  .agent-img {
+    width: 35px;
+    height: 35px;
+    position: relative;
+    top: 6px;
+  }
+
+  .senderBlock {
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    flex-direction: column;
+  }
+
+  .senderName {
+    font-size: 12px;
+    font-family: Calibry, sans-serif;
+    color: #828282;
+  }
+
+  .rcw-timestamp {
+    color: #828282;
+  }
+
+  .rcw-client .rcw-message-text.errorMessage {
+    background-color: red;
+    color: #fff;
+    position: relative;
+
+    p {
+      color: #fff;
+    }
+
+    &::before {
+      content: "error!";
+      position: absolute;
+      font-size: 12px;
+      font-family: Arial, sans-serif;
+      left: -33px;
+      top: 17px;
+      color: red;
+    }
+  }
+}

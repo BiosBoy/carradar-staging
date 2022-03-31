@@ -1,0 +1,87 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProgressiveImage should return common preloader 1`] = `
+<Memo(ProgressiveImage)
+  image={
+    Object {
+      "alt": "test",
+      "path": "960/localStorage.png",
+    }
+  }
+>
+  <div
+    className="progressiveImagePreloader"
+  >
+    <img
+      alt="test"
+      className="progressiveImage undefined"
+      onLoad={[Function]}
+      src="960/localStorage.png"
+      style={
+        Object {
+          "display": "none",
+        }
+      }
+    />
+    <div>
+      <Loader
+        color="green"
+        type="circle"
+      >
+        <div
+          className="spinnerCircle"
+        >
+          <div
+            className="green"
+            key="0"
+          />
+          <div
+            className="green"
+            key="1"
+          />
+          <div
+            className="green"
+            key="2"
+          />
+          <div
+            className="green"
+            key="3"
+          />
+          <div
+            className="green"
+            key="4"
+          />
+          <div
+            className="green"
+            key="5"
+          />
+          <div
+            className="green"
+            key="6"
+          />
+          <div
+            className="green"
+            key="7"
+          />
+          <div
+            className="green"
+            key="8"
+          />
+          <div
+            className="green"
+            key="9"
+          />
+          <div
+            className="green"
+            key="10"
+          />
+          <div
+            className="green"
+            key="11"
+          />
+        </div>
+      </Loader>
+    </div>
+  </div>
+</Memo(ProgressiveImage)>
+`;

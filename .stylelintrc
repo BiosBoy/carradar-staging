@@ -1,0 +1,105 @@
+{
+  "extends": "stylelint-config-standard",
+  "plugins": [
+      "stylelint-no-unsupported-browser-features",
+      "stylelint-order",
+      "stylelint-scss"
+  ],
+  "ignoreFiles": [
+    "**/*.js",
+    "**/*.jsx",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.html",
+    "app/assets/**/*",
+    "app/commands/**/*",
+    "app/controllers/**/*",
+    "app/decorators/**/*",
+    "app/helpers/**/*",
+    "app/jobs/**/*",
+    "app/lib/**/*",
+    "app/mailers/**/*",
+    "app/models/**/*",
+    "app/offers/**/*",
+    "app/queries/**/*",
+    "app/services/**/*",
+    "app/uikit/**/*",
+    "app/validators/**/*",
+    "app/views/**/*",
+    "config/**/*",
+    "public/**/*",
+    "scripts/**/*",
+    "settings/**/*",
+    "spec/**/*",
+    "test/**/*",
+    "tmp/**/*",
+    "vendor/**/*",
+    "log/**/*",
+    "globals/**/*",
+    "features/**/*",
+    "docs/**/*",
+    "db/**/*",
+    "bin/**/*"
+    ],
+    "customSyntax": "postcss-scss",
+    "rules": {
+        "declaration-block-no-redundant-longhand-properties": [
+          true,
+          {
+            "ignoreShorthands": ["flex-flow"]
+          }
+        ],
+        "font-family-name-quotes": null,
+        "selector-class-pattern": null,
+        "keyframes-name-pattern": null,
+        "selector-pseudo-element-no-unknown": null,
+        "value-keyword-case": null,
+        "no-descending-specificity": null,
+        "function-comma-space-after": "always",
+        "declaration-block-no-duplicate-properties": null,
+        "comment-empty-line-before": ["always"],
+        "string-quotes": null,
+        "at-rule-no-unknown": null,
+        "scss/at-rule-no-unknown": true,
+        "selector-id-pattern": null,
+        "number-leading-zero": "never",
+        "indentation": [
+            2, {
+                "indentInsideParens": "once-at-root-twice-in-block",
+                "severity": "error"
+            }
+        ],
+        "selector-pseudo-class-no-unknown": [
+            true,
+            {
+                "ignorePseudoClasses": ["global", "local"]
+            }
+        ],
+        "selector-pseudo-class-case": null,
+        "property-no-unknown": [
+            true,
+            {
+                "ignoreProperties": ["composes", "r"]
+            }
+        ],
+        "unit-no-unknown": [
+            true,
+            {
+                "ignoreUnits": ["x"]
+            }
+        ],
+        "order/order": [
+                [
+                    "custom-properties",
+                    "at-variables",
+                    "declarations",
+                    "rules",
+                    "at-rules",
+                    "less-mixins"
+                ],
+                {
+                    "severity": "warning"
+                }
+        ]
+    }
+}

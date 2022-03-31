@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "esnext",
+    "types": ["node", "jest", "express"]
+  },
+  "typeRoots": [
+    "../typings.d.ts",
+    "../node_modules/@types"
+  ]
+}

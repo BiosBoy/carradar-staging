@@ -1,0 +1,218 @@
+@import "~@styles/mediaTypes.scss";
+
+.panelsWrap {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  width: calc(100vw - 251px);
+  max-width: 860px;
+  justify-content: flex-start;
+  padding: 48px;
+  box-sizing: border-box;
+
+  h4 {
+    font-size: 28px;
+    color: #111;
+    margin: 0;
+    margin-bottom: 24px;
+  }
+}
+
+.panel {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: inherit;
+  max-width: -webkit-fill-available;
+}
+
+.row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  margin-bottom: 32px;
+  width: inherit;
+  max-width: inherit;
+
+  :first-child {
+    margin-left: 0;
+  }
+
+  :last-child {
+    margin-right: 0;
+  }
+}
+
+.cell {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  margin: 0 15px;
+  width: inherit;
+  max-width: 100%;
+
+  label {
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+
+  &.textAreaWrap {
+    max-width: 100%;
+  }
+}
+
+.input {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  max-width: inherit;
+  height: 40px;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+
+  &:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgb(0 123 255 / 25%);
+  }
+}
+
+.textArea {
+  width: 100%;
+  min-height: 110px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  padding: 10px;
+  width: -webkit-fill-available;
+
+  &:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgb(0 123 255 / 25%);
+  }
+}
+
+
+.mainData {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.text {
+  color: #111;
+  font-size: 16px;
+}
+
+.buttonsWrap {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.button {
+  border: none;
+  outline: none;
+  color: #fff;
+  background-color: #5ac200;
+  border-color: #91df4b;
+  border-radius: 5px;
+  cursor: pointer;
+  box-sizing: border-box;
+  padding: 5px 10px;
+  height: 45px;
+  width: 215px;
+
+  &:first-child {
+    margin-right: 20px;
+  }
+
+  &:hover {
+    background-color: #5ac200;
+  }
+
+  &.cancel {
+    border: 1px solid #ccc;
+    background: transparent;
+    color: #ccc;
+
+    &:hover {
+      background: #ccc;
+      color: #fff;
+    }
+  }
+}
+
+
+.newPasswordConfirmRow {
+  justify-content: flex-start;
+
+  .cell {
+    max-width: 367px;
+  }
+}
+
+@media #{$screen-mobile} {
+  .panelsWrap {
+    flex-direction: column;
+    padding: 20px;
+    width: 100vw;
+  }
+
+  .buttonsWrap {
+    width: 100%;
+  }
+
+  .button {
+    width: inherit;
+  }
+
+  .row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 0;
+
+    &:last-child {
+      margin-bottom: 50px;
+    }
+  }
+
+  .cell {
+    margin: 0;
+
+    .input {
+      margin-bottom: 20px;
+    }
+  }
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+  margin-top: 10px;
+}

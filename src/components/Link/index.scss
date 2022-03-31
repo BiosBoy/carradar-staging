@@ -1,0 +1,53 @@
+@import '~@styles/colors.scss';
+@import '~@styles/mediaTypes.scss';
+
+.linkSPA {
+  opacity: 1;
+
+  .text {
+    @media #{$screen-tablet} {
+      font-size: 25px;
+    }
+  }
+}
+
+.text {
+  @media #{$screen-tablet} {
+    font-size: 34px;
+  }
+}
+
+.withBackground {
+  text-decoration: none;
+  color: #fff;
+  background-color: $green;
+  border: 1px solid $blackBackground;
+  border-left: 3px;
+  border-right: 0;
+  border-top: 0;
+  border-bottom: 0;
+  cursor: pointer;
+  min-width: 164px;
+  height: 42px;
+  transition: all .3s ease-in-out;
+  box-sizing: border-box;
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  justify-self: center;
+  padding: 5px 20px;
+
+  &:hover {
+    background-color: $greenActive;
+    border-color: $blackBackground;
+  }
+
+  .text {
+    color: #fff;
+    text-align: center;
+  }
+}
+
+.rounded {
+  border-radius: 50px;
+}

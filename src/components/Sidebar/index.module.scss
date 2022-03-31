@@ -1,0 +1,149 @@
+$animIn: .4s cubic-bezier(0, .5, 0, 1);
+$animOut: .4s cubic-bezier(.5, 0, .5, 1);
+
+  .sidebarBlock {
+    background: transparent;
+    position: fixed;
+    width: 100vw;
+    height: 100%;
+    z-index: 10000;
+    right: 0;
+    top: 0;
+    overflow-x: hidden;
+    transition: background $animIn;
+    overflow-y: auto;
+    pointer-events: all;
+    background: #0b0b0b91;
+  }
+
+  .sidebarWrap {
+    width: 287px;
+    box-shadow: -20px 0px 41px #2f2f2f54;
+    height: inherit;
+    position: fixed;
+    right: 0;
+    display: flex;
+    align-items: center;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    transition: transform $animIn;
+    overflow-x: hidden;
+    background-color: #fff;
+  }
+
+  .topSection {
+    width: inherit;
+    padding: 0 21px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background: #262626;
+    box-sizing: border-box;
+  }
+
+  .mainSection {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    max-width: 286px;
+    height: calc(100vh - 80px);
+    width: 100%;
+
+    > div {
+      height: auto;
+      flex-wrap: wrap;
+      flex-direction: column;
+      justify-content: flex-start;
+      width: 100%;
+      align-items: flex-start;
+
+      a {
+        height: auto;
+        width: 100%;
+        padding-left: 30px;
+      }
+    }
+
+    span {
+      color: #111;
+    }
+  }
+
+  .closeBtn {
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    margin-right: -10px;
+
+    i {
+      pointer-events: none;
+      font-size: 30px;
+      color: #fff;
+    }
+  }
+
+  @media screen and (min-width: 600px) and (max-width: 1000px) {
+    .topSection {
+      align-items: center;
+      height: 175px;
+    }
+
+    .closeBtn {
+      background: transparent;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      margin-right: 30px;
+
+      i {
+        pointer-events: none;
+        font-size: 45px;
+        color: #fff;
+      }
+    }
+  }
+
+  :global {
+    .sidebar-enter,
+    .sidebar-appear {
+      background: transparent;
+
+      #sidebar {
+        transform: translateX(100%);
+      }
+    }
+
+    .sidebar-enter-active,
+    .sidebar-enter-done {
+      background: rgb(0 0 0 / 54%);
+
+      #sidebar {
+        transform: translateX(0%);
+      }
+    }
+
+    .sidebar-exit {
+      transition: background $animOut;
+      background: rgb(0 0 0 / 54%);
+
+      #sidebar {
+        transition: transform $animOut;
+        transform: translateX(0%);
+      }
+    }
+
+    .sidebar-exit-active,
+    .sidebar-exit-done {
+      transition: background $animOut;
+      background: transparent;
+
+      #sidebar {
+        transition: transform $animOut;
+        transform: translateX(100%);
+      }
+    }
+  }

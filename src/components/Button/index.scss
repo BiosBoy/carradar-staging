@@ -1,0 +1,115 @@
+$button: #5ac2008f;
+
+.button {
+  background: $button;
+  box-shadow: 0 3px 0 0 darken($button, 10%);
+  border-radius: 2px;
+  border: none;
+  color: #fff;
+  display: block;
+  font-size: 16px;
+  line-height: 2.3;
+  margin: 5px 0 0;
+  outline: none;
+  padding: 5px 0;
+  text-shadow: 0 1px #68B25B;
+  width: 100%;
+  height: 50px;
+  max-width: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 250px;
+
+  &.filled {
+    cursor: pointer;
+    background: #68da03;
+    text-shadow:0 1px 3px darken($button, 30%);
+  }
+
+  &.S {
+    max-width: 150px;
+    min-width: unset;
+    height: 40px;
+  }
+
+  &.M {
+    max-width: 250px;
+    min-width: unset;
+    height: 50px;
+  }
+
+  &.L {
+    max-width: 350px;
+    min-width: unset;
+  }
+}
+
+.preloader {
+  height: 20px;
+  position: relative;
+  display: flex;
+  width: 80px;
+  align-items: center;
+  justify-content: center;
+
+  span {
+    display: block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(50%);
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: #fff;
+    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+
+    &:nth-child(1) {
+      left: 8px;
+      animation: preloader1 0.6s infinite;
+    }
+
+    &:nth-child(2) {
+      left: 8px;
+      animation: preloader2 0.6s infinite;
+    }
+
+    &:nth-child(3) {
+      left: 32px;
+      animation: preloader2 0.6s infinite;
+    }
+
+    &:nth-child(4) {
+      left: 56px;
+      animation: preloader3 0.6s infinite;
+    }
+  }
+}
+
+
+@keyframes preloader1 {
+  0% {
+    transform: translateY(-50%) scale(0);
+  }
+  100% {
+    transform: translateY(-50%) scale(1);
+  }
+}
+
+@keyframes preloader3 {
+  0% {
+    transform: translateY(-50%) scale(1);
+  }
+  100% {
+    transform: translateY(-50%) scale(0);
+  }
+}
+
+@keyframes preloader2 {
+  0% {
+    transform: translateY(-50%) translate(0, 0);
+  }
+  100% {
+    transform: translateY(-50%) translate(24px, 0);
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "title": "CarRadar - find your can in a manner of seconds.",
+  "description": "Easy way to check your car data in Ukraine.",
+  "header": {
+    "menu": {
+      "about_us": "About Us",
+      "contact": "Contact",
+      "sign_in": "Sign In",
+      "sign_up": "Sign Up",
+      "sign_out": "Sign Out",
+      "profile": "Profile"
+    }
+  },
+  "footer": {
+    "main_text": "it is a lightning fast way to check any car by license plate in Ukraine. Just a few clicks and you will receive detailed information about the car you are interested in within a couple of seconds. And all this in a user-friendly interface, managed by tens of millions of real records!",
+    "blocks": {
+      "first_block": {
+        "title": "Address",
+        "content": {
+          "line_1": "03056,",
+          "line_2": "Peremogy st. 8,",
+          "line_3": "Kyiv,",
+          "line_4": "Ukraine"
+        }
+      },
+      "second_block": {
+        "title": "Contacts"
+      },
+      "third_block": {
+        "title": "Newsletter",
+        "content": {
+          "button": "Send"
+        }
+      }
+    },
+    "copyright": "All Rights reserved",
+    "policy": "Private Policy"
+  },
+  "pages": {
+    "home": {
+      "search_section": {
+        "title": "Find the Car in Ukraine You Ever Wanted",
+        "text": "Search from over 99,00,000 active cars records in our database.",
+        "input_placeholder": "Type number (e.g. АТ3460ЕТ)...",
+        "input_placeholder_short": "like АТ3460ЕТ...",
+        "bad_pattern_error": "Car Number should be valid (e.g. AT8532ET)",
+        "cyrillic_alphabet": "Use cyrillic alphabet only",
+        "not_empty_error": "Field should not be empty",
+        "not_special_symbols": "Special Symbols are not allowed",
+        "button": "Find your car",
+        "button_short": "Search"
+      },
+      "results_section":{
+        "title": "Look what we found:",
+        "image_alt": "Image photo",
+        "main_data": {
+          "owner": "Owner",
+          "vin": "Vin",
+          "blacklisted": "Blacklisted",
+          "info": "Basic Info"
+        },
+        "collected_data": {
+          "title": "Collected data",
+          "manufacture": "Manufacture",
+          "manufactured_date": "Manufactured Date",
+          "color": "Color",
+          "gasType": "Fuel Type",
+          "price": "Market Price",
+          "last_operation": "Last Operation",
+          "last_operation_type": "Operation Type"
+        },
+        "active_search": {
+          "title": "Working. Stand by",
+          "title_short": "Searching...",
+          "text": "Searching the car among more than 1 million active records...",
+          "info": "We do our best to find your car. Sometimes it can take up to 2-3 minutes depending on how old the last registration was made. E.g. if the last operation was made in 2013 year it will take the longest time to find the corresponding data around.",
+          "info_short": "We do our best to find your car. Sometimes it can take up to 2-3 minutes"
+        },
+        "error": {
+          "title": "Oops! Nothing was found :(",
+          "text": "Search has been failed due to server error or missed data in the database..."
+        }
+      }
+    },
+    "aboutus": {
+      "title": "About Us",
+      "text1": "CarRadar - a project created to facilitate the search for cars by numbers. The modern world is constantly evolving and so are we. Quite often there is a need to update the vehicle data while on the road or simply when there is no other known way..",
+      "text2": "Our goal is quite simple - to allow people to freely, quickly and easily find any publicly available information on the desired car within a few seconds. Most importantly, absolutely without paying a single coin for it!",
+      "text3": "This project was created by professionals in their field. It is completely free of charge and created for informational purposes. Any resemblance to real persons or brands is purely coincidental..",
+      "text4": "What are you waiting for? Feel the power of a quick search with our service right now -"
+    },
+    "contact": {
+      "title": "Contacts"
+    },
+    "login": {
+      "title": "Login"
+    },
+    "registration": {
+      "title": "Sign Up"
+    },
+    "profile": {
+      "title": "Profile"
+    },
+    "sign_out": {
+      "title": "Sign Out"
+    },
+    "privacy": {
+      "title": "Private Policy"
+    }
+  },
+  "services": {
+    "cookie": {
+      "text": "This website uses cookie to improve your experience. By using CarRadar©, you agree to our",
+      "link": "Cookie Policy",
+      "label": "Accept"
+    }
+  }
+}

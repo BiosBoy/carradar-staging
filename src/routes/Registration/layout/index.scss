@@ -1,0 +1,89 @@
+@import '~@styles/index.scss';
+
+$button: #5ac2008f;
+
+.registrationWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  min-height: 600px;
+  margin: 100px 0;
+
+  .headline {
+    color: #111;
+    margin-bottom: 75px;
+  }
+
+  @extend .container;
+}
+
+.formWrap {
+  background: #fff;
+  padding: 4em 4em 2em;
+  max-width: 400px;
+  margin: 50px auto 0;
+  box-shadow: 0 0 1em #222;
+  border-radius: 2px;
+}
+
+.contentWrap {
+  margin: 0 0 3em 0;
+  position: relative;
+  max-width: 500px;
+  width: 100%;
+}
+
+.input {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  outline: none;
+  margin:0;
+}
+
+.input[type="text"],
+.input[type="password"] {
+  background: #fff;
+  border: 1px solid #dbdbdb;
+  font-size: 16px;
+  padding: 15px 10px;
+  border-radius: 2px;
+}
+
+.input[type="text"]:focus,
+.input[type="password"]:focus {
+  background: #fff
+}
+
+.text {
+  display:block;
+  background: #F9A5A5;
+  padding: 2px 5px;
+  color: #666;
+}
+
+.text {
+  position: absolute;
+  left: 8px;
+  top: 12px;
+  color: #999;
+  font-size: 16px;
+  display: inline-block;
+  padding: 4px 10px;
+  font-weight: 400;
+  background-color: rgba(255,255,255,0);
+  transition: color .3s linear, top .3s linear, background-color .8s linear;
+
+  &.floatLabel{
+    top: -11px;
+    background-color: rgba(255,255,255,0.8);
+    font-size: 14px;
+  }
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+  margin-top: 10px;
+}

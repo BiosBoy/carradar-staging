@@ -1,0 +1,21 @@
+.flexCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.progressiveImage {
+  box-sizing: border-box;
+  position: relative;
+  display: block;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  height: auto;
+}
+
+.progressiveImagePreloader {
+  background: transparent;
+  composes: progressiveImage;
+  composes: flexCenter;
+}

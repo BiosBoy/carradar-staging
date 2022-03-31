@@ -1,0 +1,178 @@
+@import '~@styles/mediaTypes.scss';
+@import '~@styles/constants.scss';
+
+.description {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  margin-left: 50px;
+  width: 400px;
+
+  @media #{$screen-tablet} {
+    width: 100vw;
+    max-width: $containerWidthTablet;
+  }
+}
+
+.topSection {
+  opacity: 1;
+}
+
+.bottomSection {
+  opacity: 1;
+}
+
+.headLine {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.iconLogo {
+  width: 35px;
+  height: 35px;
+  display: block;
+  margin-right: 15px;
+
+  &::before {
+    width: 35px;
+    height: 35px;
+    font-size: 35px;
+  }
+
+  @media #{$screen-tablet} {
+    width: 50px;
+    height: 50px;
+
+    &::before {
+      width: 60px;
+      height: 50px;
+      font-size: 50px;
+    }
+  }
+
+  @media #{$screen-mobile} {
+    margin-right: 5px;
+  }
+}
+
+.title {
+  font-size: 45px;
+  width: 100%;
+
+  @media #{$screen-tablet} {
+    font-size: 65px;
+  }
+
+  @media #{$screen-mobile} {
+    font-size: 45px;
+  }
+}
+
+.number {
+  position: relative;
+  box-sizing: border-box;
+  width: 265px;
+  height: 50px;
+  border-radius: 5px;
+  border: 2px solid #111;
+  background-color: #efefef;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  transform: scale(.75);
+  position: relative;
+  left: -30px;
+
+  @media #{$screen-tablet} {
+    transform: scale(1.2);
+    left: 30px;
+    margin-top: 20px;
+  }
+
+  @media #{$screen-mobile} {
+    transform: unset;
+    left: unset;
+  }
+}
+
+.sign {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 100%;
+  top: 0;
+  font-size: 21px;
+  color: #fff;
+  left: 0;
+  background-color: #ffd500;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  background-image: linear-gradient(180deg, #005bbb, #005bbb 50%, #ffd500 0, #ffd500 75%, #f2ca00);
+
+  .text {
+    color: #fff;
+    text-shadow: 0 0 3px #ccc;
+    font-size: 20px;
+  }
+}
+
+.roadNumber {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  height: 100%;
+  width: 100%;
+  margin-right: 5px;
+
+  .text {
+    font-weight: 400;
+    font-size: 25px;
+  }
+}
+
+.infoList {
+  margin: 20px 0;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  .title {
+    font-size: 18px;
+    color: #8c8c8c;
+
+    @media #{$screen-tablet} {
+      font-size: 27px;
+    }
+
+    @media #{$screen-mobile} {
+      font-size: 18px;
+    }
+  }
+
+  .text {
+    font-weight: 800;
+    font-size: 16px;
+
+    @media #{$screen-tablet} {
+      font-size: 24px;
+    }
+
+    @media #{$screen-mobile} {
+      font-size: 16px;
+    }
+  }
+}
+
+.info {
+  margin: 10px 0;
+
+  @media #{$screen-tablet} {
+    margin: 15px 0;
+  }
+}

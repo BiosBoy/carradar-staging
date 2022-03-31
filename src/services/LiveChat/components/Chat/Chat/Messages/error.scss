@@ -1,0 +1,43 @@
+:global {
+  .errorWrapper {
+    background: #f90000;
+    position: fixed;
+    display: block;
+    padding: 10px 20px;
+    top: 22px;
+    transition: top .3s ease-out;
+    z-index: 10000;
+  }
+
+  .errorText {
+    color: #fff;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    text-align: center;
+    display: block;
+  }
+
+  .error-anim {
+    box-shadow: 0 2px 10px 1px #b5b5b5;
+    border-radius: 10px;
+  }
+
+  .error-anim-appear,
+  .error-anim-enter {
+    top: 22px;
+  }
+
+  .error-anim-enter-active,
+  .error-anim-enter-done {
+    top: 70px;
+  }
+
+  .error-anim-exit {
+    transition: top .3s ease-in;
+    top: 70px;
+
+    &.error-anim-exit-active {
+      top: 22px;
+    }
+  }
+}
