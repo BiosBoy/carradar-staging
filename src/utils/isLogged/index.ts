@@ -18,9 +18,9 @@ const isLogged = (): TReturn => {
     const replacePattern = name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1');
 
     const matches =
-      typeof document !== 'undefined'
-      && document.cookie
-      && document.cookie.match(new RegExp(`${matchPrefix}${replacePattern}${matchSuffix}`));
+      typeof document !== 'undefined' &&
+      document.cookie &&
+      document.cookie.match(new RegExp(`${matchPrefix}${replacePattern}${matchSuffix}`));
 
     return matches && matches[1] ? decodeURIComponent(matches[1]) : undefined;
   };

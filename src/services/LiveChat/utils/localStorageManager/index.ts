@@ -36,7 +36,7 @@ class LocalStorageManager {
     };
   }
 
-  _setState = (newValue: { [x: string]: any; }) => {
+  _setState = (newValue: { [x: string]: any }) => {
     this._state = {
       ...this._state,
       ...newValue

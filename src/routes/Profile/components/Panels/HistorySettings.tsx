@@ -22,10 +22,7 @@ const HistorySettings = () => {
   const _renderCell = ({ timestamp, carData }: ISearchHistory, index) => (
     <div key={timestamp} className={`${styles.cell} ${styles.historyCell}`}>
       {carData.image ? (
-        <img
-          className={styles.carImage} src={carData.image}
-          alt=''
-        />
+        <img className={styles.carImage} src={carData.image} alt='' />
       ) : (
         <div className={styles.imageBox}>N/A</div>
       )}

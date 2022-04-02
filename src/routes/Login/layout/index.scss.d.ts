@@ -8,6 +8,7 @@ interface CssExports {
   'bodyImg': string;
   'container': string;
   'contentWrap': string;
+  'darkMode': string;
   'error': string;
   'extra': string;
   'floatLabel': string;

@@ -14,7 +14,6 @@ function* subscribeNewsletter() {
     payload = yield fetchUrl(`${getServerURL()}/api/subscribe-newsletter`, {
       email: app.subscribeNewsletter.userEmail
     });
-    console.log(payload, 'payload');
 
     if (payload.error) {
       yield put(newsletterSubscribeError(payload));
@@ -24,7 +23,7 @@ function* subscribeNewsletter() {
     }
 
     yield put(newsletterSubscriptionSaved(payload));
-    yield put(requestSuccess('Thank you! You\'ve been subscribed successfully'));
+    yield put(requestSuccess("Thank you! You've been subscribed successfully"));
   } catch (e) {
     console.error('Error: ', e, 'Payload: ', payload);
 

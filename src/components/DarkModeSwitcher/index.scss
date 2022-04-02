@@ -1,0 +1,104 @@
+.toggle {
+  touch-action: pan-x;
+  height: 100%;
+  margin-left: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+
+  * {
+    pointer-events: none;
+  }
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+#sidebar {
+  .toggle {
+    margin: 0;
+  }
+}
+
+.toggleTrack {
+  width: 50px;
+  height: 24px;
+  padding: 0;
+  opacity: 1;
+  border-radius: 30px;
+  background-color: #0f1114;
+  transition: all .2s ease;
+}
+
+.toggleTrackCheck {
+  position: absolute;
+  width: 17px;
+  height: 17px;
+  left: 5px;
+  top: 0;
+  bottom: 0;
+  margin-top: auto;
+  margin-bottom: auto;
+  line-height: 0;
+  opacity: 0;
+  transition: opacity .25s ease;
+}
+
+.toggleChecked {
+  .toggleThumb {
+    transform: translateX(26px) translateY(-50%);
+  }
+
+  .toggleTrackX {
+    opacity: 0;
+  }
+
+  .toggleTrackCheck {
+    opacity: 1;
+  }
+}
+
+.toggleTrackX {
+  position: absolute;
+  width: 17px;
+  height: 17px;
+  right: 5px;
+  top: 0;
+  bottom: 0;
+  margin-top: auto;
+  margin-bottom: auto;
+  line-height: 0;
+}
+
+.toggleThumb {
+  position: absolute;
+  top: 50%;
+  transform: translateX(0) translateY(-50%);
+  left: 1px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background-color: #fafafa;
+  box-sizing: border-box;
+  transition: all .5s cubic-bezier(.23, 1, .32, 1) 0ms;
+}
+
+.toggleScreenreaderOnly {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}

@@ -9,10 +9,7 @@ const Logo = () => {
   return (
     <div className={styles.logoWrap}>
       <Link to='/'>
-        <img
-          className={styles.logo} src='/assets/logo.png'
-          alt='logo'
-        />
+        <img className={styles.logo} src='/assets/logo.png' alt='logo' />
       </Link>
     </div>
   );

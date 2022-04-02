@@ -10,7 +10,7 @@ import './index.scss';
 
 interface IProps {
   value: string;
-  deployMessage: ({ text, timestamp }: { text: string; timestamp: number; }) => void;
+  deployMessage: ({ text, timestamp }: { text: string; timestamp: number }) => void;
   writtingMessage: (message: string) => void;
 }
 
@@ -84,14 +84,8 @@ class Typeform extends React.Component<IProps> {
           onChange={this._handleChange}
           onKeyDown={this._handleKeyDownSentMessage}
         />
-        <button
-          type='submit' className={`rcw-send ${value ? 'active' : ''}`}
-          onClick={this._handleSentMessage}
-        >
-          <img
-            src={SEND_IMG} className='rcw-send-icon'
-            alt='Send'
-          />
+        <button type='submit' className={`rcw-send ${value ? 'active' : ''}`} onClick={this._handleSentMessage}>
+          <img src={SEND_IMG} className='rcw-send-icon' alt='Send' />
         </button>
       </form>
     );

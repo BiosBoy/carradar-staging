@@ -42,7 +42,7 @@ export const saveNewDataAttempt = (): IType => ({
   type: PROFILE_CHANGE_ATTEMPT
 });
 
-export const saveNewDataSaved = (emailID: string): { emailID: string; } & IType => ({
+export const saveNewDataSaved = (emailID: string): { emailID: string } & IType => ({
   emailID,
   type: PROFILE_CHANGE_SAVED
 });

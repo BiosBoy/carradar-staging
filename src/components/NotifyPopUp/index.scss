@@ -91,3 +91,23 @@
     opacity: 1;
   }
 }
+
+:global(#darkMode) {
+  .notifywrap {
+    border: 1px solid rgb(28, 28, 33);
+    box-shadow: rgb(28, 28, 33) 0px 0px 3px, rgba(15, 15, 15, 0.55) 0px 3px 6px;
+  }
+
+  .notifywrap span {
+    color: rgb(255, 255, 255);
+  }
+
+
+  .successWrap {
+    background: rgb(25, 102, 25);
+  }
+
+  .errorWrap {
+    background: rgb(204, 51, 51);
+  }
+}

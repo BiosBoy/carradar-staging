@@ -7,9 +7,9 @@ const langPathChanger = ({ label, callback }) => {
     const isCoreRoot = label === 'ua';
     const isLeadingSlash = (str) => /^\//i.test(str);
 
-    const pathWithoutPrevLanguage = isLanguageRoot ?
-      prevPath.substr(3, prevPath.length) :
-      prevPath.substr(1, prevPath.length);
+    const pathWithoutPrevLanguage = isLanguageRoot
+      ? prevPath.substr(3, prevPath.length)
+      : prevPath.substr(1, prevPath.length);
     const newPath = `${!isCoreRoot ? label : ''}${
       isLeadingSlash(pathWithoutPrevLanguage) ? '' : '/'
     }${pathWithoutPrevLanguage}`;

@@ -417,3 +417,114 @@ a.text,
   font-size: 12px;
   color: #ff5353;
 }
+
+
+:global(#darkMode) {
+  .footer  {
+    background-color: rgb(38, 38, 38);
+  }
+
+  .text  {
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  .copywriting  {
+    background: rgb(28, 28, 28);
+  }
+
+  .link ,
+  a.text  {
+    color: rgb(255, 255, 255);
+  }
+
+  .link:hover,
+  a.text:hover {
+    color: rgb(153, 187, 230);
+  }
+
+  .copywritingContent .link ,
+  .copywritingContent .text  {
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  .iconEmail ,
+  .iconFacebook ,
+  .iconInstagram,
+  .iconTel,
+  .iconTelegram,
+  .iconTwitter,
+  .icon {
+    filter: invert(1);
+  }
+
+  .title  {
+    color: rgb(255, 255, 255);
+  }
+
+  .input  {
+    border-bottom: 1px solid rgb(77, 77, 77);
+    color: rgb(255, 255, 255);
+  }
+
+  .input::-webkit-input-placeholder {
+    color: rgb(233, 221, 221);
+    font-size: 20px;
+  }
+
+  .input:-webkit-autofill,
+  .input:-webkit-autofill:active,
+  .input:-webkit-autofill:focus,
+  .input:-webkit-autofill:hover {
+    -webkit-text-fill-color: rgb(234, 222, 222);
+    box-shadow: rgb(38, 38, 38) 0px 0px 0px 1000px inset !important;
+  }
+
+  .labelInput  {
+    filter: invert(1);
+  }
+
+  .emailSendButton  {
+    background-color: rgb(51, 51, 51);
+    color: rgb(255, 255, 255);
+  }
+
+  .emailSendButton:hover {
+    background-color: rgb(20, 82, 40);
+    border-color: rgb(51, 51, 51);
+  }
+
+  .iconFacebook:hover,
+  .iconInstagram:hover,
+  .iconTelegram:hover,
+  .iconTwitter:hover {
+    box-shadow: rgb(0, 0, 0) 0px 0px 10px;
+  }
+
+  .links span,
+  .rights span {
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  .policy span {
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  .emailFilled  {
+    background-color: rgb(20, 82, 40);
+  }
+
+  .emailFilled:active,
+  .emailFilled:focus,
+  .emailFilled:hover {
+    background: rgb(20, 82, 40);
+  }
+
+  .emailFilled:disabled {
+    background: rgb(20, 82, 40);
+    color: rgb(204, 204, 204);
+  }
+
+  .emailError {
+    color: rgb(230, 153, 153);
+  }
+}

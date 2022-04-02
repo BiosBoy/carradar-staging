@@ -2,7 +2,7 @@
 
 import { animateScroll } from './animateScroll';
 
-const logError = () => console.error('Invalid element, are you sure you\'ve provided element id or react ref?');
+const logError = () => console.error("Invalid element, are you sure you've provided element id or react ref?");
 
 const getElementPosition = (element) => element.offsetTop;
 

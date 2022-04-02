@@ -43,7 +43,7 @@ const ACTION_HANDLERS = {
     ...state,
     isProfileChangeFetch: true
   }),
-  [PROFILE_CHANGE_SAVED]: (state: IStore, action: { emailID: string; }) => ({
+  [PROFILE_CHANGE_SAVED]: (state: IStore, action: { emailID: string }) => ({
     ...state,
     id: action.emailID,
     password: '',

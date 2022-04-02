@@ -76,3 +76,31 @@
     height: auto;
   }
 }
+
+
+:global(#darkMode) {
+  h4,
+  button,
+  .headline,
+  .text {
+    color: #fff;
+  }
+
+  .sidebarContainer {
+    border-right: 1px solid #262626;
+  }
+
+  .imageBlock {
+    border-bottom: 1px solid #262626;
+  }
+
+  .button {
+    border-bottom: 1px solid #262626;
+  }
+
+  .button.active, .button:hover {
+    color: #fff;
+    background: #145228;
+    text-shadow: rgb(20 82 40 / 56%) 0 1px 3px;
+  }
+}

@@ -6,7 +6,7 @@ import useLocales from '../../hooks/useLocales';
 
 import styles from './index.scss';
 
-const SideBar = ({ activePanel, setActivePanel }: { activePanel: string; setActivePanel: (id: string) => void; }) => {
+const SideBar = ({ activePanel, setActivePanel }: { activePanel: string; setActivePanel: (id: string) => void }) => {
   const { username, usersurname } = useSelector(({ profile }: IStore) => profile);
   const { SIDEBAR } = useLocales();
 
@@ -24,10 +24,7 @@ const SideBar = ({ activePanel, setActivePanel }: { activePanel: string; setActi
         />
         <h4 className='text-center'>{`${username} ${usersurname || ''}`}</h4>
       </div>
-      <div
-        className={styles.tabs} role='tablist'
-        aria-orientation='vertical'
-      >
+      <div className={styles.tabs} role='tablist' aria-orientation='vertical'>
         <button
           id='account'
           type='button'

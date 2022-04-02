@@ -198,3 +198,11 @@ a.text,
   justify-content: flex-start;
   margin-right: 100px;
 }
+
+:global(#darkMode) {
+  .headline,
+  .title,
+  .text {
+    color: #fff;
+  }
+}

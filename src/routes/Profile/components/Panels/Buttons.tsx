@@ -7,7 +7,7 @@ import useLocales from '../../hooks/useLocales';
 
 import styles from './index.scss';
 
-const Buttons = ({ activePanel, onClick }: { activePanel: string; onClick: (e) => void; }) => {
+const Buttons = ({ activePanel, onClick }: { activePanel: string; onClick: (e) => void }) => {
   const { error, isProfileChangeFetch } = useSelector(({ profile }: IStore) => profile);
 
   const { SUBMIT } = useLocales();
@@ -18,11 +18,7 @@ const Buttons = ({ activePanel, onClick }: { activePanel: string; onClick: (e) =
 
   return (
     <div className={styles.buttonsWrap}>
-      <Button
-        isActive={true} isLoading={isProfileChangeFetch}
-        disabled={false} onClick={onClick}
-        label={SUBMIT}
-      />
+      <Button isActive={true} isLoading={isProfileChangeFetch} disabled={false} onClick={onClick} label={SUBMIT} />
       {error && <span className={styles.error}>{error}</span>}
     </div>
   );

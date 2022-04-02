@@ -45,11 +45,7 @@ const Logout = memo(() => {
     <div className={styles.logoutWrap}>
       <h1 className={styles.headline}>{SECTION_TITLE}</h1>
       <p className={styles.text}>{TEXT}!</p>
-      <Button
-        label={SUBMIT} isLoading={false}
-        disabled={false} isActive={true}
-        onClick={_handleManualLogout}
-      />
+      <Button label={SUBMIT} isLoading={false} disabled={false} isActive={true} onClick={_handleManualLogout} />
     </div>
   );
 });

@@ -21,8 +21,6 @@ const findCarEndpoint = async (req, res) => {
 
   const carData = await findCarData({ findCardNumber: req.body.carNumber });
 
-  console.log(carData, 'carData');
-
   if (!carData) {
     res.send(JSON.stringify({ error: carData }));
 

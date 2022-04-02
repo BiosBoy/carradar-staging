@@ -16,7 +16,7 @@ const runWebsockets = (dispatch) => {
     console.log('websocket is open!');
   };
 
-  socket.onmessage = (event: MessageEvent<any> & { user: string; message: string; }) => {
+  socket.onmessage = (event: MessageEvent<any> & { user: string; message: string }) => {
     console.log(event, 'EVENT@');
 
     const { receiveData } = websocketsHelpers();

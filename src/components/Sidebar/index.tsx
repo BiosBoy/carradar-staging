@@ -3,6 +3,7 @@ import React from 'react';
 import { CSSTransition } from 'react-transition-group';
 
 import Links from '../Header/Links';
+import DarkModeSwitcher from '../DarkModeSwitcher';
 
 import useGlobalClose from './hooks/useGlobalClose';
 
@@ -23,17 +24,12 @@ const Sidebar = ({ onClickClose, isOpen }: IProps) => {
   };
 
   return (
-    <CSSTransition
-      in={isOpen} classNames='sidebar'
-      timeout={ANIM_SPEED} unmountOnExit
-    >
+    <CSSTransition in={isOpen} classNames='sidebar' timeout={ANIM_SPEED} unmountOnExit>
       <div id='sidebarBlock' className={styles.sidebarBlock}>
         <div id='sidebar' className={styles.sidebarWrap}>
           <div className={styles.topSection}>
-            <button
-              aria-label='close' type='button'
-              onClick={_handleClose} className={styles.closeBtn}
-            >
+            <DarkModeSwitcher />
+            <button aria-label='close' type='button' onClick={_handleClose} className={styles.closeBtn}>
               <i className='fa fa-arrow-right' />
             </button>
           </div>

@@ -246,3 +246,88 @@
     }
   }
 }
+
+:global(#darkMode) {
+  .inputHelperWrap {
+    background: rgba(28, 28, 33, 0.3);
+    border: 1px solid rgba(28, 28, 33, 0.4);
+  }
+
+  .searchInput {
+    background: rgb(28, 28, 33);
+    color: rgb(191, 191, 191);
+  }
+
+  .searchInput.error {
+    border: 2px solid rgba(212, 84, 84, 0.84);
+    box-shadow: rgba(204, 51, 51, 0.47) 0px 0px 15px;
+  }
+
+  .searchInput:disabled {
+    background: rgb(77, 77, 77);
+    color: rgb(255, 255, 255);
+  }
+
+  .searchInput:-webkit-autofill,
+  .searchInput:-webkit-autofill:active,
+  .searchInput:-webkit-autofill:focus,
+  .searchInput:-webkit-autofill:hover {
+    -webkit-text-fill-color: rgb(119, 119, 119);
+    box-shadow: rgb(28, 28, 33) 0px 0px 0px 1000px inset !important;
+  }
+
+  .errorMessage {
+    color: rgb(230, 153, 153);
+    text-shadow: rgb(192, 48, 48) 0px 0px 3px;
+  }
+
+  .clearButton {
+    border: 1px solid rgb(28, 28, 33);
+    box-shadow: rgb(120, 120, 120) 0px 0px 1px;
+  }
+
+  .clearButton span {
+    color: rgb(191, 191, 191);
+    text-shadow: rgb(28, 28, 33) 0px 0px 1px;
+  }
+
+  .clearButton:focus,
+  .clearButton:hover {
+    border: 1px solid rgb(120, 120, 120);
+  }
+
+  .clearButton:focus span,
+  .clearButton:hover span {
+    color: rgb(255, 255, 255);
+    text-shadow: rgba(18, 18, 18, 0.52) 0px 0px 1px;
+  }
+
+  .searchButton {
+    background: linear-gradient(rgb(20, 82, 40), rgb(20, 82, 40));
+    color: rgb(255, 255, 255);
+  }
+
+  .searchButton:focus,
+  .searchButton:hover {
+    background: linear-gradient(rgb(144, 212, 84), rgb(20, 82, 40));
+  }
+
+  .searchButton:disabled {
+    background: rgb(20, 82, 40);
+    color: rgba(255, 255, 255, 0.76);
+  }
+
+  .lastSearchesWrap .label {
+    color: rgb(255, 255, 255);
+  }
+
+  .lastSearches .lastSearch {
+    border: 1px solid rgb(28, 28, 33);
+    color: rgb(255, 255, 255);
+  }
+
+  .lastSearches .lastSearch:hover {
+    background: rgb(20, 82, 40);
+    border: 1px solid rgb(20, 82, 40);
+  }
+}

@@ -1,11 +1,6 @@
 import validateEmail from '..';
 
-import {
-  validEmail,
-  nonValidNameEmail,
-  nonValidDomainEmail,
-  nonValidPrefixEmail
-} from './mocks';
+import { validEmail, nonValidNameEmail, nonValidDomainEmail, nonValidPrefixEmail } from './mocks';
 
 describe('validateEmail()', () => {
   it('should return true in case the email is valid', () => {

@@ -19,6 +19,7 @@ export interface IState {
   appName: string;
   error: string;
   isLogged: boolean;
+  isDarkMode: boolean;
   success: string;
   subscribeNewsletter: {
     userEmail: null;

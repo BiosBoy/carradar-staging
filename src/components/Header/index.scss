@@ -383,3 +383,61 @@
     }
   }
 }
+
+
+:global(#darkMode) {
+  .headerWrap {
+    background: rgb(38, 38, 38);
+    border-bottom: 2px solid rgb(18, 18, 18);
+    box-shadow: rgb(8, 8, 8) 0px 8px 15px;
+  }
+
+  .link {
+    color: rgb(255, 255, 255);
+  }
+
+  .link:hover {
+    background: rgb(20, 82, 40);
+    color: rgb(255, 255, 255);
+  }
+
+  .link:hover>span {
+    color: rgb(255, 255, 255);
+  }
+
+  .link>span {
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+  }
+
+  .flag {
+    border: 2px solid rgb(122, 122, 122);
+  }
+
+  .language.isOpen {
+    background: rgb(28, 28, 33);
+    border: 2px solid rgb(28, 28, 33);
+    box-shadow: rgb(18, 18, 18) 0px 0px 3px;
+  }
+
+  .language.isOpen .flag:hover {
+    box-shadow: rgb(18, 18, 18) 0px 0px 3px;
+  }
+
+  .burgerIconSlice {
+    background: rgb(28, 28, 33);
+  }
+
+  .burgerContent {
+    background: rgb(18, 18, 18);
+  }
+
+  .burgerContent .link:active,
+  .burgerContent .link:focus {
+    background: rgb(20, 82, 40);
+  }
+
+  .mobileMenuOpened .burgerContent {
+    border-top: 5px solid rgb(38, 38, 38);
+  }
+}

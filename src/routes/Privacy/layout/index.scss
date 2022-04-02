@@ -33,5 +33,18 @@
   }
 }
 
-
-
+:global(#darkMode) {
+  span,
+  p,
+  a,
+  li,
+  ul,
+  h1,
+  h2,
+  h3,
+  h4,
+  .headline,
+  .text {
+    color: #fff;
+  }
+}

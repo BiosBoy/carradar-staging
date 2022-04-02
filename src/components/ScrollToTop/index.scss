@@ -34,3 +34,9 @@
   height: 100%;
   filter: drop-shadow(0 2px 1px #fff) drop-shadow(0 1px 0 #111) invert(.4);
 }
+
+:global(#darkMode) {
+  .buttonScrollTop {
+    filter: drop-shadow(rgb(255, 255, 255) 0px 2px 1px) drop-shadow(rgb(17, 17, 17) 0px 1px 0px) invert(0.4);
+  }
+}

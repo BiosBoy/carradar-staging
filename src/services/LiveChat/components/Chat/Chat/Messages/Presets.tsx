@@ -9,7 +9,7 @@ import scrollToEnd from '../../../../utils/scrollToEnd';
 import './presents.scss';
 
 interface IProps {
-  deployMessage: ({ text, timestamp }: { text: string; timestamp: number; }) => void;
+  deployMessage: ({ text, timestamp }: { text: string; timestamp: number }) => void;
 }
 
 const QUESTIONS = ['How do I apply?', 'How do I reapply?', 'How much can I borrow?', 'How do I become eligible?'];

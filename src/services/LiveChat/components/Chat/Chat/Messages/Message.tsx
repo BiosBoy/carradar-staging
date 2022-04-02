@@ -17,10 +17,7 @@ class Message extends React.Component<IProps> {
     return (
       <div className='senderBlock'>
         <span className='senderName'>{type === 'user' ? 'You' : 'Support'}</span>
-        {type !== 'user' ? <img
-          src='/assets/chat.png' alt=''
-          className='agent-img'
-        /> : null}
+        {type !== 'user' ? <img src='/assets/chat.png' alt='' className='agent-img' /> : null}
       </div>
     );
   };

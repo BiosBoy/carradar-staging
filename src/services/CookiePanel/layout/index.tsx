@@ -38,18 +38,12 @@ const CookiePanel = () => {
       <div className={styles.content}>
         <div className={styles.textWrap}>
           <span className={styles.text}>{MAIN_TEXT}</span>
-          <a
-            href={`${getLangPrefix(locale)}policy`} className={styles.link}
-            target='_self'
-          >
+          <a href={`${getLangPrefix(locale)}policy`} className={styles.link} target='_self'>
             {' '}
             {TEXT_LINK}.
           </a>
         </div>
-        <Button
-          label={TEXT_LABEL} isActive={true}
-          size='S' onClick={_handleCookie}
-        />
+        <Button label={TEXT_LABEL} isActive={true} size='S' onClick={_handleCookie} />
       </div>
     </div>
   );

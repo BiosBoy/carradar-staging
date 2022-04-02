@@ -99,3 +99,9 @@ p {
 .appFooter {
   composes: extra;
 }
+
+:global(#darkMode) {
+  .extra {
+    background: linear-gradient(90deg, rgba(18, 18, 18, 0), rgb(102, 75, 0) 50%, rgba(18, 18, 18, 0));
+  }
+}

@@ -6,7 +6,8 @@ import {
   REQUEST_NOTIFY_SUCCESS,
   REQUEST_NOTIFY_CLEAR,
   SET_LOCALE,
-  SET_LOGGED
+  SET_LOGGED,
+  TOGGLE_DARK_MODE
 } from '../../constants';
 
 import {
@@ -55,7 +56,11 @@ export const newsletterSubscriptionSaved = (payload: INewsletterSaved): INewslet
   type: NEWSLETTER_SAVED
 });
 
-export const newsletterSubscribeError = (payload: string): { error: string; } & IType => ({
+export const newsletterSubscribeError = (payload: string): { error: string } & IType => ({
   error: payload,
   type: NEWSLETTER_ERROR
+});
+
+export const toggleDarkMode = (): IType => ({
+  type: TOGGLE_DARK_MODE
 });

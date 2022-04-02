@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import Logo from './Logo';
 import Links from './Links';
 import Language from './Language';
+import DarkModeSwitcher from '../DarkModeSwitcher';
 import Sidebar from '../Sidebar';
 
 import styles from './index.scss';
@@ -15,6 +16,7 @@ const DesktopMenuLayout = () => {
     <>
       <Links />
       <Language />
+      <DarkModeSwitcher />
     </>
   );
 };
@@ -31,7 +33,6 @@ const TouchscreenMenuLayout = () => {
         type='button'
         className={styles.burgerButton}
         onClick={_handleClose}
-        onBlur={_handleClose}
         tabIndex={0}
         aria-label={`Click to ${!isBurgerClicked ? 'open' : 'close'} menu`}
         onKeyDown={undefined}

@@ -15,14 +15,8 @@ class PageNotFound extends React.PureComponent {
       <div className={styles.maintanceWrap}>
         <h3 className={styles.headline}>We&#39;re improving your Experience.</h3>
         <p className={styles.text}>This page will back up and running again shortly</p>
-        <img
-          src='/assets/on_maintance.png' alt='on_maintance'
-          className={styles.image}
-        />
-        <Link
-          to='/' type='rounded'
-          withBackground={true}
-        >
+        <img src='/assets/on_maintance.png' alt='on_maintance' className={styles.image} />
+        <Link to='/' type='rounded' withBackground={true}>
           Go back to the Home page
         </Link>
       </div>

@@ -10,7 +10,7 @@ import { saveNewDataAttempt } from '../../modules/actions';
 import styles from './index.scss';
 import Buttons from './Buttons';
 
-const Panels = ({ activePanel }: { activePanel: string; }) => {
+const Panels = ({ activePanel }: { activePanel: string }) => {
   const dispatch = useDispatch();
 
   const _handleUpdateProfile = () => {

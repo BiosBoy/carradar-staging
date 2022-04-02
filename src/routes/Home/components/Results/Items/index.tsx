@@ -7,7 +7,7 @@ import useLocales from '../hooks/useLocales';
 import styles from '../index.scss';
 import { ICarCollectedData } from '../../../interfaces/IStore';
 
-const Items = ({ collectedData }: { collectedData: ICarCollectedData[]; }) => {
+const Items = ({ collectedData }: { collectedData: ICarCollectedData[] }) => {
   const { COLLECTED_DATA_LABELS_ARRAY } = useLocales();
 
   if (!collectedData) {

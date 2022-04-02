@@ -12,6 +12,7 @@ interface CssExports {
   'color': string;
   'container': string;
   'data': string;
+  'data___uh5Yv': string;
   'extra': string;
   'gasType': string;
   'icon': string;

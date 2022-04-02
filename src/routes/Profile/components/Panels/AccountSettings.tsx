@@ -80,8 +80,8 @@ const AccountSettings = () => {
             className={styles.textArea}
             onChange={_handleChange}
             value={
-              bio
-              || 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore vero enim error similique quia numquam ullam corporis officia odio repellendus aperiam consequatur laudantium porro voluptatibus, itaque laboriosam veritatis voluptatum distinctio!'
+              bio ||
+              'Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore vero enim error similique quia numquam ullam corporis officia odio repellendus aperiam consequatur laudantium porro voluptatibus, itaque laboriosam veritatis voluptatum distinctio!'
             }
           />
         </div>

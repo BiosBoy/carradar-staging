@@ -40,3 +40,16 @@
     flex-direction: column;
   }
 }
+
+:global(#darkMode) {
+  .profileContainer {
+    box-shadow: 0 2px 10px #111;
+  }
+
+    h4,
+    label,
+    .headline,
+    .text {
+      color: #fff;
+    }
+}

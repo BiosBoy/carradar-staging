@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 
 import styles from './index.scss';
 
-const MockOverlay = memo(({ isMock }: { isMock: boolean; }) => {
+const MockOverlay = memo(({ isMock }: { isMock: boolean }) => {
   if (!isMock) {
     return null;
   }

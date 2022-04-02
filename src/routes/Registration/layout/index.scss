@@ -87,3 +87,47 @@ $button: #5ac2008f;
   font-size: 12px;
   margin-top: 10px;
 }
+
+:global(#darkMode) {
+ .extra {
+    background: linear-gradient(90deg, rgba(18, 18, 18, 0), rgb(102, 75, 0) 50%, rgba(18, 18, 18, 0));
+  }
+
+  #darkMode .extra {
+    background: linear-gradient(90deg, rgba(18, 18, 18, 0), rgb(102, 75, 0) 50%, rgba(18, 18, 18, 0));
+  }
+
+  .registrationWrap .headline {
+    color: rgb(191, 191, 191);
+  }
+
+  .formWrap {
+    background: rgb(28, 28, 33);
+    box-shadow: rgb(33, 33, 33) 0px 0px 1em;
+  }
+
+  .input[type="password"],
+  .input[type="text"] {
+    background: rgb(28, 28, 33);
+    border: 1px solid rgb(61, 61, 61);
+  }
+
+  .input[type="password"]:focus,
+  .input[type="text"]:focus {
+    background: rgb(28, 28, 33);
+  }
+
+  .text {
+    background: rgba(28, 28, 33, 0);
+    color: rgb(191, 191, 191);
+  }
+
+  .text.floatLabel {
+    background-color: rgba(28, 28, 33, 0.8);
+    top: -11px;
+  }
+
+  .error {
+    color: rgb(230, 153, 153);
+  }
+}

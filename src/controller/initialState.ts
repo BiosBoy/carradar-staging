@@ -5,6 +5,7 @@ import isLogged from '../utils/isLogged';
 const initialState: IState = {
   locale: 'ua',
   appName: 'CarRadar',
+  isDarkMode: false,
   isLogged: isLogged(),
   error: null,
   success: null,

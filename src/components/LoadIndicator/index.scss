@@ -185,3 +185,26 @@
     transform: scale(1.5);
   }
 }
+
+
+:global(#darkMode) {
+  .black {
+    background: rgb(18, 18, 18);
+  }
+
+  .grey{
+    background: rgb(77, 77, 77);
+  }
+
+  .white {
+    background: rgb(28, 28, 33);
+  }
+
+  .blue {
+    background: rgb(46, 156, 184);
+  }
+
+  .green {
+    background: rgb(20, 82, 40);
+  }
+}

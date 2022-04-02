@@ -176,3 +176,27 @@
     margin: 15px 0;
   }
 }
+
+
+:global(#darkMode) {
+  .number {
+    align-items: center;
+    background-color: rgb(41, 41, 41);
+    border: 2px solid rgb(18, 18, 18);
+  }
+
+  .sign {
+    background-color: rgb(102, 75, 0);
+    background-image: linear-gradient(rgb(38, 92, 151), rgb(38, 92, 151) 50%, rgb(102, 75, 0) 0px, rgb(102, 75, 0) 75%, rgb(102, 75, 0));
+    color: rgb(255, 255, 255);
+  }
+
+  .sign .text {
+    color: rgb(255, 255, 255);
+    text-shadow: rgb(77, 77, 77) 0px 0px 3px;
+  }
+
+  .infoList .title {
+    color: rgb(191, 191, 191);
+  }
+}

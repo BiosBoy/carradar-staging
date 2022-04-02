@@ -3,11 +3,13 @@
 interface CssExports {
   'active': string;
   'button': string;
+  'headline': string;
   'icon': string;
   'image': string;
   'imageBlock': string;
   'sidebarContainer': string;
   'tabs': string;
+  'text': string;
 }
 export const cssExports: CssExports;
 export default cssExports;

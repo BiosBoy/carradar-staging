@@ -17,21 +17,19 @@ import styles from './index.scss';
 
 export interface IProps {
   language: string;
+  isDarkMode: boolean;
 }
 
-const CoreLayout = ({ language }: IProps) => {
+const CoreLayout = ({ language, isDarkMode }: IProps) => {
   const lang = getLangPrefix(language);
 
   return (
-    <div className={styles.appWrapper}>
+    <div id={isDarkMode ? 'darkMode' : ''} className={styles.appWrapper}>
       <NotifyPopUp />
       <Header />
       <Body>
         <Switch>
-          <Route
-            exact={true} path={lang}
-            component={Home}
-          />
+          <Route exact={true} path={lang} component={Home} />
           <Route path={`${lang}contact`} component={Contact} />
           <Route path={`${lang}about-us`} component={AboutUs} />
           <Route path={`${lang}sign-out`} component={Logout} />
@@ -66,7 +64,8 @@ const CoreLayout = ({ language }: IProps) => {
 // SSR_ROOT && CoreLayoutSSR();
 
 const mapStateToProps = (state: IStore) => ({
-  language: state.app.locale
+  language: state.app.locale,
+  isDarkMode: state.app.isDarkMode
 });
 
 export default connect(mapStateToProps, null)(CoreLayout);

@@ -16,7 +16,7 @@ self.addEventListener('push', (event) => {
   }
 
   if (Notification.permission === 'denied') {
-    console.log(Notification.permission, 'Permission wasn\'t granted. Allow a retry.');
+    console.log(Notification.permission, "Permission wasn't granted. Allow a retry.");
     return;
   }
 

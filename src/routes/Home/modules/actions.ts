@@ -17,7 +17,7 @@ export const loadCarDataError = (): IType => ({
   type: CAR_ERROR
 });
 
-export const wsSendMessage = (payload: object): { payload: object; } & IType => ({
+export const wsSendMessage = (payload: object): { payload: object } & IType => ({
   payload,
   type: WS_SEND_MESSAGE
 });

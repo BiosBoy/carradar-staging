@@ -2,7 +2,10 @@ import { useEffect } from 'react';
 
 const useGlobalClose = (isOpen: boolean, onClickClose: () => void) => {
   const _handleGlobalCloseClick = (e) => {
-    console.log(e.target.id, 'e.target.id');
+    if (e.target.id === 'dark_mode_toggler') {
+      return;
+    }
+
     if (isOpen && document.getElementById('sidebarBlock').contains(e.target)) {
       onClickClose();
     }

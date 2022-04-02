@@ -12,11 +12,11 @@ const makeRootReducer = (asyncReducers?: any, history?: History) => {
   return combineReducers({
     ...asyncReducers,
     app,
-    ...(isServer() ?
-      {
-        home
-      } :
-      {}),
+    ...(isServer()
+      ? {
+          home
+        }
+      : {}),
     router: connectRouter(history),
     browser: createResponsiveStateReducer({
       mobile: 600,

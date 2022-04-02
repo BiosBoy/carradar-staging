@@ -251,3 +251,25 @@
     }
   }
 }
+
+:global(#darkMode) {
+  .results {
+    background: rgb(28, 28, 33);
+  }
+
+  .resultsContent h3 {
+    color: rgb(191, 191, 191);
+  }
+
+  .data___uh5Yv>.title {
+    color: rgb(191, 191, 191);
+  }
+
+  .cell .title {
+    color: rgb(191, 191, 191);
+  }
+
+  .cell .text {
+    color: rgb(191, 191, 191);
+  }
+}

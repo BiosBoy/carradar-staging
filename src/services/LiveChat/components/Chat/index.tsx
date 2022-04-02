@@ -11,7 +11,7 @@ import './index.scss';
 
 import { IStore } from '../../../../interfaces/IStore';
 
-class App extends React.Component<{ isOpen: boolean; }> {
+class App extends React.Component<{ isOpen: boolean }> {
   componentDidMount() {
     watchTabSwitch();
   }

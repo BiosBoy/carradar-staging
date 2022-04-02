@@ -3,6 +3,9 @@
 interface CssExports {
   'closeBtn': string;
   'mainSection': string;
+  'sidebar-enter-active': string;
+  'sidebar-enter-done': string;
+  'sidebar-exit': string;
   'sidebarBlock': string;
   'sidebarWrap': string;
   'topSection': string;

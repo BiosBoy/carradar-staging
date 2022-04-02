@@ -134,9 +134,9 @@ const Search = memo(
 
       // if we emit the same request in the row
       if (
-        valueToProcess === carNumberReceived
-        && carNumberReceived === searchCarNumber
-        && valueToProcess === searchCarNumber
+        valueToProcess === carNumberReceived &&
+        carNumberReceived === searchCarNumber &&
+        valueToProcess === searchCarNumber
       ) {
         scrollTo({ id: 'results', duration: 1000 });
 
@@ -222,10 +222,7 @@ const Search = memo(
       }
 
       return (
-        <button
-          type='button' aria-label='Clear Search'
-          className={styles.clearButton} onClick={() => handleClear()}
-        >
+        <button type='button' aria-label='Clear Search' className={styles.clearButton} onClick={() => handleClear()}>
           <span>x</span>
         </button>
       );
@@ -259,10 +256,7 @@ const Search = memo(
         }
 
         return (
-          <button
-            key={label} type='button'
-            className={styles.lastSearch} onClick={() => handleSearch(label)}
-          >
+          <button key={label} type='button' className={styles.lastSearch} onClick={() => handleSearch(label)}>
             {label}
           </button>
         );

@@ -44,15 +44,15 @@ class GoToNewMessages extends React.Component<IProps, IState> {
 
     const isBottom =
       // eslint-disable-next-line max-len
-      Number(scrollContainer?.scrollHeight)
-        - (Number(scrollContainer?.scrollTop) + Number(scrollContainer?.clientHeight))
-      <= 390;
+      Number(scrollContainer?.scrollHeight) -
+        (Number(scrollContainer?.scrollTop) + Number(scrollContainer?.clientHeight)) <=
+      390;
     const isNewMessagesReceived = !isBottom && agentMessages.length !== prevState.messagesAgentTemp.length;
 
     // @ts-ignore
-    window._chat_new_messages_ = isNewMessagesReceived ?
-      agentMessages.length - prevState.messagesAgentTemp.length :
-      null;
+    window._chat_new_messages_ = isNewMessagesReceived
+      ? agentMessages.length - prevState.messagesAgentTemp.length
+      : null;
 
     return {
       isNewMessages: isNewMessagesReceived,

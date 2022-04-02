@@ -16,10 +16,7 @@ const AboutUs = memo(() => {
   return (
     <div className={styles.aboutUsWrap}>
       <h1 className={styles.headline}>{SECTION_TITLE}</h1>
-      <img
-        src='/assets/logo.png' alt='logo'
-        className={styles.companyLogo}
-      />
+      <img src='/assets/logo.png' alt='logo' className={styles.companyLogo} />
       <p className={styles.text}>{TEXT_FIRST}</p>
       <br />
       <p className={styles.text}>{TEXT_SECOND}</p>

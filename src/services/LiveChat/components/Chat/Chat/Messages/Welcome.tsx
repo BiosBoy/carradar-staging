@@ -7,10 +7,10 @@ const MESSAGES = [
   'Hey, nice to see you friend!',
   'Hi, How can I help you today',
   'How can I be helpful?',
-  '🥷 Support is here, it\'s a honor to serve you!'
+  "🥷 Support is here, it's a honor to serve you!"
 ];
 
-class Welcome extends React.Component<any, { welcomeMessage: string; }> {
+class Welcome extends React.Component<any, { welcomeMessage: string }> {
   constructor(props) {
     super(props);
 
@@ -31,10 +31,7 @@ class Welcome extends React.Component<any, { welcomeMessage: string; }> {
     return (
       <div className='senderBlock'>
         <span className='senderName'>Support</span>
-        <img
-          src='/assets/support.png' alt=''
-          className='agent-img'
-        />
+        <img src='/assets/support.png' alt='' className='agent-img' />
       </div>
     );
   };

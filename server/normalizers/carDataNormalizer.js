@@ -29,7 +29,7 @@ const dataNormalizer = (data) => {
     uid: uid || vinCode,
     image: null,
     mainData: {
-      brand,
+      brand: brand.includes(' ') ? brand.match(/([^\s]*)/i)[0] : brand,
       model,
       color,
       vinCode: vinCode,

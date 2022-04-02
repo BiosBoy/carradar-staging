@@ -113,3 +113,21 @@ $button: #5ac2008f;
     transform: translateY(-50%) translate(24px, 0);
   }
 }
+
+:global(#darkMode) {
+  .button {
+    background: rgba(20, 82, 40, 0.56);
+    box-shadow: rgba(20, 82, 40, 0.56) 0px 3px 0px 0px;
+    color: rgb(255, 255, 255);
+    text-shadow: rgb(105, 178, 92) 0px 1px;
+  }
+
+  .button.filled {
+    background: rgb(20, 82, 40);
+    text-shadow: rgba(20, 82, 40, 0.56) 0px 1px 3px;
+  }
+
+  .preloader span {
+    background: rgb(28, 28, 33);
+  }
+}

@@ -7,6 +7,7 @@ interface CssExports {
   'carImage': string;
   'cell': string;
   'error': string;
+  'headline': string;
   'historyCell': string;
   'historyItem': string;
   'imageBox': string;

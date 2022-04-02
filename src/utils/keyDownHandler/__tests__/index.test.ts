@@ -22,7 +22,7 @@ describe('keyDownHandler()', () => {
 
     expect(fakeCallback.mock.calls.length).toBe(1);
   });
-  it('should not fire Event in case if we don\'t need this', () => {
+  it("should not fire Event in case if we don't need this", () => {
     const fakeCallback = jest.fn();
 
     const config = {

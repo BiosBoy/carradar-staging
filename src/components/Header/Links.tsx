@@ -8,7 +8,7 @@ import styles from './index.scss';
 
 import { IStore } from '../../interfaces/IStore';
 
-const Links = ({ isLogged, isDesktop }: { isLogged: boolean; isDesktop: boolean; }) => {
+const Links = ({ isLogged, isDesktop }: { isLogged: boolean; isDesktop: boolean }) => {
   const UnloggedLinks = memo(() => (
     <>
       <Link className={styles.link} to='/sign-in'>

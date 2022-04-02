@@ -9,7 +9,8 @@ import {
   REQUEST_NOTIFY_SUCCESS,
   REQUEST_NOTIFY_CLEAR,
   SET_LOCALE,
-  SET_LOGGED
+  SET_LOGGED,
+  TOGGLE_DARK_MODE
 } from '../../constants/index';
 
 import {
@@ -65,13 +66,17 @@ const ACTION_HANDLERS = {
       success: action.success
     }
   }),
-  [NEWSLETTER_ERROR]: (state: IState, action: { error: string; }) => ({
+  [NEWSLETTER_ERROR]: (state: IState, action: { error: string }) => ({
     ...state,
     subscribeNewsletter: {
       ...state.subscribeNewsletter,
       error: action.error,
       isInProgress: false
     }
+  }),
+  [TOGGLE_DARK_MODE]: (state: IState) => ({
+    ...state,
+    isDarkMode: !state.isDarkMode
   })
 };
 

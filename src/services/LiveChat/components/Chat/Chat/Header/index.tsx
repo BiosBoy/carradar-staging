@@ -27,20 +27,14 @@ class Header extends React.Component<IProps> {
     return (
       <div id='chat-header' className='rcw-header'>
         <div className='avatart-img-wrapper'>
-          <img
-            alt='' src='/assets/chat.png'
-            className='avatar-img'
-          />
+          <img alt='' src='/assets/chat.png' className='avatar-img' />
         </div>
         <div className='rcw-header-wrapper'>
           <h4 className='rcw-title'>Live Support</h4>
           <span>Our operators are busy. Time to answer 5 min</span>
         </div>
         {isMobileLayout && (
-          <button
-            type='button' className='closeBtn'
-            onClick={this._handleChatToggle}
-          >
+          <button type='button' className='closeBtn' onClick={this._handleChatToggle}>
             x
           </button>
         )}

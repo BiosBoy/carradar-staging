@@ -6,7 +6,7 @@ import useLocales from '../hooks/useLocales';
 
 import styles from './index.scss';
 
-const Description = ({ mainData }: { mainData: ICarMainData; }) => {
+const Description = ({ mainData }: { mainData: ICarMainData }) => {
   const { OWNER_LABEL, VIN_LABEL, BLACKLISTED_LABEL, INFO_LABEL } = useLocales();
 
   if (!mainData) {

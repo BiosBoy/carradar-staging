@@ -31,14 +31,8 @@ class Launcher extends React.Component<IProps> {
     const type = isOpen ? 'close' : 'open';
 
     return (
-      <button
-        type='button' className='rcw-launcher'
-        aria-controls='rcw-chat-container' onClick={this._handleClick}
-      >
-        <img
-          src={isOpen ? IMG_CROSS : IMG_QUESTION} className={`rcw-${type}-launcher`}
-          alt='Open chat'
-        />
+      <button type='button' className='rcw-launcher' aria-controls='rcw-chat-container' onClick={this._handleClick}>
+        <img src={isOpen ? IMG_CROSS : IMG_QUESTION} className={`rcw-${type}-launcher`} alt='Open chat' />
       </button>
     );
   }

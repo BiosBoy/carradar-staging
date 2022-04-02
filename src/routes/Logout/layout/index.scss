@@ -20,4 +20,10 @@
   }
 }
 
+:global(#darkMode) {
+  .headline,
+  .text {
+    color: #fff;
+  }
+}
 
