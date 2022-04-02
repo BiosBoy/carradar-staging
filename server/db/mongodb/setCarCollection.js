@@ -5,10 +5,10 @@ const updateOne = require('./updateOne');
 const { CARS_COLLECTION_ID } = require('./constants');
 
 const setCarCollection = async (req, responseData) => {
-  console.log(req.session, 'set car to user history collection')
+  console.log(req.session, 'set car to user history collection');
 
   if (!req.session.email) {
-    return
+    return;
   }
 
   const userSearchCollection = await findOne({
@@ -16,7 +16,7 @@ const setCarCollection = async (req, responseData) => {
     entityData: {
       user: req.session.email
     }
-  })
+  });
 
   if (userSearchCollection.entity?.searchHistory) {
     await updateOne({
@@ -48,6 +48,6 @@ const setCarCollection = async (req, responseData) => {
       }
     });
   }
-}
+};
 
 module.exports = setCarCollection;

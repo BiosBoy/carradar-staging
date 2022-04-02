@@ -1,29 +1,29 @@
-const getSecret = require('../../secretManager')
+const getSecret = require('../../secretManager');
 
-const MONGO_SECRET_TAG = 'arn:aws:secretsmanager:eu-central-1:480124983095:secret:mongoURL-hUTXeu'
-const MONGO_SECRET_NAME = 'mongoURL'
+const MONGO_SECRET_TAG = 'arn:aws:secretsmanager:eu-central-1:480124983095:secret:mongoURL-hUTXeu';
+const MONGO_SECRET_NAME = 'mongoURL';
 
-let isStartedFetch = false
+let isStartedFetch = false;
 
 const getMongoURL = async () => new Promise(async (resolve, _) => {
   if (process.env.__MONGO_URL__ || isStartedFetch) {
-    return
+    return;
   }
 
-  isStartedFetch = true
+  isStartedFetch = true;
 
-  const { status, error, secret } = await getSecret(MONGO_SECRET_TAG, MONGO_SECRET_NAME)
+  const { status, error, secret } = await getSecret(MONGO_SECRET_TAG, MONGO_SECRET_NAME);
 
-  isStartedFetch = false
+  isStartedFetch = false;
 
   if (error || status !== 'success') {
-    console.log('mongoURL token not found')
+    console.log('mongoURL token not found');
 
-    resolve(true)
+    resolve(true);
   }
 
-  process.env.__MONGO_URL__ = secret
-  resolve(true)
-})
+  process.env.__MONGO_URL__ = secret;
+  resolve(true);
+});
 
-module.exports = getMongoURL
+module.exports = getMongoURL;

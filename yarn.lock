@@ -23717,6 +23717,11 @@ timers-browserify@^2.0.4:
   dependencies:
     setimmediate "^1.0.4"
 
+timestamp-to-date@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/timestamp-to-date/-/timestamp-to-date-1.1.0.tgz#8e90ebb0c3a97f9182759f6c9657551c67788ead"
+  integrity sha1-jpDrsMOpf5GCdZ9slldVHGd4jq0=
+
 tiny-each-async@2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/tiny-each-async/-/tiny-each-async-2.0.3.tgz#8ebbbfd6d6295f1370003fbb37162afe5a0a51d1"

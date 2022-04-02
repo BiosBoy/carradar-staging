@@ -1,6 +1,6 @@
-import { getStore } from './helpers/localStorage'
+import { getStore } from './helpers/localStorage';
 
-import { IStore } from '../interfaces/IStore'
+import { IStore } from '../interfaces/IStore';
 
 const initialState: IStore = {
   showChat: false,
@@ -10,6 +10,6 @@ const initialState: IStore = {
   newMessagesCount: 0,
   currentMessage: getStore({ storeKey: 'chat-current-input' }),
   messages: getStore({ storeKey: 'chat-data' })
-}
+};
 
-export default initialState
+export default initialState;

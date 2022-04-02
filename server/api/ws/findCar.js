@@ -71,7 +71,7 @@ const findCarEndpoint = (ws, req) => {
       })
     );
 
-    await setCarCollection(req, responseData)
+    await setCarCollection(req, responseData);
   });
 };
 

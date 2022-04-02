@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { memo } from 'react';
 
-import styles from './index.scss'
+import styles from './index.scss';
 
-const Preloader = () => {
-  return <div className={styles.preloader} />
-}
+const Preloader = memo(() => {
+  return <div className={styles.preloader} />;
+});
 
-export default Preloader
+export default Preloader;

@@ -1,18 +1,18 @@
 const watchTabSwitch = () => {
   document.addEventListener('visibilitychange', () => {
-    const isPageActive = !document.hidden
+    const isPageActive = !document.hidden;
 
     if (!isPageActive) {
-      const normalizedTitle = document.title.replace(/^(\(1\) )/gi, '')
+      const normalizedTitle = document.title.replace(/^(\(1\) )/gi, '');
 
       // @ts-ignore
-      document.title = `${window._chat_new_messages_ ? `(${window._chat_new_messages_})` : ''} ${normalizedTitle}`
+      document.title = `${window._chat_new_messages_ ? `(${window._chat_new_messages_})` : ''} ${normalizedTitle}`;
 
-      return
+      return;
     }
 
-    document.title = document.title.replace(/^\(\d\)/i, '')
-  })
-}
+    document.title = document.title.replace(/^\(\d\)/i, '');
+  });
+};
 
-export default watchTabSwitch
+export default watchTabSwitch;

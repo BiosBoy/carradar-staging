@@ -1,4 +1,4 @@
-import { IStore } from '../interfaces/IStore'
+import { IStore } from '../interfaces/IStore';
 
 const initialState: IStore = {
   username: '',
@@ -7,6 +7,6 @@ const initialState: IStore = {
   passwordConfirmation: '',
   isRegistrationFetch: false,
   error: null
-}
+};
 
-export default initialState
+export default initialState;

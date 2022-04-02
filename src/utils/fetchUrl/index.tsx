@@ -1,11 +1,11 @@
 export interface IConfig {
-  credentials: 'same-origin'
+  credentials: 'same-origin';
   headers: {
-    'X-Requested-With': 'XMLHttpRequest'
-    'Content-Type': 'application/json'
-  }
-  method?: 'post' | 'get'
-  body?: any
+    'X-Requested-With': 'XMLHttpRequest';
+    'Content-Type': 'application/json';
+  };
+  method?: 'post' | 'get';
+  body?: BodyInit;
 }
 
 const fetchUrl = async (url: string, data?: object) => {
@@ -15,17 +15,17 @@ const fetchUrl = async (url: string, data?: object) => {
       'X-Requested-With': 'XMLHttpRequest',
       'Content-Type': 'application/json'
     }
-  }
+  };
 
   if (data) {
-    config.method = 'post'
-    config.body = JSON.stringify(data)
+    config.method = 'post';
+    config.body = JSON.stringify(data);
   }
 
-  const payload = await fetch(url, config)
-  const response = await payload.json()
+  const payload = await fetch(url, config);
+  const response = await payload.json();
 
-  return response
-}
+  return response;
+};
 
-export default fetchUrl
+export default fetchUrl;

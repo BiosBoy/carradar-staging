@@ -1,9 +1,9 @@
-import { takeLatest } from 'redux-saga/effects'
+import { takeLatest } from 'redux-saga/effects';
 
-import logout from './logout'
+import logout from './logout';
 
-import { LOGOUT_ATTEMPT } from '../../constants'
+import { LOGOUT_ATTEMPT } from '../../constants';
 
 export default function* rootSaga() {
-  yield takeLatest(LOGOUT_ATTEMPT, logout)
+  yield takeLatest(LOGOUT_ATTEMPT, logout);
 }

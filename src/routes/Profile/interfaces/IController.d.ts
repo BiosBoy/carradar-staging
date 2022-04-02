@@ -1,3 +1,5 @@
+import { ISearchHistory } from './IStore';
+
 export interface IType {
   type: string;
 }
@@ -12,7 +14,7 @@ export interface IFetchSaved {
   mobile?: string;
   bio?: string;
   usersurname?: string;
-  searchHistory?: any;
+  searchHistory?: ISearchHistory;
 }
 
 export interface IFetchError {

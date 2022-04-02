@@ -1,16 +1,16 @@
 // @ts-nocheck
-import React from 'react'
-import { withRouter } from 'react-router'
+import React from 'react';
+import { withRouter } from 'react-router';
 
-import styles from './index.scss'
+import styles from './index.scss';
 
-import Search from '../components/Search'
-import Results from '../components/Results'
+import Search from '../components/Search';
+import Results from '../components/Results';
 
 class Home extends React.Component {
   componentDidMount() {
     // @ts-ignore
-    window.prerenderReady = true
+    window.prerenderReady = true;
   }
 
   render() {
@@ -19,8 +19,8 @@ class Home extends React.Component {
         <Search />
         <Results />
       </div>
-    )
+    );
   }
 }
 
-export default withRouter(Home)
+export default withRouter(Home);

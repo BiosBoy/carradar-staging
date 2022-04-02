@@ -1,33 +1,39 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react'
-import { CSSTransition } from 'react-transition-group'
+import React from 'react';
+import { CSSTransition } from 'react-transition-group';
 
-import Links from '../Header/Links'
+import Links from '../Header/Links';
 
-import useGlobalClose from './hooks/useGlobalClose'
+import useGlobalClose from './hooks/useGlobalClose';
 
-import styles from './index.module.scss'
+import styles from './index.module.scss';
 
 export interface IProps {
-  isOpen: boolean
-  onClickClose: (status?: boolean) => void
+  isOpen: boolean;
+  onClickClose: (status?: boolean) => void;
 }
 
-const ANIM_SPEED = 400
+const ANIM_SPEED = 400;
 
 const Sidebar = ({ onClickClose, isOpen }: IProps) => {
-  useGlobalClose(isOpen, onClickClose)
+  useGlobalClose(isOpen, onClickClose);
 
   const _handleClose = () => {
-    onClickClose(false)
-  }
+    onClickClose(false);
+  };
 
   return (
-    <CSSTransition in={isOpen} classNames='sidebar' timeout={ANIM_SPEED} unmountOnExit>
+    <CSSTransition
+      in={isOpen} classNames='sidebar'
+      timeout={ANIM_SPEED} unmountOnExit
+    >
       <div id='sidebarBlock' className={styles.sidebarBlock}>
         <div id='sidebar' className={styles.sidebarWrap}>
           <div className={styles.topSection}>
-            <button aria-label='close' type='button' onClick={_handleClose} className={styles.closeBtn}>
+            <button
+              aria-label='close' type='button'
+              onClick={_handleClose} className={styles.closeBtn}
+            >
               <i className='fa fa-arrow-right' />
             </button>
           </div>
@@ -37,7 +43,7 @@ const Sidebar = ({ onClickClose, isOpen }: IProps) => {
         </div>
       </div>
     </CSSTransition>
-  )
-}
+  );
+};
 
-export default Sidebar
+export default Sidebar;

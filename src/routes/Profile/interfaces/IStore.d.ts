@@ -1,3 +1,11 @@
+export interface ISearchHistory {
+  timestamp: number;
+  carData: {
+    image: string
+    uid: string
+  }
+}
+
 export interface IStore {
   id: string;
   username: string;
@@ -11,10 +19,5 @@ export interface IStore {
   error: string;
   isProfileFetch: boolean;
   isProfileChangeFetch: boolean;
-  searchHistory?: {
-    timestamp: number;
-    carData: {
-      uid: string
-    }
-  }[];
+  searchHistory?: ISearchHistory[];
 }

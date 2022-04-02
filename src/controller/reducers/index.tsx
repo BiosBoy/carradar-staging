@@ -10,7 +10,7 @@ import {
   REQUEST_NOTIFY_CLEAR,
   SET_LOCALE,
   SET_LOGGED
-} from '../../constants/index'
+} from '../../constants/index';
 
 import {
   IRequestError,
@@ -19,10 +19,10 @@ import {
   INewsletterAttempt,
   IRequestSuccess,
   ISetLogged
-} from '../../interfaces/IController'
-import { IState, IStore } from '../../interfaces/IStore'
+} from '../../interfaces/IController';
+import { IState, IStore } from '../../interfaces/IStore';
 
-import initialState from '../initialState'
+import initialState from '../initialState';
 
 // ------------------------------------
 // Action Handlers
@@ -40,10 +40,6 @@ const ACTION_HANDLERS = {
     ...state,
     error: null
   }),
-  // [LOCATION_CHANGE]: (state: IState, action: any) => ({
-  //   ...state,
-  //   locationChange: action.payload.location.pathname
-  // }),
   [SET_LOCALE]: (state: IState, action: ISetLocale) => ({
     ...state,
     locale: action.language
@@ -69,7 +65,7 @@ const ACTION_HANDLERS = {
       success: action.success
     }
   }),
-  [NEWSLETTER_ERROR]: (state: IState, action: { error: string }) => ({
+  [NEWSLETTER_ERROR]: (state: IState, action: { error: string; }) => ({
     ...state,
     subscribeNewsletter: {
       ...state.subscribeNewsletter,
@@ -77,15 +73,15 @@ const ACTION_HANDLERS = {
       isInProgress: false
     }
   })
-}
+};
 
 // ------------------------------------
 // Reducer
 // ------------------------------------
 const reducer = (state: IStore = initialState, action) => {
-  const handler = ACTION_HANDLERS[action.type]
+  const handler = ACTION_HANDLERS[action.type];
 
-  return handler ? handler(state as any, action) : state
-}
+  return handler ? handler(state as IState, action) : state;
+};
 
-export default reducer
+export default reducer;

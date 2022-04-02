@@ -1,19 +1,19 @@
-import React from 'react'
-import Loadable from 'react-loadable'
+import React from 'react';
+import Loadable from 'react-loadable';
 
-import PreloaderComponent from '../../components/Preloader'
+import PreloaderComponent from '../../components/Preloader';
 
-const Preloader = () => <PreloaderComponent />
+const Preloader = () => <PreloaderComponent />;
 
 const Contact = Loadable({
   loader: async () => {
     // tslint:disable-next-line:space-in-parens
-    const ContactComponent = await import(/* webpackChunkName: "contact" */ './layout')
+    const ContactComponent = await import(/* webpackChunkName: "contact" */ './layout');
 
-    return ContactComponent
+    return ContactComponent;
   },
   loading: Preloader,
   modules: ['contact']
-})
+});
 
-export default Contact
+export default Contact;

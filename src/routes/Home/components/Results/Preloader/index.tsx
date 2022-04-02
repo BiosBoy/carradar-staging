@@ -1,18 +1,18 @@
 /* eslint-disable */
-import React from 'react'
-import { connect } from 'react-redux'
-import i18n from 'i18next'
+import React from 'react';
+import { connect } from 'react-redux';
+import i18n from 'i18next';
 
-import isMobile from '../../../../../utils/isMobile'
-import { IStore } from '../../../../../interfaces/IStore'
+import isMobile from '../../../../../utils/isMobile';
+import { IStore } from '../../../../../interfaces/IStore';
 
-import Clouds from './Clouds'
+import Clouds from './Clouds';
 
-import styles from './index.scss'
+import styles from './index.scss';
 
 const ResultsPreloader = ({ isError, isMobileLayout }: { isError?: boolean; isMobileLayout?: boolean }) => {
-  const MOBILE_TEXT = i18n.t('pages.home.results_section.active_search.info_short')
-  const REGULAR_TEXT = i18n.t('pages.home.results_section.active_search.info')
+  const MOBILE_TEXT = i18n.t('pages.home.results_section.active_search.info_short');
+  const REGULAR_TEXT = i18n.t('pages.home.results_section.active_search.info');
 
   if (isError) {
     return (
@@ -25,7 +25,7 @@ const ResultsPreloader = ({ isError, isMobileLayout }: { isError?: boolean; isMo
           <img className={styles.errorImg} alt='search_error' src='/assets/search_error.png' />
         </div>
       </div>
-    )
+    );
   }
 
   return (
@@ -51,12 +51,12 @@ const ResultsPreloader = ({ isError, isMobileLayout }: { isError?: boolean; isMo
         <p>{isMobileLayout ? MOBILE_TEXT : REGULAR_TEXT}</p>
       </div>
     </div>
-  )
-}
+  );
+};
 
 const mapStateToProps = ({ browser, app }: IStore) => ({
   isMobileLayout: isMobile(browser),
   locale: app.locale
-})
+});
 
-export default connect(mapStateToProps, null)(ResultsPreloader)
+export default connect(mapStateToProps, null)(ResultsPreloader);

@@ -1,36 +1,74 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+/* eslint-disable react/no-unstable-nested-components */
+import React from 'react';
+import { useSelector } from 'react-redux';
+import timestampToDate from 'timestamp-to-date';
 
-import styles from './index.scss'
+import styles from './index.scss';
 
-import { IStore } from '../../../../interfaces/IStore'
+import { IStore } from '../../../../interfaces/IStore';
+import { ISearchHistory } from '../../interfaces/IStore';
+import useLocales from '../../hooks/useLocales';
 
 const HistorySettings = () => {
-  const { searchHistory } = useSelector(({ profile }: IStore) => profile)
+  const { searchHistory } = useSelector(({ profile }: IStore) => profile);
+  const { HISTORY } = useLocales();
 
-  const _renderHistoryList = () =>
-    searchHistory.map((item, index) => (
-      <div key={item.timestamp} className={styles.cell}>
+  const _renderRow = (children, index) => (
+    <div key={index} className={styles.row}>
+      {children}
+    </div>
+  );
+
+  const _renderCell = ({ timestamp, carData }: ISearchHistory, index) => (
+    <div key={timestamp} className={`${styles.cell} ${styles.historyCell}`}>
+      {carData.image ? (
+        <img
+          className={styles.carImage} src={carData.image}
+          alt=''
+        />
+      ) : (
+        <div className={styles.imageBox}>N/A</div>
+      )}
+      <div className={styles.historyItem}>
         <label>№ {index + 1}</label>
-        <label>Timestamp: {item.timestamp}</label>
-        <label>VIN: {item.carData.uid}</label>
+        <label>
+          {HISTORY.DATE}: {timestampToDate('1484448039504', 'yyyy-MM-dd')}
+        </label>
+        <label>
+          {HISTORY.VIN}: {carData.uid}
+        </label>
       </div>
-    ))
+    </div>
+  );
+
+  const _renderHistoryList = () => {
+    const rows = [];
+    let tempCells = [];
+
+    searchHistory.forEach((item, index) => {
+      tempCells.push(_renderCell(item, index));
+
+      if (index % 2) {
+        rows.push(_renderRow(tempCells, index));
+        tempCells = [];
+      }
+    });
+
+    return rows;
+  };
 
   const _renderPlaceholder = (
     <div className={styles.cell}>
-      <label>Seems like your History list is empty. Try to search your first car ever!</label>
+      <label>{HISTORY.TEXT}</label>
     </div>
-  )
+  );
 
   return (
     <div className={styles.panel}>
-      <h4>History Settings</h4>
-      <div className={styles.row}>
-        {!searchHistory || searchHistory.length === 0 ? _renderPlaceholder : _renderHistoryList()}
-      </div>
+      <h4>{HISTORY.SUB_TITLE}</h4>
+      {!searchHistory || searchHistory.length === 0 ? _renderPlaceholder : _renderHistoryList()}
     </div>
-  )
-}
+  );
+};
 
-export default HistorySettings
+export default HistorySettings;

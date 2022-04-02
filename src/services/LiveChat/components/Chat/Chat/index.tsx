@@ -1,20 +1,20 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { CSSTransition } from 'react-transition-group'
+import React from 'react';
+import { connect } from 'react-redux';
+import { CSSTransition } from 'react-transition-group';
 
-import Header from './Header'
-import Messages from './Messages'
-import Typeform from './Typeform'
+import Header from './Header';
+import Messages from './Messages';
+import Typeform from './Typeform';
+
+import './index.scss';
 
 interface IProps {
-  isOpen: boolean
+  isOpen: boolean;
 }
-
-import './index.scss'
 
 class Chat extends React.Component<IProps> {
   render() {
-    const { isOpen } = this.props
+    const { isOpen } = this.props;
 
     return (
       <CSSTransition
@@ -30,12 +30,12 @@ class Chat extends React.Component<IProps> {
           <Typeform />
         </div>
       </CSSTransition>
-    )
+    );
   }
 }
 
 const mapStateToProps = (state) => ({
   isOpen: state.chat.showChat
-})
+});
 
-export default connect(mapStateToProps, null)(Chat)
+export default connect(mapStateToProps, null)(Chat);

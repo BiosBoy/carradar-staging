@@ -1,9 +1,9 @@
-const aws = require('aws-sdk')
+const aws = require('aws-sdk');
 
 const setS3Profile = () => {
-  const credentials = new aws.SharedIniFileCredentials({ profile: 'carradar' })
+  const credentials = new aws.SharedIniFileCredentials({ profile: 'carradar' });
 
-  aws.config.credentials = credentials
-}
+  aws.config.credentials = credentials;
+};
 
-module.exports = setS3Profile
+module.exports = setS3Profile;

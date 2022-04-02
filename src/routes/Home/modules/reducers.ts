@@ -1,9 +1,10 @@
 // some reducers here. The same link in on top level
-import initialState from './initialState'
+import initialState from './initialState';
 
-import { CAR_ATTEMPT, CAR_SAVED, CAR_ERROR } from '../constants'
-import { IStore } from '../interfaces/IStore'
-import { IFetchAttempt, IFetchSaved } from '../interfaces/IController'
+import { CAR_ATTEMPT, CAR_SAVED, CAR_ERROR } from '../constants';
+import { IStore } from '../interfaces/IStore';
+import { IFetchAttempt, IFetchSaved } from '../interfaces/IController';
+import { WS_DISCONNECTED } from '../../../constants';
 
 // ------------------------------------
 // Action Handlers
@@ -22,7 +23,7 @@ const ACTION_HANDLERS = {
     ...state,
     carData: action.payload,
     statuses: {
-      isSearchError: false,
+      isSearchError: !action.payload,
       isSearchInProgress: false
     }
   }),
@@ -33,17 +34,25 @@ const ACTION_HANDLERS = {
       isSearchInProgress: false
     },
     error: null
+  }),
+  [WS_DISCONNECTED]: (state: IStore) => ({
+    ...state,
+    statuses: {
+      isSearchError: true,
+      isSearchInProgress: false
+    },
+    error: null
   })
-}
+};
 
 // ------------------------------------
 // Reducer
 // ------------------------------------
 // you need to place here right typization and initialState bind
-const reducer = (state: any = initialState, action: any) => {
-  const handler = ACTION_HANDLERS[action.type]
+const reducer = (state: IStore = initialState, action: any) => {
+  const handler = ACTION_HANDLERS[action.type];
 
-  return handler ? handler(state, action) : state
-}
+  return handler ? handler(state, action) : state;
+};
 
-export default reducer
+export default reducer;

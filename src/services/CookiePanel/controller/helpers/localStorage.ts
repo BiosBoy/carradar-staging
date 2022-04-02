@@ -1,11 +1,11 @@
-import LocalStorageManager from '../../../LiveChat/utils/localStorageManager'
+import LocalStorageManager from '../../../LiveChat/utils/localStorageManager';
 
-const { addStore, addToStore, updateStore, getStore } = new LocalStorageManager()
+const { addStore, addToStore, updateStore, getStore } = new LocalStorageManager();
 
-const isStorePresent = getStore({ storeKey: 'gdpr' })
+const isStorePresent = getStore({ storeKey: 'gdpr' });
 
 if (!isStorePresent) {
-  addStore({ storeKey: 'gdpr', storeData: false })
+  addStore({ storeKey: 'gdpr', storeData: false });
 }
 
-export { addToStore, updateStore, getStore }
+export { addToStore, updateStore, getStore };

@@ -1,6 +1,6 @@
 /**
  *  @name toMoney
- *  @author 3p-sviat
+ *  @author info@carradar.com.ua
  *  @version 1.0.0
  *  @description converts regular money value to the more mathemetic-like style (with comma and etc).
  *
@@ -14,19 +14,19 @@
  */
 
 export interface IProps {
-  value: number
-  currency?: string
-  rounder?: number
+  value: number;
+  currency?: string;
+  rounder?: number;
 }
 
 export const toMoney = ({ value = null, currency = '', rounder = 0 }: IProps) => {
   if (isNaN(value)) {
-    return 'undefined'
+    return 'undefined';
   }
 
-  const moneyStringify = value.toFixed(rounder).toString()
-  const moneyNormalized = moneyStringify.replace(/,/g, '')
-  const money = `${currency} ${moneyNormalized.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')}`
+  const moneyStringify = value.toFixed(rounder).toString();
+  const moneyNormalized = moneyStringify.replace(/,/g, '');
+  const money = `${currency} ${moneyNormalized.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')}`;
 
-  return money
-}
+  return money;
+};

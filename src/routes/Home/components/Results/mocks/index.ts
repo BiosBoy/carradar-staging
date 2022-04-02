@@ -1,4 +1,4 @@
-import { ICarData } from '../../../interfaces/IStore'
+import { ICarData } from '../../../interfaces/IStore';
 
 const DATA: ICarData = {
   image: '/assets/exemple.webp',
@@ -48,6 +48,6 @@ const DATA: ICarData = {
       data: 'ТСЦ 2641 [#12276]: Перереєстрація на нового власника за дог. купiвлi-продажу (сг) [#308]'
     }
   ]
-}
+};
 
-export { DATA }
+export { DATA };

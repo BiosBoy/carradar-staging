@@ -3,16 +3,16 @@
 // https://aws.amazon.com/developers/getting-started/nodejs/
 
 // Load the AWS SDK
-const AWS = require('aws-sdk')
-const REGION = 'eu-central-1'
+const AWS = require('aws-sdk');
+const REGION = 'eu-central-1';
 
 // @ts-ignore
-const getSecret = async (secretName, secretKey) => new Promise((resolve, _): any => {
+const getSecret = async (secretName, secretKey) => new Promise((resolve, _) => {
   const client = new AWS.SecretsManager({
     region: REGION
-  })
+  });
 
-  console.log(secretName, secretKey, 'secretName, secretKey')
+  console.log(secretName, secretKey, 'secretName, secretKey');
 
   client.getSecretValue({ SecretId: secretName }, (err, data) => {
     if (err || (err?.code && err.code === 'DecryptionFailureException')) {
@@ -20,14 +20,14 @@ const getSecret = async (secretName, secretKey) => new Promise((resolve, _): any
         status: 'error',
         errorMessage: err,
         secret: null
-      })
+      });
     }
 
     resolve({
       status: 'success',
       secret: JSON.parse(data.SecretString)[secretKey]
-    })
-  })
-})
+    });
+  });
+});
 
-module.exports = getSecret
+module.exports = getSecret;

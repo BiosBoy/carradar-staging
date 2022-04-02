@@ -1,19 +1,22 @@
-import React, { memo } from 'react'
-import { connect } from 'react-redux'
-import i18n from 'i18next'
+import React, { memo } from 'react';
+import { connect } from 'react-redux';
+import i18n from 'i18next';
 
-import SubscribeEmail from './SubscribeEmail'
-import Link from '../Link'
+import SubscribeEmail from './SubscribeEmail';
+import Link from '../Link';
 
-import styles from './index.scss'
-import { IStore } from '../../interfaces/IStore'
+import styles from './index.scss';
+import { IStore } from '../../interfaces/IStore';
 
 const Footer = memo(() => {
   return (
     <div className={styles.footer}>
       <div className={styles.footerContent}>
         <div className={styles.companyDescription}>
-          <img src='/assets/logo.png' alt='logo' className={styles.companyLogo} />
+          <img
+            src='/assets/logo.png' alt='logo'
+            className={styles.companyLogo}
+          />
           <p className={styles.text}>CarRadar(c) - {i18n.t('footer.main_text')}</p>
         </div>
         <div className={styles.bullets}>
@@ -44,10 +47,22 @@ const Footer = memo(() => {
               </a>
             </div>
             <div className={styles.social}>
-              <a className={styles.iconTwitter} href='/' aria-label='twitter' />
-              <a className={styles.iconInstagram} href='/' aria-label='twitter' />
-              <a className={styles.iconFacebook} href='/' aria-label='facebook' />
-              <a className={styles.iconTelegram} href='/' aria-label='telegram' />
+              <a
+                className={styles.iconTwitter} href='/'
+                aria-label='twitter'
+              />
+              <a
+                className={styles.iconInstagram} href='/'
+                aria-label='twitter'
+              />
+              <a
+                className={styles.iconFacebook} href='/'
+                aria-label='facebook'
+              />
+              <a
+                className={styles.iconTelegram} href='/'
+                aria-label='telegram'
+              />
             </div>
           </div>
           <div className={styles.contentBlock}>
@@ -78,20 +93,23 @@ const Footer = memo(() => {
             </Link>
           </div>
           <div className={styles.policy}>
-            <Link className={styles.link} isNotSPA={true} to='https://linkedin.com/in/sviatoslav-kuzhelev-78797b104'>
+            <Link
+              className={styles.link} isNotSPA={true}
+              to='https://linkedin.com/in/sviatoslav-kuzhelev-78797b104'
+            >
               <span className={styles.text}>by Sviatoslav Kuzhelev</span>
             </Link>
           </div>
         </div>
       </div>
     </div>
-  )
-})
+  );
+});
 
-Footer.displayName = 'Footer'
+Footer.displayName = 'Footer';
 
 const mapStateToProps = (state: IStore) => ({
   locale: state.app.locale
-})
+});
 
-export default connect(mapStateToProps, null)(Footer)
+export default connect(mapStateToProps, null)(Footer);

@@ -1,56 +1,53 @@
-const fs = require('fs')
-const express = require('express')
-const cookieParser = require('cookie-parser')
-const path = require('path')
-const expressWs = require('express-ws')
-const https = require('https')
-const prerender = require('prerender-node')
+const fs = require('fs');
+const express = require('express');
+const cookieParser = require('cookie-parser');
+const path = require('path');
+const expressWs = require('express-ws');
+const https = require('https');
+const prerender = require('prerender-node');
 
-const routes = require('./routes')
-const cors = require('./utils/cors')
-const redirectToHTTPS = require('./helpers/redirectToHTTPS')
-const createSession = require('./session/createSession')
-const { restAPI, wsFindCarAPI } = require('./api')
-const setAWSProfile = require('./db/aws/setProfile')
-const getMongoURL = require('./db/mongodb/getMongoURL')
-const getPrerenderToken = require('./prerender/getPrerenderToken')
-const loginStateManager = require('./session/loginStateManager')
-const getSessionData = require('./session/getSessionData')
-const getCarsxeToken = require('./carsxe/getToket')
-const runCrons = require('./crons')
+const routes = require('./routes');
+const cors = require('./utils/cors');
+const redirectToHTTPS = require('./helpers/redirectToHTTPS');
+const createSession = require('./session/createSession');
+const { restAPI, wsFindCarAPI } = require('./api');
+const setAWSProfile = require('./db/aws/setProfile');
+const getMongoURL = require('./db/mongodb/getMongoURL');
+const getPrerenderToken = require('./prerender/getPrerenderToken');
+const loginStateManager = require('./session/loginStateManager');
+const getSessionData = require('./session/getSessionData');
+const getCarsxeToken = require('./carsxe/getToket');
+const runCrons = require('./crons');
 
-const PORT = process.env.ENV_LOCAL === 'true' ? 3002 : process.env.PORT
+const PORT = process.env.ENV_LOCAL === 'true' ? 3002 : process.env.PORT;
 
-const HEADERS_FIRST = 'Origin, Accept, X-Requested-With, Content-Type'
-const HEADERS_SECOND = 'Access-Control-Request-Method, Access-Control-Request-Headers'
+const HEADERS_FIRST = 'Origin, Accept, X-Requested-With, Content-Type';
+const HEADERS_SECOND = 'Access-Control-Request-Method, Access-Control-Request-Headers';
 
-const server = express()
+const server = express();
 
-expressWs(server)
+expressWs(server);
 
 const func = async () => {
-  await setAWSProfile()
-  await getMongoURL()
-  await getSessionData()
-  await getPrerenderToken()
-  await getCarsxeToken()
+  await setAWSProfile();
+  await getMongoURL();
+  await getSessionData();
+  await getPrerenderToken();
+  await getCarsxeToken();
 
-  runCrons()
+  runCrons();
 
   server
     .set('trust proxy', 1)
     .use(express.json())
     .use(express.urlencoded({ extended: true }))
     .use((req, res, next) => {
-      res.setHeader('Access-Control-Allow-Origin', cors(req))
-      res.setHeader('Access-Control-Allow-Credentials', 'true')
-      res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE')
-      res.setHeader('Access-Control-Allow-Headers', `${HEADERS_FIRST}, ${HEADERS_SECOND}`)
-      res.setHeader('Cache-Control', 'public, max-age=86400')
-      next()
-    })
-    .use((_req, res, next) => {
-      next()
+      res.setHeader('Access-Control-Allow-Origin', cors(req));
+      res.setHeader('Access-Control-Allow-Credentials', 'true');
+      res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE');
+      res.setHeader('Access-Control-Allow-Headers', `${HEADERS_FIRST}, ${HEADERS_SECOND}`);
+      res.setHeader('Cache-Control', 'public, max-age=86400');
+      next();
     })
     .use(cookieParser())
     .use(createSession())
@@ -63,7 +60,7 @@ const func = async () => {
     .use((req, res, next) => redirectToHTTPS(req, res, next))
     .use(restAPI)
     .ws('/', wsFindCarAPI)
-    .use('/', routes.csr)
+    .use('/', routes.csr);
 
   if (process.env.DEV_SERVER) {
     const serverSecure = https.createServer(
@@ -72,22 +69,22 @@ const func = async () => {
         cert: fs.readFileSync(path.resolve(__dirname, '../bin/ssl/localhost.crt'))
       },
       server
-    )
+    );
 
-    expressWs(server, serverSecure)
+    expressWs(server, serverSecure);
 
-    serverSecure.listen(PORT)
+    serverSecure.listen(PORT);
   } else {
     // real world server works over HTTPS by default
-    server.listen(PORT)
+    server.listen(PORT);
 
     // ----------------------
     // WebSockets Runner
     // ----------------------
-    expressWs(server)
+    expressWs(server);
   }
 
-  console.log('Server is Started. Port: ', PORT)
-}
+  console.log('Server is Started. Port: ', PORT);
+};
 
-func()
+func();

@@ -1,21 +1,21 @@
-import React from 'react'
-import { useDispatch } from 'react-redux'
+import React from 'react';
+import { useDispatch } from 'react-redux';
 
-import AccountSettings from './AccountSettings'
-import PasswordSettings from './PasswordSettings'
-import HistorySetting from './HistorySettings'
+import AccountSettings from './AccountSettings';
+import PasswordSettings from './PasswordSettings';
+import HistorySetting from './HistorySettings';
 
-import { saveNewDataAttempt } from '../../modules/actions'
+import { saveNewDataAttempt } from '../../modules/actions';
 
-import styles from './index.scss'
-import Buttons from './Buttons'
+import styles from './index.scss';
+import Buttons from './Buttons';
 
-const Panels = ({ activePanel }: any) => {
-  const dispatch = useDispatch()
+const Panels = ({ activePanel }: { activePanel: string; }) => {
+  const dispatch = useDispatch();
 
   const _handleUpdateProfile = () => {
-    dispatch(saveNewDataAttempt())
-  }
+    dispatch(saveNewDataAttempt());
+  };
 
   return (
     <div className={styles.panelsWrap}>
@@ -24,7 +24,7 @@ const Panels = ({ activePanel }: any) => {
       {activePanel === 'history' && <HistorySetting />}
       <Buttons activePanel={activePanel} onClick={_handleUpdateProfile} />
     </div>
-  )
-}
+  );
+};
 
-export default Panels
+export default Panels;

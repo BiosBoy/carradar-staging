@@ -4,8 +4,12 @@ interface CssExports {
   'button': string;
   'buttonsWrap': string;
   'cancel': string;
+  'carImage': string;
   'cell': string;
   'error': string;
+  'historyCell': string;
+  'historyItem': string;
+  'imageBox': string;
   'input': string;
   'mainData': string;
   'newPasswordConfirmRow': string;

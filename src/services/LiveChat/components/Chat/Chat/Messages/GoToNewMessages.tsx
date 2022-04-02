@@ -1,69 +1,73 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { CSSTransition } from 'react-transition-group'
-import { setNewMessagesCount } from '../../../../controller/actions'
+import React from 'react';
+import { connect } from 'react-redux';
+import { CSSTransition } from 'react-transition-group';
+import { setNewMessagesCount } from '../../../../controller/actions';
 
-import scrollToEnd from '../../../../utils/scrollToEnd'
+import scrollToEnd from '../../../../utils/scrollToEnd';
 
-import './goToMessages.scss'
+import './goToMessages.scss';
 
 interface IProps {
-  newMessagesCount: number
-  setNewestMessagesCount: (count: number) => void
+  newMessagesCount: number;
+  setNewestMessagesCount: (count: number) => void;
   messages: {
-    type: 'user' | 'agent'
-  }[]
+    type: 'user' | 'agent';
+  }[];
 }
 
 interface IState {
-  messagesAgentTemp: object[]
-  updateType: 'state' | 'props' | ''
-  isNewMessages: boolean
+  messagesAgentTemp: object[];
+  updateType: 'state' | 'props' | '';
+  isNewMessages: boolean;
 }
 
 class GoToNewMessages extends React.Component<IProps, IState> {
   constructor(props: IProps) {
-    super(props)
+    super(props);
 
     this.state = {
       messagesAgentTemp: [],
       updateType: '',
       isNewMessages: false
-    }
+    };
   }
 
   static getDerivedStateFromProps(nextProps: IProps, prevState: IState) {
     if (prevState.updateType === 'state') {
       return {
         updateType: ''
-      }
+      };
     }
 
-    const agentMessages = nextProps.messages.filter((msg) => msg.type !== 'user')
-    const scrollContainer = document.querySelector('#messages')
+    const agentMessages = nextProps.messages.filter((msg) => msg.type !== 'user');
+    const scrollContainer = document.querySelector('#messages');
 
-    const isBottom = scrollContainer?.scrollHeight - (scrollContainer?.scrollTop + scrollContainer?.clientHeight) <= 390
-    const isNewMessagesReceived = !isBottom && agentMessages.length !== prevState.messagesAgentTemp.length
+    const isBottom =
+      // eslint-disable-next-line max-len
+      Number(scrollContainer?.scrollHeight)
+        - (Number(scrollContainer?.scrollTop) + Number(scrollContainer?.clientHeight))
+      <= 390;
+    const isNewMessagesReceived = !isBottom && agentMessages.length !== prevState.messagesAgentTemp.length;
 
     // @ts-ignore
-    window._chat_new_messages_ = isNewMessagesReceived
-      ? agentMessages.length - prevState.messagesAgentTemp.length
-      : null
+    window._chat_new_messages_ = isNewMessagesReceived ?
+      agentMessages.length - prevState.messagesAgentTemp.length :
+      null;
 
     return {
       isNewMessages: isNewMessagesReceived,
       messagesAgentTemp: agentMessages
-    }
+    };
   }
 
   componentDidMount() {
-    const { messages } = this.props
+    const { messages } = this.props;
 
     this.setState({
       messagesAgentTemp: messages.filter((msg) => msg.type !== 'user')
-    })
+    });
 
-    document.querySelector('#messages').addEventListener('scroll', this._handleScroll)
+    document.querySelector('#messages').addEventListener('scroll', this._handleScroll);
   }
 
   // componentDidUpdate(prevProps: IProps, prevState: IState) {
@@ -76,7 +80,7 @@ class GoToNewMessages extends React.Component<IProps, IState> {
   // }
 
   componentWillUnmount() {
-    document.querySelector('#messages').removeEventListener('scroll', this._handleScroll)
+    document.querySelector('#messages').removeEventListener('scroll', this._handleScroll);
   }
 
   _handleScroll = (e) => {
@@ -86,11 +90,11 @@ class GoToNewMessages extends React.Component<IProps, IState> {
       this.setState({
         isNewMessages: false,
         updateType: 'state'
-      })
+      });
 
       // setNewestMessagesCount(0)
     }
-  }
+  };
 
   _handleScrollClick = () => {
     // const { setNewestMessagesCount } = this.props
@@ -98,14 +102,14 @@ class GoToNewMessages extends React.Component<IProps, IState> {
     this.setState({
       isNewMessages: false,
       updateType: 'state'
-    })
+    });
 
     // setNewestMessagesCount(0)
-    scrollToEnd()
-  }
+    scrollToEnd();
+  };
 
   render() {
-    const { isNewMessages } = this.state
+    const { isNewMessages } = this.state;
 
     return (
       <CSSTransition
@@ -126,17 +130,17 @@ class GoToNewMessages extends React.Component<IProps, IState> {
           <span className='messageText'>You have new Messages</span>
         </div>
       </CSSTransition>
-    )
+    );
   }
 }
 
 const mapStateToProps = (state) => ({
   messages: state.chat.messages,
   newMessagesCount: state.chat.newMessagesCount
-})
+});
 
 const mapDispatchToState = {
   setNewestMessagesCount: setNewMessagesCount
-}
+};
 
-export default connect(mapStateToProps, mapDispatchToState)(GoToNewMessages)
+export default connect(mapStateToProps, mapDispatchToState)(GoToNewMessages);

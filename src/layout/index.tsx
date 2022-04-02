@@ -1,26 +1,26 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { Route, Switch } from 'react-router-dom'
+import React from 'react';
+import { connect } from 'react-redux';
+import { Route, Switch } from 'react-router-dom';
 
-import { NotifyPopUp, Header, Body, Footer, ScrollToTop } from '../components'
-import { Home, PageNotFound, Privacy, AboutUs, Contact, Logout, Login, Registration, Profile } from '../routes'
-import { LiveChat, CookiePanel } from '../services'
+import { NotifyPopUp, Header, Body, Footer, ScrollToTop } from '../components';
+import { Home, PageNotFound, Privacy, AboutUs, Contact, Logout, Login, Registration, Profile } from '../routes';
+import { LiveChat, CookiePanel } from '../services';
 
-import getLangPrefix from '../utils/gelLangPrefix'
+import getLangPrefix from '../utils/gelLangPrefix';
 
-import { IStore } from '../interfaces/IStore'
+import { IStore } from '../interfaces/IStore';
 // eslint-disable-next-line import/no-unassigned-import
-import '../../i18nextConf'
+import '../../i18nextConf';
 
-import '../styles/index.scss'
-import styles from './index.scss'
+import '../styles/index.scss';
+import styles from './index.scss';
 
 export interface IProps {
-  language: string
+  language: string;
 }
 
 const CoreLayout = ({ language }: IProps) => {
-  const lang = getLangPrefix(language)
+  const lang = getLangPrefix(language);
 
   return (
     <div className={styles.appWrapper}>
@@ -28,7 +28,10 @@ const CoreLayout = ({ language }: IProps) => {
       <Header />
       <Body>
         <Switch>
-          <Route exact={true} path={lang} component={Home} />
+          <Route
+            exact={true} path={lang}
+            component={Home}
+          />
           <Route path={`${lang}contact`} component={Contact} />
           <Route path={`${lang}about-us`} component={AboutUs} />
           <Route path={`${lang}sign-out`} component={Logout} />
@@ -44,8 +47,8 @@ const CoreLayout = ({ language }: IProps) => {
       <ScrollToTop />
       <CookiePanel />
     </div>
-  )
-}
+  );
+};
 
 // console.log(document, 'document');
 
@@ -64,6 +67,6 @@ const CoreLayout = ({ language }: IProps) => {
 
 const mapStateToProps = (state: IStore) => ({
   language: state.app.locale
-})
+});
 
-export default connect(mapStateToProps, null)(CoreLayout)
+export default connect(mapStateToProps, null)(CoreLayout);

@@ -1,60 +1,60 @@
-import React, { useEffect, useRef } from 'react'
-import { push } from 'connected-react-router'
-import { withRouter } from 'react-router'
-import { useSelector, useDispatch } from 'react-redux'
+import React, { useEffect, useRef, memo } from 'react';
+import { push } from 'connected-react-router';
+import { withRouter } from 'react-router';
+import { useSelector, useDispatch } from 'react-redux';
 
-import Button from '../../../components/Button'
+import Button from '../../../components/Button';
 
-import { setLoginInput, loadLoginDataAttempt } from '../modules/actions'
+import { setLoginInput, loadLoginDataAttempt } from '../modules/actions';
 
-import useLocales from '../hooks/useLocales'
-import getLangPrefix from '../../../utils/gelLangPrefix'
+import useLocales from '../hooks/useLocales';
+import getLangPrefix from '../../../utils/gelLangPrefix';
 
-import { IStore } from '../../../interfaces/IStore'
+import { IStore } from '../../../interfaces/IStore';
 
-import styles from './index.scss'
+import styles from './index.scss';
 
-const Login = () => {
-  const { SECTION_TITLE } = useLocales()
+const Login = memo(() => {
+  const { SECTION_TITLE, EMAIL, PASSWORD, SUBMIT } = useLocales();
 
-  const ref = useRef(null)
-  const dispatch = useDispatch()
-  const { userdata, password, isLoginFetch, error } = useSelector(({ login }: IStore) => login)
-  const { isLogged, locale } = useSelector(({ app }: IStore) => app)
+  const ref = useRef(null);
+  const dispatch = useDispatch();
+  const { userdata, password, isLoginFetch, error } = useSelector(({ login }: IStore) => login);
+  const { isLogged, locale } = useSelector(({ app }: IStore) => app);
 
   useEffect(() => {
     // @ts-ignore
-    window.prerenderReady = true
+    window.prerenderReady = true;
 
-    ref.current.focus()
-  }, [])
+    ref.current.focus();
+  }, []);
 
   useEffect(() => {
     if (isLogged) {
-      dispatch(push(`${getLangPrefix(locale)}profile`))
+      dispatch(push(`${getLangPrefix(locale)}profile`));
     }
-  }, [isLogged])
+  }, [isLogged]);
 
   const _handleInput = ({ target }) => {
-    const { id, value } = target
+    const { id, value } = target;
 
-    dispatch(setLoginInput({ id, value }))
-  }
+    dispatch(setLoginInput({ id, value }));
+  };
 
   const _handleSubmit = () => {
-    dispatch(loadLoginDataAttempt())
-  }
+    dispatch(loadLoginDataAttempt());
+  };
 
   const _handleSubmitKeyDown = (event) => {
-    event.code === 'Enter' && _handleSubmit()
-  }
+    event.code === 'Enter' && _handleSubmit();
+  };
 
   return (
     <div className={styles.loginWrap}>
       <h1 className={styles.headline}>{SECTION_TITLE}</h1>
       <div className={styles.contentWrap}>
         <label htmlFor='userdata' className={`${styles.text} ${styles.floatLabel}`}>
-          Email or User Name
+          {EMAIL}
         </label>
         <input
           id='userdata'
@@ -69,7 +69,7 @@ const Login = () => {
       </div>
       <div className={styles.contentWrap}>
         <label htmlFor='password' className={`${styles.text} ${styles.floatLabel}`}>
-          Password
+          {PASSWORD}
         </label>
         <input
           id='password'
@@ -86,11 +86,11 @@ const Login = () => {
         disabled={!password || !userdata}
         isLoading={isLoginFetch}
         isActive={!!(password && userdata)}
-        label='Submit'
+        label={SUBMIT}
       />
       {error && <span className={styles.error}>{error}</span>}
     </div>
-  )
-}
+  );
+});
 
-export default withRouter(Login)
+export default withRouter(Login);

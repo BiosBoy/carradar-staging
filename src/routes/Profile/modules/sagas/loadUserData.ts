@@ -1,18 +1,18 @@
-import { put } from 'redux-saga/effects'
+import { put } from 'redux-saga/effects';
 
-import getServerURL from '../../../../controller/helpers/endpoints'
-import fetchUrl from '../../../../utils/fetchUrl'
+import getServerURL from '../../../../controller/helpers/endpoints';
+import fetchUrl from '../../../../utils/fetchUrl';
 
-import { loadProfileDataSaved, loadProfileDataError } from '../actions'
-import { requestError } from '../../../../controller/actions'
+import { loadProfileDataSaved, loadProfileDataError } from '../actions';
+import { requestError } from '../../../../controller/actions';
 
 function* loadProfileData() {
-  const response = yield fetchUrl(`${getServerURL()}/api/profile`)
+  const response = yield fetchUrl(`${getServerURL()}/api/profile`);
 
   if (response.error) {
-    yield put(loadProfileDataError(response.error))
+    yield put(loadProfileDataError(response.error));
 
-    return
+    return;
   }
   try {
     yield put(
@@ -24,13 +24,13 @@ function* loadProfileData() {
         response.usersurname,
         response.searchHistory
       )
-    )
+    );
   } catch (e) {
-    console.error('Error: ', e)
+    console.error('Error: ', e);
 
-    yield put(loadProfileDataError(e))
-    yield put(requestError('Some error happen during request. Please try again later'))
+    yield put(loadProfileDataError(e));
+    yield put(requestError('Some error happen during request. Please try again later'));
   }
 }
 
-export default loadProfileData
+export default loadProfileData;

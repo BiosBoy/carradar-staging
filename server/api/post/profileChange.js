@@ -10,17 +10,7 @@ const profileChange = async (req, res) => {
     return res.send(JSON.stringify('{ error: Fields must not be empty }'));
   }
 
-  const {
-    emailID,
-    username,
-    email,
-    usersurname,
-    bio,
-    mobile,
-    password,
-    passwordNew,
-    passwordConfirmation
-  } = req.body
+  const { emailID, username, email, usersurname, bio, mobile, password, passwordNew, passwordConfirmation } = req.body;
 
   const userDB = await findOne({
     collectionName: USERS_COLLECTION_ID,
@@ -30,29 +20,29 @@ const profileChange = async (req, res) => {
   });
 
   const updatePass = async () => {
-    if (password && (passwordNew !== passwordConfirmation)) {
-      res.send(JSON.stringify({ error: 'Passwords do not match or empty!' }))
+    if (password && passwordNew !== passwordConfirmation) {
+      res.send(JSON.stringify({ error: 'Passwords do not match or empty!' }));
 
-      return null
+      return null;
     }
 
-    if (passwordNew && (passwordNew === passwordConfirmation)) {
-      const isPasswordMatch = await comparePass(password, userDB.entity.password)
-      const newUserPassword = await createPass(passwordNew)
+    if (passwordNew && passwordNew === passwordConfirmation) {
+      const isPasswordMatch = await comparePass(password, userDB.entity.password);
+      const newUserPassword = await createPass(passwordNew);
 
       if (isPasswordMatch.status === 'error') {
-        res.send(JSON.stringify({ error: 'Something bad happen during password update!' }))
+        res.send(JSON.stringify({ error: 'Something bad happen during password update!' }));
 
         return null;
       }
 
-      return newUserPassword
+      return newUserPassword;
     }
 
-    return null
-  }
+    return null;
+  };
 
-  const newPass = await updatePass()
+  const newPass = await updatePass();
 
   const user = await updateOne({
     collectionName: USERS_COLLECTION_ID,
@@ -67,7 +57,7 @@ const profileChange = async (req, res) => {
       mobile: mobile,
       password: newPass || userDB.entity.password
     }
-  })
+  });
 
   if (user === null || user.err) {
     return res.send(JSON.stringify({ error: user.err || 'Some error happen during data saving' }));
@@ -81,7 +71,7 @@ const profileChange = async (req, res) => {
     bio: req.body.bio
   };
 
-  req.session.email = req.body.email
+  req.session.email = req.body.email;
 
   res.send(JSON.stringify({ status: 'Data changed successfully', user: newUserData }));
 };

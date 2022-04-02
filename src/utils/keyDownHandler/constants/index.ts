@@ -1,4 +1,4 @@
-import { IKeyTypes } from '../interfaces'
+import { IKeyTypes } from '../interfaces';
 
 export const KEY_CODES = {
   esc: 27,
@@ -9,7 +9,7 @@ export const KEY_CODES = {
   left: 37,
   right: 39,
   down: 40
-}
+};
 
 export const KEY_TYPES: IKeyTypes = {
   enter: 'enter',
@@ -20,4 +20,4 @@ export const KEY_TYPES: IKeyTypes = {
   left: 'left',
   right: 'right',
   down: 'down'
-}
+};

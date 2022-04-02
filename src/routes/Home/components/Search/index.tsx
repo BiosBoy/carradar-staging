@@ -1,35 +1,35 @@
 /* eslint-disable max-statements */
-import React, { memo, useState, useEffect, useRef } from 'react'
-import { connect } from 'react-redux'
+import React, { memo, useState, useEffect, useRef } from 'react';
+import { connect } from 'react-redux';
 
-import styles from './index.scss'
+import styles from './index.scss';
 
-import { loadCarDataAttempt } from '../../modules/actions'
-import { IStore } from '../../../../interfaces/IStore'
+import { loadCarDataAttempt } from '../../modules/actions';
+import { IStore } from '../../../../interfaces/IStore';
 
-import LoadIndicator from '../../../../components/LoadIndicator'
-import keyDownHandler, { KEY_TYPES } from '../../../../utils/keyDownHandler'
+import LoadIndicator from '../../../../components/LoadIndicator';
+import keyDownHandler, { KEY_TYPES } from '../../../../utils/keyDownHandler';
 
-import CarNumberMask from '../../../../utils/CarNumberMask'
-import isValidPatternInput from '../../../../utils/isValidPatternInput'
-import isCyrillicInput from '../../../../utils/isCyrillicInput'
-import isSpecialSymbols from '../../../../utils/isSpecialSymbols'
-import isLatinInput from '../../../../utils/isLatinInput'
-import isDigitInput from '../../../../utils/isDigitInput'
-import scrollTo from '../../../../utils/smoothScroll'
+import CarNumberMask from '../../../../utils/CarNumberMask';
+import isValidPatternInput from '../../../../utils/isValidPatternInput';
+import isCyrillicInput from '../../../../utils/isCyrillicInput';
+import isSpecialSymbols from '../../../../utils/isSpecialSymbols';
+import isLatinInput from '../../../../utils/isLatinInput';
+import isDigitInput from '../../../../utils/isDigitInput';
+import scrollTo from '../../../../utils/smoothScroll';
 
-import useLocales from './useLocales'
+import useLocales from './useLocales';
 
-import { MAX_STRING_LENGTH } from './constants'
-import isDesktop from '../../../../utils/isDesktop'
-import isTablet from '../../../../utils/isTablet'
+import { MAX_STRING_LENGTH } from './constants';
+import isDesktop from '../../../../utils/isDesktop';
+import isTablet from '../../../../utils/isTablet';
 
 export interface IProps {
-  carNumberReceived: string
-  searchCarNumber: string
-  isSearchInProgress: boolean
-  isMobileLayout: boolean
-  runLoadData: (e: string) => void
+  carNumberReceived: string;
+  searchCarNumber: string;
+  isSearchInProgress: boolean;
+  isMobileLayout: boolean;
+  runLoadData: (e: string) => void;
 }
 
 const Search = memo(
@@ -45,118 +45,120 @@ const Search = memo(
       CYRILLIC_ALPHABET,
       NOT_EMPTY_ERROR,
       NOT_SPECIAL_SYMBOLS
-    } = useLocales()
+    } = useLocales();
 
-    const inputElement = useRef(null)
-    const [inputValue, setValue] = useState('')
-    const [isBadPatternError, setInputError] = useState(false)
-    const [isNotCyrillicAlphabet, setCyrillicError] = useState(false)
-    const [isNotSpecialSymbol, setSpecialSymbolsError] = useState(false)
+    const inputElement = useRef(null);
+    const [inputValue, setValue] = useState('');
+    const [isBadPatternError, setInputError] = useState(false);
+    const [isNotCyrillicAlphabet, setCyrillicError] = useState(false);
+    const [isNotSpecialSymbol, setSpecialSymbolsError] = useState(false);
 
     useEffect(() => {
-      const removeDisabling = ({ target, keyCode }: any) => {
+      const removeDisabling = ({ target, keyCode }) => {
         if (!target && !keyCode) {
-          return
+          return;
         }
 
-        const isOutOfSearchField = !['INPUT', 'BUTTON'].includes((target as HTMLElement).tagName)
-        const isEscapeFired = keyCode === KEY_TYPES.esc
+        const isOutOfSearchField = !['INPUT', 'BUTTON'].includes((target as HTMLElement).tagName);
+        const isEscapeFired = keyCode === KEY_TYPES.esc;
 
         if (isOutOfSearchField || isEscapeFired) {
-          setInputError(false)
-          setCyrillicError(false)
+          setInputError(false);
+          setCyrillicError(false);
         }
-      }
+      };
 
-      document.addEventListener('click', removeDisabling)
-      document.addEventListener('keydown', removeDisabling)
+      // @ts-ignore
+      document.addEventListener('click', removeDisabling);
+      document.addEventListener('keydown', removeDisabling);
 
-      inputElement?.current.focus()
+      inputElement?.current.focus();
 
       return () => {
-        document.removeEventListener('click', removeDisabling)
-        document.removeEventListener('keydown', removeDisabling)
-      }
-    }, [])
+        // @ts-ignore
+        document.removeEventListener('click', removeDisabling);
+        document.removeEventListener('keydown', removeDisabling);
+      };
+    }, []);
 
     const removeFlagsErrors = () => {
-      setSpecialSymbolsError(false)
-      setCyrillicError(false)
-      setInputError(false)
-    }
+      setSpecialSymbolsError(false);
+      setCyrillicError(false);
+      setInputError(false);
+    };
 
     const setLastSearchesStorage = (newSearchLabel: string) => {
-      const actualSearches = window.localStorage.getItem('last_searches')
+      const actualSearches = window.localStorage.getItem('last_searches');
 
       if (actualSearches?.split(',')?.some((label) => label === newSearchLabel)) {
-        return
+        return;
       }
 
-      window.localStorage.setItem('last_searches', `${actualSearches || ''},${newSearchLabel}`)
-    }
+      window.localStorage.setItem('last_searches', `${actualSearches || ''},${newSearchLabel}`);
+    };
 
     const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
-      const { value } = target as HTMLInputElement
+      const { value } = target as HTMLInputElement;
 
       if (value.length > MAX_STRING_LENGTH) {
-        setValue(value.substr(0, value.length - 1))
+        setValue(value.substr(0, value.length - 1));
 
-        return
+        return;
       }
 
-      setValue(value.toUpperCase())
-      removeFlagsErrors()
+      setValue(value.toUpperCase());
+      removeFlagsErrors();
 
       // checking edge cases
       if (isSpecialSymbols(value)) {
-        setSpecialSymbolsError(true)
-        setInputError(true)
-        setValue(inputValue)
+        setSpecialSymbolsError(true);
+        setInputError(true);
+        setValue(inputValue);
       } else if (!isDigitInput(value) && (!isCyrillicInput(value) || isLatinInput(value))) {
-        setCyrillicError(true)
-        setInputError(true)
-        value.length > 1 && setValue(inputValue.substr(0, inputValue.length))
+        setCyrillicError(true);
+        setInputError(true);
+        value.length > 1 && setValue(inputValue.substr(0, inputValue.length));
       } else if (!CarNumberMask(value)) {
-        setInputError(true)
-        value.length > 1 && setValue(inputValue.substr(0, inputValue.length))
+        setInputError(true);
+        value.length > 1 && setValue(inputValue.substr(0, inputValue.length));
       }
-    }
+    };
 
     const handleClear = () => {
-      setValue('')
-      setInputError(false)
-    }
+      setValue('');
+      setInputError(false);
+    };
 
     const handleSearch = (incomingValue?: string) => {
-      const valueToProcess = incomingValue || inputValue
+      const valueToProcess = incomingValue || inputValue;
 
       // if we emit the same request in the row
       if (
-        valueToProcess === carNumberReceived &&
-        carNumberReceived === searchCarNumber &&
-        valueToProcess === searchCarNumber
+        valueToProcess === carNumberReceived
+        && carNumberReceived === searchCarNumber
+        && valueToProcess === searchCarNumber
       ) {
-        scrollTo({ id: 'results', duration: 1000 })
+        scrollTo({ id: 'results', duration: 1000 });
 
-        return
+        return;
       }
 
       // bad pattern input (e.g. not valid like a AT8760ET sequence)
       if (!isValidPatternInput(valueToProcess)) {
-        setInputError(!isBadPatternError)
+        setInputError(!isBadPatternError);
 
-        return
+        return;
       }
 
       if (!valueToProcess || isSearchInProgress) {
-        return
+        return;
       }
 
-      setInputError(false)
-      runLoadData(valueToProcess)
-      scrollTo({ id: 'results', duration: 1000 })
-      setLastSearchesStorage(valueToProcess)
-    }
+      setInputError(false);
+      runLoadData(valueToProcess);
+      scrollTo({ id: 'results', duration: 1000 });
+      setLastSearchesStorage(valueToProcess);
+    };
 
     const handleKeyDownChange = (e: React.KeyboardEvent<HTMLInputElement>) => {
       keyDownHandler({
@@ -171,29 +173,29 @@ const Search = memo(
             onEvent: handleSearch as any
           }
         ]
-      })
-    }
+      });
+    };
 
     const renderInput = () => {
       const getErrorMessage = () => {
         if (!inputValue) {
-          return NOT_EMPTY_ERROR
+          return NOT_EMPTY_ERROR;
         }
 
         if (isNotSpecialSymbol) {
-          return NOT_SPECIAL_SYMBOLS
+          return NOT_SPECIAL_SYMBOLS;
         }
 
         if (isNotCyrillicAlphabet) {
-          return CYRILLIC_ALPHABET
+          return CYRILLIC_ALPHABET;
         }
 
         if (isBadPatternError) {
-          return BAD_PATTERN_ERROR
+          return BAD_PATTERN_ERROR;
         }
 
-        return null
-      }
+        return null;
+      };
 
       return (
         <>
@@ -211,24 +213,27 @@ const Search = memo(
           />
           {isBadPatternError && <span className={styles.errorMessage}>{getErrorMessage()}</span>}
         </>
-      )
-    }
+      );
+    };
 
     const renderClearButton = () => {
       if (!inputValue || isSearchInProgress) {
-        return null
+        return null;
       }
 
       return (
-        <button type='button' aria-label='Clear Search' className={styles.clearButton} onClick={() => handleClear()}>
+        <button
+          type='button' aria-label='Clear Search'
+          className={styles.clearButton} onClick={() => handleClear()}
+        >
           <span>x</span>
         </button>
-      )
-    }
+      );
+    };
 
     const getFetchLabel = () => {
-      return isMobileLayout ? FETCH_BTN_LABEL_SHORT : FETCH_BTN_LABEL
-    }
+      return isMobileLayout ? FETCH_BTN_LABEL_SHORT : FETCH_BTN_LABEL;
+    };
 
     const renderSearchButton = () => {
       return (
@@ -241,35 +246,38 @@ const Search = memo(
         >
           {!isSearchInProgress ? getFetchLabel() : <LoadIndicator type='flat' color='white' />}
         </button>
-      )
-    }
+      );
+    };
 
     const renderLastSearches = () => {
-      const lastSearches = window.localStorage.getItem('last_searches')
-      const popularSearches = ['ВС0240ММ', 'АТ8759ЕТ', 'АТ8760ЕТ']
+      const lastSearches = window.localStorage.getItem('last_searches');
+      const popularSearches = ['ВС0240ММ', 'АТ8759ЕТ', 'АТ8760ЕТ'];
 
       const getLastSearch = (label: string) => {
         if (!label) {
-          return null
+          return null;
         }
 
         return (
-          <button key={label} type='button' className={styles.lastSearch} onClick={() => handleSearch(label)}>
+          <button
+            key={label} type='button'
+            className={styles.lastSearch} onClick={() => handleSearch(label)}
+          >
             {label}
           </button>
-        )
-      }
+        );
+      };
 
-      const searchesToRender = lastSearches?.split(',') || popularSearches
-      const lastSearchesList = [...new Set(searchesToRender)].map(getLastSearch)
+      const searchesToRender = lastSearches?.split(',') || popularSearches;
+      const lastSearchesList = [...new Set(searchesToRender)].map(getLastSearch);
 
       return (
         <div className={styles.lastSearchesWrap}>
           <span className={styles.label}>{lastSearches ? 'Your Last Searches' : 'Popular Searches'}:</span>
           <div className={styles.lastSearches}>{lastSearchesList}</div>
         </div>
-      )
-    }
+      );
+    };
 
     return (
       <div className={styles.search}>
@@ -288,11 +296,11 @@ const Search = memo(
         </div>
         <div className={styles.bottomContainer}>{renderLastSearches()}</div>
       </div>
-    )
+    );
   }
-)
+);
 
-Search.displayName = 'Search'
+Search.displayName = 'Search';
 
 const mapStateToProps = ({ app, home, browser }: IStore) => ({
   language: app.locale,
@@ -300,10 +308,10 @@ const mapStateToProps = ({ app, home, browser }: IStore) => ({
   isSearchInProgress: home.statuses.isSearchInProgress,
   searchCarNumber: home.searchCarNumber,
   carNumberReceived: home.carData?.mainData?.number
-})
+});
 
 const mapDispatchToState = {
   runLoadData: loadCarDataAttempt
-}
+};
 
-export default connect(mapStateToProps, mapDispatchToState)(Search)
+export default connect(mapStateToProps, mapDispatchToState)(Search);

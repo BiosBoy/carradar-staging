@@ -1,11 +1,11 @@
-const isLogged = require('../utils/isLogged')
+const isLogged = require('../utils/isLogged');
 
 const loginStateManager = (req, res, next) => {
   if (req?.session?.email) {
-    res.cookie('isLogged', isLogged(req.session), { maxAge: 86400000, httpOnly: false })
+    res.cookie('isLogged', isLogged(req.session), { maxAge: 86400000, httpOnly: false });
   }
 
-  next()
-}
+  next();
+};
 
-module.exports = loginStateManager
+module.exports = loginStateManager;

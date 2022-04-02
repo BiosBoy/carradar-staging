@@ -1,7 +1,7 @@
-const dropMaxCarImage = require('./dropMaxCarImage')
+const dropMaxCarImage = require('./dropMaxCarImage');
 
 const runCrons = () => {
-  dropMaxCarImage()
-}
+  dropMaxCarImage();
+};
 
-module.exports = runCrons
+module.exports = runCrons;

@@ -1,59 +1,57 @@
-import React, { useEffect } from 'react'
-import { push } from 'connected-react-router'
-import { useSelector, useDispatch } from 'react-redux'
-import { withRouter } from 'react-router'
+import React, { useEffect, memo } from 'react';
+import { push } from 'connected-react-router';
+import { useSelector, useDispatch } from 'react-redux';
+import { withRouter } from 'react-router';
 
-import Button from '../../../components/Button'
-import Preloader from '../../../components/Preloader'
+import Button from '../../../components/Button';
+import Preloader from '../../../components/Preloader';
 
-import { loadLogoutDataAttempt, setManualLogout } from '../modules/actions'
+import { loadLogoutDataAttempt, setManualLogout } from '../modules/actions';
 
-import useLocales from '../hooks/useLocales'
-import getLangPrefix from '../../../utils/gelLangPrefix'
+import useLocales from '../hooks/useLocales';
+import getLangPrefix from '../../../utils/gelLangPrefix';
 
-import { IStore } from '../../../interfaces/IStore'
+import { IStore } from '../../../interfaces/IStore';
 
-import styles from './index.scss'
+import styles from './index.scss';
 
-const Logout = () => {
-  const dispatch = useDispatch()
-  const { isManualReload, isLogoutFetch } = useSelector(({ logout }: IStore) => logout)
-  const { isLogged, locale } = useSelector(({ app }: IStore) => app)
+const Logout = memo(() => {
+  const dispatch = useDispatch();
+  const { isManualReload, isLogoutFetch } = useSelector(({ logout }: IStore) => logout);
+  const { isLogged, locale } = useSelector(({ app }: IStore) => app);
 
   useEffect(() => {
-    dispatch(loadLogoutDataAttempt())
-  }, [dispatch])
+    dispatch(loadLogoutDataAttempt());
+  }, [dispatch]);
 
   useEffect(() => {
     if (!isLogged && !isManualReload) {
-      dispatch(push(getLangPrefix(locale)))
+      dispatch(push(getLangPrefix(locale)));
     }
-  }, [dispatch, locale, isLogged, isManualReload])
+  }, [dispatch, locale, isLogged, isManualReload]);
 
   const _handleManualLogout = () => {
-    dispatch(setManualLogout(false))
-    dispatch(push(getLangPrefix(locale)))
-  }
+    dispatch(setManualLogout(false));
+    dispatch(push(getLangPrefix(locale)));
+  };
 
-  const { SECTION_TITLE } = useLocales()
+  const { SECTION_TITLE, SUBMIT, TEXT } = useLocales();
 
   if (isLogoutFetch) {
-    return <Preloader />
+    return <Preloader />;
   }
 
   return (
     <div className={styles.logoutWrap}>
       <h1 className={styles.headline}>{SECTION_TITLE}</h1>
-      <p className={styles.text}>You have logged out successfully!</p>
+      <p className={styles.text}>{TEXT}!</p>
       <Button
-        label='Go to Home page'
-        isLoading={false}
-        disabled={false}
-        isActive={true}
+        label={SUBMIT} isLoading={false}
+        disabled={false} isActive={true}
         onClick={_handleManualLogout}
       />
     </div>
-  )
-}
+  );
+});
 
-export default withRouter(Logout)
+export default withRouter(Logout);

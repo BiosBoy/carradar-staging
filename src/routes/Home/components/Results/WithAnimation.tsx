@@ -1,31 +1,31 @@
-import React from 'react'
-import { TransitionGroup, CSSTransition } from 'react-transition-group'
+import React from 'react';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
-import ResultsPreloader from './Preloader'
+import ResultsPreloader from './Preloader';
 
 export interface IProps {
-  isActiveSearch: boolean
-  isSearchInProgress: boolean
-  isSearchError: boolean
-  children: JSX.Element
-  vinCode: string
+  isActiveSearch: boolean;
+  isSearchInProgress: boolean;
+  isSearchError: boolean;
+  children: JSX.Element;
+  vinCode: string;
 }
 
-const WithReact = ({ isActiveSearch, isSearchInProgress, isSearchError, children, vinCode }: IProps) => {
+const WithAnimation = ({ isActiveSearch, isSearchInProgress, isSearchError, children, vinCode }: IProps) => {
   const getAnimKey = () => {
-    const successAnimKey = 1
-    const errorAnimKey = 2
-
-    if (isSearchInProgress) {
-      return successAnimKey
-    }
+    const successAnimKey = 1;
+    const errorAnimKey = 2;
 
     if (isSearchError) {
-      return errorAnimKey
+      return errorAnimKey;
     }
 
-    return vinCode
-  }
+    if (isSearchInProgress) {
+      return successAnimKey;
+    }
+
+    return vinCode;
+  };
 
   return (
     <TransitionGroup className={`anim_container ${(isActiveSearch && 'activeSearch') || ''}`} component='div'>
@@ -35,10 +35,10 @@ const WithReact = ({ isActiveSearch, isSearchInProgress, isSearchError, children
         timeout={{ enter: 1000, exit: 500 }}
         unmountOnExit={true}
       >
-        {isActiveSearch ? <ResultsPreloader isError={isSearchError} /> : children}
+        {isActiveSearch || isSearchError ? <ResultsPreloader isError={isSearchError} /> : children}
       </CSSTransition>
     </TransitionGroup>
-  )
-}
+  );
+};
 
-export default WithReact
+export default WithAnimation;

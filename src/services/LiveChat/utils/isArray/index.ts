@@ -1,6 +1,6 @@
 /**
  *  @name isArray
- *  @author 3p-sviat
+ *  @author info@carradar.com.ua
  *  @version 1.1.0
  *  @description return true or false based on provided value type,
  *
@@ -9,10 +9,10 @@
  *  @return {boolean} value - real unit condition
  *
  */
-import isValue from '../isValue'
+import isValue from '../isValue';
 
-import { TData, TReturn } from './interfaces'
+import { TData, TReturn } from './interfaces';
 
-const isArray = (val: TData): TReturn => isValue(val) && Array.isArray(val)
+const isArray = (val: TData): TReturn => isValue(val) && Array.isArray(val);
 
-export default isArray
+export default isArray;

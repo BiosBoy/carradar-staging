@@ -1,7 +1,20 @@
+@import '~@styles/index.scss';
+
 .body {
   width: 100%;
   height: auto;
   display: flex;
   align-items: center;
   justify-content: center;
+
+  &.sticky {
+    @media #{$screen-tablet} {
+      margin-top: 150px;
+    }
+
+
+    @media #{$screen-mobile} {
+      margin-top: 82px;
+    }
+  }
 }

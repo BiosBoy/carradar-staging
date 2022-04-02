@@ -35,7 +35,7 @@ export interface IStore {
   login?: ILogin;
   logout?: ILogout;
   profile?: IProfile;
-  browser?: IBrowser;
+  browser?: IBrowser & any;
   chat?: IChat;
   cookie?: ICookie;
 }

@@ -1,10 +1,10 @@
 /* eslint-disable */
-import React from 'react'
+import React from 'react';
 
 const Loader = ({ routeName }: { routeName: string }) => {
-  const AppUI = require(`../routes/${routeName}/layout`).default
+  const AppUI = require(`../routes/${routeName}/layout`).default;
 
-  return <AppUI />
-}
+  return <AppUI />;
+};
 
-export default Loader
+export default Loader;

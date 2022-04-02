@@ -1,13 +1,13 @@
-import React, { memo } from 'react'
+import React, { memo } from 'react';
 
-import styles from './index.scss'
+import styles from './index.scss';
 
-const MockOverlay = memo(({ isMock }: { isMock: boolean }) => {
+const MockOverlay = memo(({ isMock }: { isMock: boolean; }) => {
   if (!isMock) {
-    return null
+    return null;
   }
 
-  return <div className={styles.mockWrap} />
-})
+  return <div className={styles.mockWrap} />;
+});
 
-export default MockOverlay
+export default MockOverlay;

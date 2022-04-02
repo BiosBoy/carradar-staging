@@ -1,24 +1,24 @@
-const { PRERENDER_TOKEN, PRERENDER_KEY } = require('../constants/prerender')
-const getSecret = require('../secretManager')
+const { PRERENDER_TOKEN, PRERENDER_KEY } = require('../constants/prerender');
+const getSecret = require('../secretManager');
 
-let isStartedFetch = false
+let isStartedFetch = false;
 
 const getPrerenderToken = async () => {
   if (process.env.__PRERENDER_TOKEN__ || isStartedFetch) {
-    return
+    return;
   }
 
-  isStartedFetch = true
+  isStartedFetch = true;
 
-  const { status, error, secret } = await getSecret(PRERENDER_TOKEN, PRERENDER_KEY)
+  const { status, error, secret } = await getSecret(PRERENDER_TOKEN, PRERENDER_KEY);
 
-  isStartedFetch = false
+  isStartedFetch = false;
 
   if (error || status !== 'success') {
-    throw new Error('prerender token secret not found')
+    throw new Error('prerender token secret not found');
   }
 
-  process.env.__PRERENDER_TOKEN__ = secret
-}
+  process.env.__PRERENDER_TOKEN__ = secret;
+};
 
-module.exports = getPrerenderToken
+module.exports = getPrerenderToken;

@@ -1,10 +1,10 @@
 /**
  *  @name compiler
- *  @author 3p-dima, 3p-harabara, 3p-sviat
+ *  @author info@carradar.com.ua
  *  @version 1.0.0
  *  @description creating app bundles and lay them inside "/dist/" folder of the app
  *
- *  @copyright Copyright (c) Torn, LTD.
+ *  @copyright Copyright (c) Carradar.
  */
 
 const debug = require('debug');

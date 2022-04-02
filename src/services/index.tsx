@@ -1,4 +1,4 @@
-import LiveChat from './LiveChat'
-import CookiePanel from './CookiePanel'
+import LiveChat from './LiveChat';
+import CookiePanel from './CookiePanel';
 
-export { LiveChat, CookiePanel }
+export { LiveChat, CookiePanel };

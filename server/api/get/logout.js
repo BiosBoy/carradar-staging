@@ -5,7 +5,7 @@ const logout = (req, res) => {
     return res.redirect('/');
   }
 
-  console.log(req.session, 'logout done')
+  console.log(req.session, 'logout done');
   req.session.destroy();
 
   res.cookie('isLogged', false, { maxAge: 86400000, httpOnly: false });

@@ -1,14 +1,15 @@
 // @ts-nocheck
-import React from 'react'
-import { Provider } from 'react-redux'
-import { ConnectedRouter } from 'connected-react-router'
-import { Frontload } from 'react-frontload'
+import React from 'react';
+import { History } from 'history';
+import { Provider } from 'react-redux';
+import { ConnectedRouter } from 'connected-react-router';
+import { Frontload } from 'react-frontload';
 
-import CoreLayout from '../layout'
+import CoreLayout from '../layout';
 
 interface IAppProvider {
-  store: any
-  history: any
+  store: any;
+  history: History;
 }
 
 const AppRouting = ({ store, history }: IAppProvider) => {
@@ -20,7 +21,7 @@ const AppRouting = ({ store, history }: IAppProvider) => {
         </Frontload>
       </ConnectedRouter>
     </Provider>
-  )
-}
+  );
+};
 
-export default AppRouting
+export default AppRouting;

@@ -1,31 +1,31 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 
-import scrollTo from '../../utils/smoothScroll'
+import scrollTo from '../../utils/smoothScroll';
 
-import styles from './index.scss'
+import styles from './index.scss';
 
-const HEIGHT_TO_HIDE = 200
+const HEIGHT_TO_HIDE = 200;
 
 const ScrollToTop = () => {
-  const [isAppear, setAppear] = useState(false)
+  const [isAppear, setAppear] = useState(false);
 
   useEffect(() => {
     const handleAppear = () => {
-      setAppear(window.pageYOffset > HEIGHT_TO_HIDE)
-    }
+      setAppear(window.pageYOffset > HEIGHT_TO_HIDE);
+    };
 
-    window.addEventListener('scroll', handleAppear)
-    window.addEventListener('resize', handleAppear)
+    window.addEventListener('scroll', handleAppear);
+    window.addEventListener('resize', handleAppear);
 
     return () => {
-      window.removeEventListener('scroll', handleAppear)
-      window.removeEventListener('resize', handleAppear)
-    }
-  }, [])
+      window.removeEventListener('scroll', handleAppear);
+      window.removeEventListener('resize', handleAppear);
+    };
+  }, []);
 
   const handleScrollTop = () => {
-    scrollTo({ id: 'header', duration: 1000 })
-  }
+    scrollTo({ id: 'header', duration: 1000 });
+  };
 
   return (
     <div className={`${styles.scrollToTopWrap} ${isAppear ? styles.btnAppear : ''}`}>
@@ -36,7 +36,7 @@ const ScrollToTop = () => {
         onClick={() => handleScrollTop()}
       />
     </div>
-  )
-}
+  );
+};
 
-export default ScrollToTop
+export default ScrollToTop;

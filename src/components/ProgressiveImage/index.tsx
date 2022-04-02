@@ -1,17 +1,17 @@
-import React, { memo, useState, useCallback } from 'react'
-import LoadIndicator from '../LoadIndicator'
+import React, { memo, useState, useCallback } from 'react';
+import LoadIndicator from '../LoadIndicator';
 
-import styles from './index.scss'
-import { IProps } from './interfaces'
+import styles from './index.scss';
+import { IProps } from './interfaces';
 
 const ProgressiveImage = (props: IProps) => {
-  const { image, preloader } = props
-  const { path = '', alt, customClass } = image
-  const { color = 'green', type = 'circle' } = preloader || {}
+  const { image, preloader } = props;
+  const { path = '', alt, customClass } = image;
+  const { color = 'green', type = 'circle' } = preloader || {};
 
-  const [imageLoadStatus, setImageLoadStatus] = useState('')
+  const [imageLoadStatus, setImageLoadStatus] = useState('');
 
-  const handlerLoaded = useCallback(() => setImageLoadStatus('loaded'), [])
+  const handlerLoaded = useCallback(() => setImageLoadStatus('loaded'), []);
 
   const imageToRender = (
     <img
@@ -21,13 +21,13 @@ const ProgressiveImage = (props: IProps) => {
       onLoad={handlerLoaded}
       style={!imageLoadStatus ? { display: 'none' } : {}}
     />
-  )
+  );
 
   const spinner = (
     <div className={customClass}>
       <LoadIndicator color={color} type={type} />
     </div>
-  )
+  );
 
   if (!imageLoadStatus && spinner) {
     return (
@@ -35,10 +35,10 @@ const ProgressiveImage = (props: IProps) => {
         {imageToRender}
         {spinner}
       </div>
-    )
+    );
   }
 
-  return imageToRender
-}
+  return imageToRender;
+};
 
-export default memo(ProgressiveImage)
+export default memo(ProgressiveImage);

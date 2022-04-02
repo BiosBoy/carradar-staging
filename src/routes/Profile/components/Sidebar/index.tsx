@@ -1,16 +1,18 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React from 'react';
+import { useSelector } from 'react-redux';
 
-import { IStore } from '../../../../interfaces/IStore'
+import { IStore } from '../../../../interfaces/IStore';
+import useLocales from '../../hooks/useLocales';
 
-import styles from './index.scss'
+import styles from './index.scss';
 
-const SideBar = ({ activePanel, setActivePanel }: any) => {
-  const { username, usersurname } = useSelector(({ profile }: IStore) => profile)
+const SideBar = ({ activePanel, setActivePanel }: { activePanel: string; setActivePanel: (id: string) => void; }) => {
+  const { username, usersurname } = useSelector(({ profile }: IStore) => profile);
+  const { SIDEBAR } = useLocales();
 
   const _handleActivePanelClick = ({ target }) => {
-    setActivePanel(target.id)
-  }
+    setActivePanel(target.id);
+  };
 
   return (
     <div className={styles.sidebarContainer}>
@@ -22,7 +24,10 @@ const SideBar = ({ activePanel, setActivePanel }: any) => {
         />
         <h4 className='text-center'>{`${username} ${usersurname || ''}`}</h4>
       </div>
-      <div className={styles.tabs} role='tablist' aria-orientation='vertical'>
+      <div
+        className={styles.tabs} role='tablist'
+        aria-orientation='vertical'
+      >
         <button
           id='account'
           type='button'
@@ -30,7 +35,7 @@ const SideBar = ({ activePanel, setActivePanel }: any) => {
           onClick={_handleActivePanelClick}
         >
           <i className={`${styles.icon} fa fa-home text-center mr-1`} />
-          Account
+          {SIDEBAR.ACCOUNT_TITLE}
         </button>
         <button
           id='password'
@@ -39,7 +44,7 @@ const SideBar = ({ activePanel, setActivePanel }: any) => {
           onClick={_handleActivePanelClick}
         >
           <i className={`${styles.icon} fa fa-key text-center mr-1`} />
-          Password
+          {SIDEBAR.PASSWORD_TITLE}
         </button>
         <button
           id='history'
@@ -48,11 +53,11 @@ const SideBar = ({ activePanel, setActivePanel }: any) => {
           onClick={_handleActivePanelClick}
         >
           <i className={`${styles.icon} fa fa-history text-center mr-1`} />
-          History
+          {SIDEBAR.HISTORY_TITLE}
         </button>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default SideBar
+export default SideBar;

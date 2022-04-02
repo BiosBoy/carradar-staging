@@ -1,16 +1,16 @@
-import React from 'react'
+import React from 'react';
 
-import { ICarMainData } from '../../../interfaces/IStore'
+import { ICarMainData } from '../../../interfaces/IStore';
 
-import useLocales from '../hooks/useLocales'
+import useLocales from '../hooks/useLocales';
 
-import styles from './index.scss'
+import styles from './index.scss';
 
-const Description = ({ mainData }: { mainData: ICarMainData }) => {
-  const { OWNER_LABEL, VIN_LABEL, BLACKLISTED_LABEL, INFO_LABEL } = useLocales()
+const Description = ({ mainData }: { mainData: ICarMainData; }) => {
+  const { OWNER_LABEL, VIN_LABEL, BLACKLISTED_LABEL, INFO_LABEL } = useLocales();
 
   if (!mainData) {
-    return null
+    return null;
   }
 
   const topSection = () => {
@@ -29,8 +29,8 @@ const Description = ({ mainData }: { mainData: ICarMainData }) => {
           </div>
         </div>
       </div>
-    )
-  }
+    );
+  };
 
   const bottomSection = () => {
     return (
@@ -54,15 +54,15 @@ const Description = ({ mainData }: { mainData: ICarMainData }) => {
           </div>
         </div>
       </div>
-    )
-  }
+    );
+  };
 
   return (
     <div className={styles.description}>
       {topSection()}
       {bottomSection()}
     </div>
-  )
-}
+  );
+};
 
-export default Description
+export default Description;

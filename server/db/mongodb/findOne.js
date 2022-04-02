@@ -1,6 +1,6 @@
-const { MongoClient } = require('mongodb')
+const { MongoClient } = require('mongodb');
 
-const { URL, DB_NAME } = require('./constants')
+const { URL, DB_NAME } = require('./constants');
 
 const findOne = async ({ collectionName, entityData }) => {
   const result = await new Promise((resolve, _reject) => {
@@ -9,38 +9,38 @@ const findOne = async ({ collectionName, entityData }) => {
         if (_err) {
           resolve({
             error: _err
-          })
+          });
         }
 
-        const db = client.db(DB_NAME)
-        const collection = db.collection(collectionName)
+        const db = client.db(DB_NAME);
+        const collection = db.collection(collectionName);
 
-        const entity = await collection.findOne(entityData.map ? { $or: entityData } : entityData)
+        const entity = await collection.findOne(entityData.map ? { $or: entityData } : entityData);
 
         if (entity) {
           resolve({
             status: 'found',
             entity
-          })
+          });
 
-          return
+          return;
         }
 
         resolve({
           status: 'error',
           success: false
-        })
+        });
       } catch (error) {
-        console.log(`Error during mongoB findOne operation set up: ${error.stack}`)
+        console.log(`Error during mongoB findOne operation set up: ${error.stack}`);
       } finally {
-        console.log('findOne connection closed!')
+        console.log('findOne connection closed!');
 
-        await client.close()
+        await client.close();
       }
-    })
-  })
+    });
+  });
 
-  return result
-}
+  return result;
+};
 
-module.exports = findOne
+module.exports = findOne;

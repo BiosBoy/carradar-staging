@@ -1,22 +1,22 @@
-import Loadable from 'react-loadable'
+import Loadable from 'react-loadable';
 
-import rootStore from '../../store/createStore'
-import reducer from './controller/reducers'
+import rootStore from '../../store/createStore';
+import reducer from './controller/reducers';
 
-import { injectReducer } from '../../store/middleware/rootReducer'
+import { injectReducer } from '../../store/middleware/rootReducer';
 
-const Preloader = () => null
+const Preloader = () => null;
 
 const Login = Loadable({
   loader: async () => {
-    const LoginComponent = await import(/* webpackChunkName: "cookie" */ './layout')
+    const LoginComponent = await import(/* webpackChunkName: "cookie" */ './layout');
 
-    injectReducer(rootStore.store, { key: 'cookie', reducer }, rootStore.history)
+    injectReducer(rootStore.store, { key: 'cookie', reducer }, rootStore.history);
 
-    return LoginComponent
+    return LoginComponent;
   },
   loading: Preloader,
   modules: ['cookie']
-})
+});
 
-export default Login
+export default Login;

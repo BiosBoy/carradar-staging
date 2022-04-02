@@ -1,62 +1,66 @@
-import React, { useEffect, useRef } from 'react'
-import { push } from 'connected-react-router'
-import { withRouter } from 'react-router'
-import { useSelector, useDispatch } from 'react-redux'
+import React, { useEffect, useRef, memo } from 'react';
+import { push } from 'connected-react-router';
+import { withRouter } from 'react-router';
+import { useSelector, useDispatch } from 'react-redux';
 
-import Button from '../../../components/Button'
+import Button from '../../../components/Button';
 
-import { setRegistrationInput, loadRegistrationDataAttempt } from '../modules/actions'
-import useLocales from '../hooks/useLocales'
-import getLangPrefix from '../../../utils/gelLangPrefix'
+import { setRegistrationInput, loadRegistrationDataAttempt } from '../modules/actions';
+import useLocales from '../hooks/useLocales';
+import getLangPrefix from '../../../utils/gelLangPrefix';
+import validateEmail from '../../../utils/validateEmail';
 
-import styles from './index.scss'
+import styles from './index.scss';
 
-import { IStore } from '../../../interfaces/IStore'
+import { IStore } from '../../../interfaces/IStore';
 
-const Registration = () => {
-  const ref = useRef(null)
-  const { SECTION_TITLE } = useLocales()
-  const dispatch = useDispatch()
+const Registration = memo(() => {
+  const ref = useRef(null);
+  const { SECTION_TITLE, FORM } = useLocales();
+  const dispatch = useDispatch();
   const { username, email, password, passwordConfirmation, isRegistrationFetch, error } = useSelector(
     ({ registration }: IStore) => registration
-  )
-  const { isLogged, locale } = useSelector(({ app }: IStore) => app)
+  );
+  const { isLogged, locale } = useSelector(({ app }: IStore) => app);
 
   useEffect(() => {
     // @ts-ignore
-    window.prerenderReady = true
+    window.prerenderReady = true;
 
-    ref.current.focus()
-  }, [])
+    ref.current.focus();
+  }, []);
 
   useEffect(() => {
     if (isLogged) {
-      dispatch(push(`${getLangPrefix(locale)}profile`))
+      dispatch(push(`${getLangPrefix(locale)}profile`));
     }
-  }, [isLogged])
+  }, [isLogged]);
 
   const _handleInput = ({ target }) => {
-    const { id, value } = target
+    const { id, value } = target;
 
-    dispatch(setRegistrationInput({ id, value }))
-  }
+    dispatch(setRegistrationInput({ id, value }));
+  };
 
   const _handleSubmit = () => {
-    dispatch(loadRegistrationDataAttempt())
-  }
+    dispatch(loadRegistrationDataAttempt());
+  };
 
   const _handleSubmitKeyDown = (event) => {
-    event.code === 'Enter' && _handleSubmit()
-  }
+    event.code === 'Enter' && _handleSubmit();
+  };
 
-  const isFormFilled = username && email && password && passwordConfirmation
+  const isFormFilled = username && email && password && passwordConfirmation;
+  const isWeakPassword = password && password.length < 8;
+  const isPasswordsNotMatch = passwordConfirmation && password !== passwordConfirmation;
+  const isInvalidEmail = email && !validateEmail(email);
 
   return (
     <div className={styles.registrationWrap}>
       <h1 className={styles.headline}>{SECTION_TITLE}</h1>
       <div className={styles.contentWrap}>
         <label htmlFor='username' className={`${styles.text} ${styles.floatLabel}`}>
-          User Name
+          {FORM.NAME}
         </label>
         <input
           id='username'
@@ -71,7 +75,7 @@ const Registration = () => {
       </div>
       <div className={styles.contentWrap}>
         <label htmlFor='email' className={`${styles.text} ${styles.floatLabel}`}>
-          Email
+          {FORM.EMAIL}
         </label>
         <input
           id='email'
@@ -82,10 +86,11 @@ const Registration = () => {
           onChange={_handleInput}
           onKeyDown={_handleSubmitKeyDown}
         />
+        {isInvalidEmail && <span className={styles.error}>{FORM.EMAIL_TIP}</span>}
       </div>
       <div className={styles.contentWrap}>
         <label htmlFor='password' className={`${styles.text} ${styles.floatLabel}`}>
-          Password
+          {FORM.PASSWORD}
         </label>
         <input
           id='password'
@@ -96,11 +101,11 @@ const Registration = () => {
           onChange={_handleInput}
           onKeyDown={_handleSubmitKeyDown}
         />
-        <span>Enter a password longer than 8 characters</span>
+        {isWeakPassword && <span className={styles.error}>{FORM.PASSWORD_TIP}</span>}
       </div>
       <div className={styles.contentWrap}>
         <label htmlFor='passwordConfirmation' className={`${styles.text} ${styles.floatLabel}`}>
-          Confirm Password
+          {FORM.CONFIRM_PASSWORD}
         </label>
         <input
           id='passwordConfirmation'
@@ -111,18 +116,18 @@ const Registration = () => {
           onChange={_handleInput}
           onKeyDown={_handleSubmitKeyDown}
         />
-        <span>Your passwords do not match</span>
+        {isPasswordsNotMatch && <span className={styles.error}>{FORM.PASSWORDS_MATCH}</span>}
       </div>
       <Button
         onClick={_handleSubmit}
         disabled={!isFormFilled}
         isLoading={isRegistrationFetch}
-        isActive={!!isFormFilled}
-        label='Submit'
+        isActive={!!isFormFilled && !isWeakPassword && !isPasswordsNotMatch}
+        label={FORM.SUBMIT}
       />
       {error && <span className={styles.error}>{error}</span>}
     </div>
-  )
-}
+  );
+});
 
-export default withRouter(Registration)
+export default withRouter(Registration);

@@ -8,12 +8,12 @@
  */
 const isLocalhost = () => {
   if (typeof window === 'undefined') {
-    return false
+    return false;
   }
 
-  const { host } = window.location
+  const { host } = window.location;
 
-  return host.includes('localhost')
-}
+  return host.includes('localhost');
+};
 
-export default isLocalhost
+export default isLocalhost;

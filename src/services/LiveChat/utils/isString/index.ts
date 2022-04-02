@@ -1,6 +1,6 @@
 /**
  *  @name isString
- *  @author 3p-sviat
+ *  @author info@carradar.com.ua
  *  @version 1.1.0
  *  @description return true or false based on provided value type,
  *
@@ -9,10 +9,10 @@
  *  @return {boolean} value - real unit condition
  *
  */
-import isValue from '../isValue'
+import isValue from '../isValue';
 
-import { TData, TReturn } from './interfaces'
+import { TData, TReturn } from './interfaces';
 
-const isString = (val: TData): TReturn => isValue(val) && typeof val === 'string'
+const isString = (val: TData): TReturn => isValue(val) && typeof val === 'string';
 
-export default isString
+export default isString;

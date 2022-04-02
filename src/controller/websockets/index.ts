@@ -1,30 +1,30 @@
-import { WSS_END_POINT } from '../../constants/api'
+import { WSS_END_POINT } from '../../constants/api';
 
-import websocketsHelpers from './parser'
+import websocketsHelpers from './parser';
 
 // @ts-ignore
 const setupSocket = ({ _getState, _dispatch }) => {
   if (typeof WebSocket === 'undefined') {
-    return null
+    return null;
   }
 
-  const socket = new WebSocket(WSS_END_POINT)
+  const socket = new WebSocket(WSS_END_POINT);
 
   socket.onopen = () => {
-    console.log('websocket is open!')
-  }
+    console.log('websocket is open!');
+  };
 
   socket.onmessage = (event) => {
-    const { receiveData } = websocketsHelpers()
+    const { receiveData } = websocketsHelpers();
 
-    console.log('Data is received:', receiveData(event))
-  }
+    console.log('Data is received:', receiveData(event));
+  };
 
   socket.onclose = () => {
-    console.log('websocket is closed!')
-  }
+    console.log('websocket is closed!');
+  };
 
-  return socket
-}
+  return socket;
+};
 
-export default setupSocket
+export default setupSocket;

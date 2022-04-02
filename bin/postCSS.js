@@ -1,10 +1,10 @@
 /**
  *  @name postCSS
- *  @author 3p-sviat
+ *  @author info@carradar.com.ua
  *  @version 1.0.0
  *  @description common css postprocessing core. Responsible for css output generation
  *
- *  @copyright Copyright (c) CreditNinja, LTD.
+ *  @copyright Copyright (c) Carradar.
  */
 
 const styleConfigs = {

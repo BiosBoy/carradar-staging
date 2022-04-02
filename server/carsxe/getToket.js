@@ -1,26 +1,26 @@
-const getSecret = require('../secretManager')
+const getSecret = require('../secretManager');
 
-const SECRET_TAG = 'arn:aws:secretsmanager:eu-central-1:480124983095:secret:carmages-tjyMMs'
-const SECRET_NAME = 'CARSXE_TOKEN'
+const SECRET_TAG = 'arn:aws:secretsmanager:eu-central-1:480124983095:secret:carmages-tjyMMs';
+const SECRET_NAME = 'CARSXE_TOKEN';
 
-let isStartedFetch = false
+let isStartedFetch = false;
 
 const getCarsxeToken = async () => {
   if (process.env.__CARSXE_TOKEN__ || isStartedFetch) {
-    return
+    return;
   }
 
-  isStartedFetch = true
+  isStartedFetch = true;
 
-  const { status, error, secret } = await getSecret(SECRET_TAG, SECRET_NAME)
+  const { status, error, secret } = await getSecret(SECRET_TAG, SECRET_NAME);
 
-  isStartedFetch = false
+  isStartedFetch = false;
 
   if (error || status !== 'success') {
-    throw new Error('carsxe token secret not found')
+    throw new Error('carsxe token secret not found');
   }
 
-  process.env.__CARSXE_TOKEN__ = secret
-}
+  process.env.__CARSXE_TOKEN__ = secret;
+};
 
-module.exports = getCarsxeToken
+module.exports = getCarsxeToken;

@@ -1,4 +1,4 @@
-// @import '../../../styles/global.scss';
+@import '~@styles/index.scss';
 
 .cookieWrap {
   position: fixed;
@@ -13,6 +13,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media #{$screen-mobile} {
+    width: 110vw;
+    padding: 10px 35px;
+    height: 130px;
+  }
 }
 
 .content {

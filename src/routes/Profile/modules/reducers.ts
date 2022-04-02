@@ -1,5 +1,5 @@
 // some reducers here. The same link in on top level
-import initialState from './initialState'
+import initialState from './initialState';
 
 import {
   PROFILE_ATTEMPT,
@@ -10,9 +10,9 @@ import {
   PROFILE_CHANGE_SAVED,
   CHANGE_PROFILE_DATA,
   ERASE_PROFILE
-} from '../constants'
-import { IStore } from '../interfaces/IStore'
-import { IFetchSaved, IFetchError, IChangeProfileData } from '../interfaces/IController'
+} from '../constants';
+import { IStore } from '../interfaces/IStore';
+import { IFetchSaved, IFetchError, IChangeProfileData } from '../interfaces/IController';
 
 // ------------------------------------
 // Action Handlers
@@ -43,9 +43,12 @@ const ACTION_HANDLERS = {
     ...state,
     isProfileChangeFetch: true
   }),
-  [PROFILE_CHANGE_SAVED]: (state: IStore, action: { emailID: string }) => ({
+  [PROFILE_CHANGE_SAVED]: (state: IStore, action: { emailID: string; }) => ({
     ...state,
     id: action.emailID,
+    password: '',
+    newPassword: '',
+    newPasswordConfirm: '',
     isProfileChangeFetch: false
   }),
   [PROFILE_CHANGE_ERROR]: (state: IStore, action: IFetchError) => ({
@@ -69,16 +72,16 @@ const ACTION_HANDLERS = {
     isProfileFetch: false,
     error: null
   })
-}
+};
 
 // ------------------------------------
 // Reducer
 // ------------------------------------
 // you need to place here right typization and initialState bind
 const reducer = (state: IStore = initialState, action: any) => {
-  const handler = ACTION_HANDLERS[action.type]
+  const handler = ACTION_HANDLERS[action.type];
 
-  return handler ? handler(state, action) : state
-}
+  return handler ? handler(state, action) : state;
+};
 
-export default reducer
+export default reducer;

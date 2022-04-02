@@ -1,22 +1,22 @@
-import isArray from '..'
+import isArray from '..';
 
 describe('isStore()', () => {
   it('should return false if object thrown', () => {
-    expect(isArray({})).toBeFalsy()
-  })
+    expect(isArray({})).toBeFalsy();
+  });
   it('should return false if array thrown', () => {
-    expect(isArray([])).toBeTruthy()
-  })
+    expect(isArray([])).toBeTruthy();
+  });
   it('should return false if null thrown', () => {
-    expect(isArray(null)).toBeFalsy()
-  })
+    expect(isArray(null)).toBeFalsy();
+  });
   it('should return false if undefined thrown', () => {
-    expect(isArray(undefined)).toBeFalsy()
-  })
+    expect(isArray(undefined)).toBeFalsy();
+  });
   it('should return false if number thrown', () => {
-    expect(isArray(1)).toBeFalsy()
-  })
+    expect(isArray(1)).toBeFalsy();
+  });
   it('should return false if string thrown', () => {
-    expect(isArray('test')).toBeFalsy()
-  })
-})
+    expect(isArray('test')).toBeFalsy();
+  });
+});

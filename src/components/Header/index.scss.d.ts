@@ -25,6 +25,7 @@ interface CssExports {
   'mobileMenuOpened': string;
   'navBar': string;
   'russian': string;
+  'sticky': string;
   'text': string;
   'ukrainian': string;
 }

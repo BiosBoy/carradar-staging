@@ -26,7 +26,18 @@ module.exports = {
       "rules": {
           "no-undef": "off"
       }
-  }
+    },
+    {
+      "files": [
+        "**/*.test.js",
+        "**/*.test.jsx",
+        "**/*.test.ts",
+        "**/*.test.tsx"
+      ],
+      "env": {
+        "jest": true
+      }
+    }
   ],
   plugins: [
     '@typescript-eslint',
@@ -367,7 +378,7 @@ module.exports = {
         named: 'never'
       }
     ],
-    semi: ['error', 'never'],
+    semi: ['error', 'always'],
     'prefer-const': 'error',
     'no-param-reassign': [
       1,
@@ -1603,11 +1614,11 @@ module.exports = {
       {
         multiline: {
           delimiter: 'semi',
-          requireLast: false
+          requireLast: true
         },
         singleline: {
           delimiter: 'semi',
-          requireLast: false
+          requireLast: true
         }
       }
     ],
@@ -1672,7 +1683,7 @@ module.exports = {
     '@typescript-eslint/no-this-alias': 'error',
     '@typescript-eslint/no-var-requires': 'off',
     '@typescript-eslint/quotes': ['error', 'single'],
-    '@typescript-eslint/semi': ['error', 'never'],
+    '@typescript-eslint/semi': ['error', 'always'],
     'no-null/no-null': 'off',
     'prefer-arrow/prefer-arrow-functions': 'warn'
   }

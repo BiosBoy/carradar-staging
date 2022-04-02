@@ -1,14 +1,14 @@
-import React from 'react'
+import React from 'react';
 
-import styles from './index.scss'
+import styles from './index.scss';
 
 export interface IProps {
-  size?: 'S' | 'M' | 'L'
-  disabled?: boolean
-  onClick: (e: any) => void
-  label: string
-  isActive?: boolean
-  isLoading?: boolean
+  size?: 'S' | 'M' | 'L';
+  disabled?: boolean;
+  onClick: (e: any) => void;
+  label: string;
+  isActive?: boolean;
+  isLoading?: boolean;
 }
 
 const Button = ({ onClick, label, isActive, isLoading, disabled, size }: IProps) => {
@@ -18,7 +18,7 @@ const Button = ({ onClick, label, isActive, isLoading, disabled, size }: IProps)
       <span />
       <span />
     </span>
-  )
+  );
 
   return (
     <button
@@ -30,7 +30,7 @@ const Button = ({ onClick, label, isActive, isLoading, disabled, size }: IProps)
     >
       {!isLoading ? label : preloader}
     </button>
-  )
-}
+  );
+};
 
-export default Button
+export default Button;

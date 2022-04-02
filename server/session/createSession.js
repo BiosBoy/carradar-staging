@@ -1,7 +1,7 @@
-const session = require('express-session')
-const MongoStore = require('connect-mongo')
+const session = require('express-session');
+const MongoStore = require('connect-mongo');
 
-const { URL } = require('../db/mongodb/constants')
+const { URL } = require('../db/mongodb/constants');
 
 const creteSession = () => {
   return session({
@@ -24,7 +24,7 @@ const creteSession = () => {
         useUnifiedTopology: true
       }
     })
-  })
-}
+  });
+};
 
-module.exports = creteSession
+module.exports = creteSession;

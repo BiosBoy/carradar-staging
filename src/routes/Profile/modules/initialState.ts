@@ -1,4 +1,4 @@
-import { IStore } from '../interfaces/IStore'
+import { IStore } from '../interfaces/IStore';
 
 const initialState: IStore = {
   id: '',
@@ -14,6 +14,6 @@ const initialState: IStore = {
   isProfileFetch: false,
   isProfileChangeFetch: false,
   searchHistory: null
-}
+};
 
-export default initialState
+export default initialState;

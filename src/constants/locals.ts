@@ -10,4 +10,4 @@ export const LOCALES_ADAPTER = {
   en: 'en',
   ua: 'ua',
   ru: 'ru'
-}
+};

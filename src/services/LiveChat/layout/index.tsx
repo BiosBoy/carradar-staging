@@ -1,13 +1,13 @@
-import React from 'react'
+import React from 'react';
 
-import Chat from '../components/Chat'
+import Chat from '../components/Chat';
 
-import './index.scss'
+import './index.scss';
 
 class ChatAgent extends React.Component {
   render() {
-    return <Chat />
+    return <Chat />;
   }
 }
 
-export default ChatAgent
+export default ChatAgent;

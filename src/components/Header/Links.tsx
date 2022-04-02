@@ -1,14 +1,14 @@
-import React, { memo } from 'react'
-import i18n from 'i18next'
-import { connect } from 'react-redux'
+import React, { memo } from 'react';
+import i18n from 'i18next';
+import { connect } from 'react-redux';
 
-import Link from '../Link'
+import Link from '../Link';
 
-import styles from './index.scss'
+import styles from './index.scss';
 
-import { IStore } from '../../interfaces/IStore'
+import { IStore } from '../../interfaces/IStore';
 
-const Links = ({ isLogged }: { isLogged: boolean }) => {
+const Links = ({ isLogged, isDesktop }: { isLogged: boolean; isDesktop: boolean; }) => {
   const UnloggedLinks = memo(() => (
     <>
       <Link className={styles.link} to='/sign-in'>
@@ -18,7 +18,7 @@ const Links = ({ isLogged }: { isLogged: boolean }) => {
         <span className={styles.text}>{i18n.t('header.menu.sign_up')}</span>
       </Link>
     </>
-  ))
+  ));
 
   const LoggedLinks = memo(() => {
     return (
@@ -30,11 +30,16 @@ const Links = ({ isLogged }: { isLogged: boolean }) => {
           <span className={styles.text}>{i18n.t('header.menu.sign_out')}</span>
         </Link>
       </>
-    )
-  })
+    );
+  });
 
   return (
     <div className={styles.navBar}>
+      {!isDesktop && (
+        <Link className={styles.link} to='/'>
+          <span className={styles.text}>{i18n.t('header.menu.home')}</span>
+        </Link>
+      )}
       <Link className={styles.link} to='/about-us'>
         <span className={styles.text}>{i18n.t('header.menu.about_us')}</span>
       </Link>
@@ -43,12 +48,13 @@ const Links = ({ isLogged }: { isLogged: boolean }) => {
       </Link>
       {!isLogged ? <UnloggedLinks /> : <LoggedLinks />}
     </div>
-  )
-}
+  );
+};
 
-const mapStateToProps = ({ app }: IStore) => ({
+const mapStateToProps = ({ app, browser }: IStore) => ({
   language: app.locale,
-  isLogged: app.isLogged
-})
+  isLogged: app.isLogged,
+  isDesktop: browser.is.desktop
+});
 
-export default connect(mapStateToProps, null)(Links)
+export default connect(mapStateToProps, null)(Links);

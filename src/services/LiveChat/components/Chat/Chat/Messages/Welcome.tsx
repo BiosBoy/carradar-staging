@@ -1,40 +1,43 @@
-import React from 'react'
-import calcTimeStamp from '../../../../utils/calcTimeStamp'
+import React from 'react';
+import calcTimeStamp from '../../../../utils/calcTimeStamp';
 
-import './presents.scss'
+import './presents.scss';
 
 const MESSAGES = [
   'Hey, nice to see you friend!',
   'Hi, How can I help you today',
   'How can I be helpful?',
-  "🥷 Support is here, it's a honor to serve you!"
-]
+  '🥷 Support is here, it\'s a honor to serve you!'
+];
 
-class Welcome extends React.Component<any, { welcomeMessage: string }> {
+class Welcome extends React.Component<any, { welcomeMessage: string; }> {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       welcomeMessage: null
-    }
+    };
   }
 
   componentDidMount() {
-    const welcomeInx = Math.floor(Math.random() * (MESSAGES.length - 0 + 1) + 0)
+    const welcomeInx = Math.floor(Math.random() * (MESSAGES.length - 0 + 1) + 0);
 
     this.setState({
       welcomeMessage: MESSAGES[welcomeInx] || MESSAGES[0]
-    })
+    });
   }
 
   _renderNinja = () => {
     return (
       <div className='senderBlock'>
         <span className='senderName'>Support</span>
-        <img src='/assets/support.png' alt='' className='agent-img' />
+        <img
+          src='/assets/support.png' alt=''
+          className='agent-img'
+        />
       </div>
-    )
-  }
+    );
+  };
 
   _welcomeMessage = (message) => {
     return (
@@ -44,11 +47,11 @@ class Welcome extends React.Component<any, { welcomeMessage: string }> {
         </div>
         <span className='rcw-timestamp'>{calcTimeStamp(Date.now())}</span>
       </div>
-    )
-  }
+    );
+  };
 
   render() {
-    const { welcomeMessage } = this.state
+    const { welcomeMessage } = this.state;
 
     return (
       <div className='welcomeWrapper'>
@@ -57,8 +60,8 @@ class Welcome extends React.Component<any, { welcomeMessage: string }> {
           {this._welcomeMessage(welcomeMessage)}
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default Welcome
+export default Welcome;

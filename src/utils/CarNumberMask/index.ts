@@ -8,9 +8,9 @@ const CarNumberMask = (value) => {
     /^[А-Яа-я]{2}[0-9]{4}$/i.test(value),
     /^[А-Яа-я]{2}[0-9]{4}[А-Яа-я]{1}$/i.test(value),
     /^[А-Яа-я]{2}[0-9]{4}[А-Яа-я]{2}$/i.test(value)
-  ]
+  ];
 
-  return validRegExps.some((valid) => valid)
-}
+  return validRegExps.some((valid) => valid);
+};
 
-export default CarNumberMask
+export default CarNumberMask;

@@ -1,6 +1,6 @@
-import { IState } from '../interfaces/IStore'
+import { IState } from '../interfaces/IStore';
 
-import isLogged from '../utils/isLogged'
+import isLogged from '../utils/isLogged';
 
 const initialState: IState = {
   locale: 'ua',
@@ -14,6 +14,6 @@ const initialState: IState = {
     error: null,
     success: null
   }
-}
+};
 
-export default initialState
+export default initialState;

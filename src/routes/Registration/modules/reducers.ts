@@ -1,9 +1,9 @@
 // some reducers here. The same link in on top level
-import initialState from './initialState'
+import initialState from './initialState';
 
-import { REGISTRATION_ATTEMPT, REGISTRATION_SAVED, REGISTRATION_ERROR, REGISTRATION_INPUT } from '../constants'
-import { IStore } from '../interfaces/IStore'
-import { IFetchError, IRegistrationInput } from '../interfaces/IController'
+import { REGISTRATION_ATTEMPT, REGISTRATION_SAVED, REGISTRATION_ERROR, REGISTRATION_INPUT } from '../constants';
+import { IStore } from '../interfaces/IStore';
+import { IFetchError, IRegistrationInput } from '../interfaces/IController';
 
 // ------------------------------------
 // Action Handlers
@@ -32,16 +32,16 @@ const ACTION_HANDLERS = {
     ...state,
     [action.id]: action.value
   })
-}
+};
 
 // ------------------------------------
 // Reducer
 // ------------------------------------
 // you need to place here right typization and initialState bind
 const reducer = (state: IStore = initialState, action: any) => {
-  const handler = ACTION_HANDLERS[action.type]
+  const handler = ACTION_HANDLERS[action.type];
 
-  return handler ? handler(state, action) : state
-}
+  return handler ? handler(state, action) : state;
+};
 
-export default reducer
+export default reducer;

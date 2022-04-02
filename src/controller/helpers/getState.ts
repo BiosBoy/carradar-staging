@@ -1,11 +1,11 @@
-import { select } from 'redux-saga/effects'
+import { select } from 'redux-saga/effects';
 
-import { IStore } from '../../interfaces/IStore'
+import { IStore } from '../../interfaces/IStore';
 
 function* getState() {
-  const state: IStore = yield select()
+  const state: IStore = yield select();
 
-  return state
+  return state;
 }
 
-export default getState
+export default getState;

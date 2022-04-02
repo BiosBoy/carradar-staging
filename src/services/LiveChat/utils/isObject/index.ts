@@ -1,6 +1,6 @@
 /**
  *  @name isObject
- *  @author 3p-sviat
+ *  @author info@carradar.com.ua
  *  @version 1.1.0
  *  @description return true or false based on provided value type,
  *
@@ -10,11 +10,11 @@
  *
  *
  */
-import isArray from '../isArray'
-import isValue from '../isValue'
+import isArray from '../isArray';
+import isValue from '../isValue';
 
-import { TData, TReturn } from './interfaces'
+import { TData, TReturn } from './interfaces';
 
-const isObject = (val: TData): TReturn => isValue(val) && !isArray(val) && val instanceof Object
+const isObject = (val: TData): TReturn => isValue(val) && !isArray(val) && val instanceof Object;
 
-export default isObject
+export default isObject;

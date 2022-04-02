@@ -1,6 +1,6 @@
 /**
  *  @name isValue
- *  @author 3p-sviat
+ *  @author info@carradar.com.ua
  *  @version 1.1.0
  *  @description helps recognize is received value originally provided even with "0" or "false",
  *  @description rather than real "false" value.
@@ -12,13 +12,13 @@
  *
  */
 
-import { TIsValue, TReturn } from './interfaces'
+import { TIsValue, TReturn } from './interfaces';
 
 const isValue = (value: TIsValue): TReturn => {
-  const isRealValue = ![undefined, null].includes(value)
+  const isRealValue = ![undefined, null].includes(value);
 
-  return isRealValue
-}
+  return isRealValue;
+};
 
-export { TIsValue }
-export default isValue
+export { TIsValue };
+export default isValue;

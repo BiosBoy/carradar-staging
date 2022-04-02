@@ -3,6 +3,7 @@
   "description": "Easy way to check your car data in Ukraine.",
   "header": {
     "menu": {
+      "home": "Home",
       "about_us": "About Us",
       "contact": "Contact",
       "sign_in": "Sign In",
@@ -93,16 +94,61 @@
       "title": "Contacts"
     },
     "login": {
-      "title": "Login"
+      "title": "Login",
+      "form": {
+        "email": "Email or User Name",
+        "password": "Password",
+        "submit": "Submit"
+      }
     },
     "registration": {
-      "title": "Sign Up"
+      "title": "Sign Up",
+      "form": {
+        "email": "Email",
+        "email_tip": "Email must be valid",
+        "password": "Password",
+        "confirm_password": "Confirm Password",
+        "name": "User Name",
+        "submit": "Submit",
+        "password_tip": "Enter a password longer than 8 characters",
+        "passwords_match": "Your passwords do not match"
+      }
     },
     "profile": {
-      "title": "Profile"
+      "title": "Profile",
+      "form": {
+        "account": {
+          "sub_title": "Account Settings",
+          "first_name": "First Name",
+          "last_name": "Last Name",
+          "email": "Email",
+          "mobile": "Phone number",
+          "bio": "Bio"
+        },
+        "password": {
+          "sub_title": "Password Settings",
+          "old_password": "Old Passport",
+          "new_password": "New Passport",
+          "confirm_new_password": "Confirm New Passport"
+        },
+        "history": {
+          "sub_title": "History Settings",
+          "text": "Seems like your History list is empty. Try to search your first car ever!",
+          "vin": "VIN code",
+          "date": "Date"
+        }
+      },
+      "submit": "Update",
+      "sidebar": {
+        "account": "Account",
+        "password": "Password",
+        "history": "History"
+      }
     },
     "sign_out": {
-      "title": "Sign Out"
+      "title": "Sign Out",
+      "text": "You have logged out successfully",
+      "submit": "Go to Home page"
     },
     "privacy": {
       "title": "Private Policy"

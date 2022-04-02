@@ -7,7 +7,7 @@ const createPass = require('../../utils/createPass');
 
 const registration = async (req, res) => {
   if (req.session.email) {
-    return res.send(JSON.stringify({ error: 'You are logged in. Please logout first' }))
+    return res.send(JSON.stringify({ error: 'You are logged in. Please logout first' }));
   }
 
   if (!req.body.email || !req.body.username || !req.body.password || !req.body.passwordConfirmation) {

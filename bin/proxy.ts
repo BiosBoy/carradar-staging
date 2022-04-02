@@ -1,6 +1,6 @@
-const { createProxyMiddleware } = require('http-proxy-middleware')
+const { createProxyMiddleware } = require('http-proxy-middleware');
 
-const proxyFiles = ['/api/**']
+const proxyFiles = ['/api/**'];
 
 const apiProxy = createProxyMiddleware(proxyFiles, {
   target: 'https://localhost:3002',
@@ -20,6 +20,6 @@ const apiProxy = createProxyMiddleware(proxyFiles, {
   // onProxyRes: (_proxyRes) => {
   //   console.log('PROXY 1', _proxyRes)
   // }
-})
+});
 
-module.exports = [apiProxy]
+module.exports = [apiProxy];

@@ -12,6 +12,11 @@
   z-index: 100;
   background: #262626;
   box-shadow: 0 8px 15px #080808;
+
+  &.sticky {
+    position: fixed;
+    top: 0;
+  }
 }
 
 .header {
@@ -234,6 +239,7 @@
 /* stylelint-enable */
 
 .mobileMenu {
+  top: 0;
   width: 100%;
   flex: 1;
   display: flex;

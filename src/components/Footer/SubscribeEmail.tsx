@@ -1,88 +1,88 @@
 /* eslint-disable */
-import React, { memo, useState } from 'react'
-import { connect } from 'react-redux'
-import i18n from 'i18next'
-import classNames from 'classnames'
+import React, { memo, useState } from 'react';
+import { connect } from 'react-redux';
+import i18n from 'i18next';
+import classNames from 'classnames';
 
-import LoadIndicator from '../LoadIndicator'
+import LoadIndicator from '../LoadIndicator';
 
-import keyDownHandler, { KEY_TYPES } from '../../utils/keyDownHandler'
+import keyDownHandler, { KEY_TYPES } from '../../utils/keyDownHandler';
 
-import { newsletterSubscriptionAttempt } from '../../controller/actions'
+import { newsletterSubscriptionAttempt } from '../../controller/actions';
 
-import styles from './index.scss'
-import { IStore } from '../../interfaces/IStore'
+import styles from './index.scss';
+import { IStore } from '../../interfaces/IStore';
 
 export interface IProps {
-  userEmail: string
-  isSubscribeNewsletterInProgress: boolean
-  subscribeNewsletterAttempt: (email: string) => void
+  userEmail: string;
+  isSubscribeNewsletterInProgress: boolean;
+  subscribeNewsletterAttempt: (email: string) => void;
 }
 
-const INVALID_EMAIL_ERROR = 'Email should be valid (e.g. xxx@xxx.xxx)'
-const EMPTY_EMAIL = 'Email should not be empty'
-const ALREADY_SUBSCRIBED = 'Email already subscribed'
+const INVALID_EMAIL_ERROR = 'Email should be valid (e.g. xxx@xxx.xxx)';
+const EMPTY_EMAIL = 'Email should not be empty';
+const ALREADY_SUBSCRIBED = 'Email already subscribed';
 
 const SubscribeEmail = memo(({ userEmail, subscribeNewsletterAttempt, isSubscribeNewsletterInProgress }: IProps) => {
-  const [inputValue, setValue] = useState('')
-  const [isInvalidEmail, setInvalidEmailError] = useState(false)
-  const [isEmptyEmail, setEmptyEmailError] = useState(false)
-  const [isAlreadySubscribed, setAlreadySubscribedEmailError] = useState(false)
+  const [inputValue, setValue] = useState('');
+  const [isInvalidEmail, setInvalidEmailError] = useState(false);
+  const [isEmptyEmail, setEmptyEmailError] = useState(false);
+  const [isAlreadySubscribed, setAlreadySubscribedEmailError] = useState(false);
 
   const handleChange = ({ target }) => {
-    setValue(target.value)
-  }
+    setValue(target.value);
+  };
 
   const handleInvalidEmail = (status: boolean) => {
-    setInvalidEmailError(status)
-  }
+    setInvalidEmailError(status);
+  };
 
   const handleEmptyEmail = (status: boolean) => {
-    setEmptyEmailError(status)
-  }
+    setEmptyEmailError(status);
+  };
 
   const handleAlreadySubscribedEmail = (status: boolean) => {
-    setAlreadySubscribedEmailError(status)
-  }
+    setAlreadySubscribedEmailError(status);
+  };
 
   const handleClear = () => {
-    setValue('')
-  }
+    setValue('');
+  };
 
   const handleSave = () => {
     const isEmailValid =
       /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i.test(
         inputValue
-      )
+      );
 
     if (!inputValue || inputValue.length === 0) {
-      handleEmptyEmail(true)
-      handleInvalidEmail(false)
+      handleEmptyEmail(true);
+      handleInvalidEmail(false);
 
-      return
+      return;
     }
 
     if (!isEmailValid) {
-      handleEmptyEmail(false)
-      handleInvalidEmail(true)
+      handleEmptyEmail(false);
+      handleInvalidEmail(true);
 
-      return
+      return;
     }
 
     if (userEmail === inputValue) {
-      handleAlreadySubscribedEmail(true)
-      handleEmptyEmail(false)
-      handleInvalidEmail(false)
+      handleAlreadySubscribedEmail(true);
+      handleEmptyEmail(false);
+      handleInvalidEmail(false);
 
-      return
+      return;
     }
 
     if (!inputValue || isSubscribeNewsletterInProgress) {
-      return
+      return;
     }
 
-    subscribeNewsletterAttempt(inputValue)
-  }
+    subscribeNewsletterAttempt(inputValue);
+  };
 
   const handleKeyDownChange = (e: React.KeyboardEvent<HTMLInputElement>) => {
     keyDownHandler({
@@ -97,41 +97,41 @@ const SubscribeEmail = memo(({ userEmail, subscribeNewsletterAttempt, isSubscrib
           onEvent: handleSave
         }
       ]
-    })
-  }
+    });
+  };
 
   const handleClickBlur = () => {
-    handleEmptyEmail(false)
-    handleInvalidEmail(false)
-    handleAlreadySubscribedEmail(false)
-  }
+    handleEmptyEmail(false);
+    handleInvalidEmail(false);
+    handleAlreadySubscribedEmail(false);
+  };
 
   const btnClasses = classNames({
     [styles.emailSendButton]: true,
     [styles.emailFilled]: inputValue || !isSubscribeNewsletterInProgress
-  })
+  });
 
   const renderEmailError = () => {
-    let errorMessage = null
+    let errorMessage = null;
 
     if (isEmptyEmail) {
-      errorMessage = EMPTY_EMAIL
+      errorMessage = EMPTY_EMAIL;
     }
 
     if (isInvalidEmail) {
-      errorMessage = INVALID_EMAIL_ERROR
+      errorMessage = INVALID_EMAIL_ERROR;
     }
 
     if (isAlreadySubscribed) {
-      errorMessage = ALREADY_SUBSCRIBED
+      errorMessage = ALREADY_SUBSCRIBED;
     }
 
     return (
       (isInvalidEmail || isEmptyEmail || isAlreadySubscribed) && (
         <span className={styles.emailError}>{errorMessage}</span>
       )
-    )
-  }
+    );
+  };
 
   return (
     <>
@@ -164,19 +164,19 @@ const SubscribeEmail = memo(({ userEmail, subscribeNewsletterAttempt, isSubscrib
         </button>
       </div>
     </>
-  )
-})
+  );
+});
 
-SubscribeEmail.displayName = 'SubscribeEmail'
+SubscribeEmail.displayName = 'SubscribeEmail';
 
 const mapStateToProps = (state: IStore) => ({
   isSubscribeNewsletterInProgress: state.app?.subscribeNewsletter?.isInProgress,
   userEmail: state.app?.subscribeNewsletter?.userEmail,
   locale: state.app?.locale
-})
+});
 
 const mapDispatchToState = {
   subscribeNewsletterAttempt: newsletterSubscriptionAttempt
-}
+};
 
-export default connect(mapStateToProps, mapDispatchToState)(SubscribeEmail)
+export default connect(mapStateToProps, mapDispatchToState)(SubscribeEmail);

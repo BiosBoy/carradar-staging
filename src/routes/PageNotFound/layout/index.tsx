@@ -1,14 +1,13 @@
-import React from 'react'
-import { withRouter } from 'react-router'
+import React from 'react';
 
-import Link from '../../../components/Link'
+import Link from '../../../components/Link';
 
-import styles from './index.scss'
+import styles from './index.scss';
 
-class PageNotFound extends React.Component {
+class PageNotFound extends React.PureComponent {
   componentDidMount() {
     // @ts-ignore
-    window.prerenderReady = true
+    window.prerenderReady = true;
   }
 
   render() {
@@ -16,13 +15,19 @@ class PageNotFound extends React.Component {
       <div className={styles.notFoundWrap}>
         <h3 className={styles.headline}>404 Sorry, Page Not Found!</h3>
         <p className={styles.text}>This page is not exists or missed on the server.</p>
-        <img src='/assets/404.png' alt='404' className={styles.image} />
-        <Link to='/' type='rounded' withBackground={true}>
+        <img
+          src='/assets/404.png' alt='404'
+          className={styles.image}
+        />
+        <Link
+          to='/' type='rounded'
+          withBackground={true}
+        >
           Go back to the Home page
         </Link>
       </div>
-    )
+    );
   }
 }
 
-export default withRouter(PageNotFound as any)
+export default PageNotFound;

@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 
-import styles from './index.scss'
+import styles from './index.scss';
 
 const Clouds = () => {
   return (
@@ -101,7 +101,7 @@ const Clouds = () => {
         />
       </svg>
     </div>
-  )
-}
+  );
+};
 
-export default Clouds
+export default Clouds;

@@ -1,21 +1,23 @@
 /* eslint-disable max-len */
-import React, { useEffect } from 'react'
-import { withRouter } from 'react-router'
-import { useSelector } from 'react-redux'
+import React, { useEffect, memo } from 'react';
+import { withRouter } from 'react-router';
+import { useSelector } from 'react-redux';
 
-import useLocales from '../hooks/useLocales'
+import useLocales from '../hooks/useLocales';
 
-import styles from './index.scss'
+import { IStore } from '../../../interfaces/IStore';
 
-const AboutUs = () => {
-  const { SECTION_TITLE, FIRST_TITLE, ZIP, ADDRESS, CITY, COUTRY, SECOND_TITLE } = useLocales()
+import styles from './index.scss';
 
-  const isDesktop = useSelector(({ browser }: any) => browser.is.desktop)
+const AboutUs = memo(() => {
+  const { SECTION_TITLE, FIRST_TITLE, ZIP, ADDRESS, CITY, COUTRY, SECOND_TITLE } = useLocales();
+
+  const isDesktop = useSelector(({ browser }: IStore) => browser.is.desktop);
 
   useEffect(() => {
     // @ts-ignore
-    window.prerenderReady = true
-  }, [])
+    window.prerenderReady = true;
+  }, []);
 
   return (
     <div className={styles.contactsWrap}>
@@ -61,7 +63,7 @@ const AboutUs = () => {
         />
       </div>
     </div>
-  )
-}
+  );
+});
 
-export default withRouter(AboutUs as any)
+export default withRouter(AboutUs);

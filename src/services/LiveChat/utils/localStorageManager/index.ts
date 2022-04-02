@@ -1,15 +1,15 @@
-import isValue from '../isValue'
-import isArray from '../isArray'
-import isObject from '../isObject'
+import isValue from '../isValue';
+import isArray from '../isArray';
+import isObject from '../isObject';
 
-import { IProps, ILocalStorageManager, IKeyData, IDeleteFromStore } from './interfaces'
+import { IProps, ILocalStorageManager, IKeyData, IDeleteFromStore } from './interfaces';
 
-const PATH = '/'
-const DOMAIN = (__DEV__ && 'localhost') || '.carradar.com.ua'
+const PATH = '/';
+const DOMAIN = (__DEV__ && 'localhost') || '.carradar.com.ua';
 
 /**
  *  @name LocalStorageManager
- *  @author 3p-sviat
+ *  @author info@carradar.com.ua
  *  @version 1.0.0
  *  @description suitable way for managing localStorageData
  *
@@ -25,98 +25,98 @@ const DOMAIN = (__DEV__ && 'localhost') || '.carradar.com.ua'
  */
 class LocalStorageManager {
   private _state: {
-    useCookieStore: boolean
-    isLocalStorageAvailable: boolean
-  }
+    useCookieStore: boolean;
+    isLocalStorageAvailable: boolean;
+  };
 
   constructor() {
     this._state = {
       useCookieStore: false,
       isLocalStorageAvailable: false
-    }
+    };
   }
 
-  _setState = (newValue: { [x: string]: any }) => {
+  _setState = (newValue: { [x: string]: any; }) => {
     this._state = {
       ...this._state,
       ...newValue
-    }
-  }
+    };
+  };
 
-  _isComplexityStore = (storeData: any) => isArray(storeData) || isObject(storeData)
+  _isComplexityStore = (storeData) => isArray(storeData) || isObject(storeData);
 
   _isLocalStorageAvailable = () => {
     try {
-      const { localStorage } = window
+      const { localStorage } = window;
 
-      const test = '__isLocalStorageAvailable__'
+      const test = '__isLocalStorageAvailable__';
 
-      localStorage.setItem(test, test)
-      localStorage.removeItem(test)
+      localStorage.setItem(test, test);
+      localStorage.removeItem(test);
 
-      return true
+      return true;
     } catch (e) {
-      return false
+      return false;
     }
-  }
+  };
 
   _setInitPayload = (isLocalStorageAvailable: boolean, storeKey: string) => {
-    const cookieData = this._getCookie(storeKey)
-    const localStorageData = localStorage.getItem(storeKey)
+    const cookieData = this._getCookie(storeKey);
+    const localStorageData = localStorage.getItem(storeKey);
 
     if (isLocalStorageAvailable && !this._state.useCookieStore && isValue(cookieData)) {
-      localStorage.setItem(storeKey, cookieData)
+      localStorage.setItem(storeKey, cookieData);
 
-      this._deleteCookie(storeKey)
+      this._deleteCookie(storeKey);
     } else if ((!isLocalStorageAvailable || this._state.useCookieStore) && isValue(localStorageData)) {
-      this._setCookie(storeKey, localStorageData)
+      this._setCookie(storeKey, localStorageData);
 
-      localStorage.removeItem(storeKey)
+      localStorage.removeItem(storeKey);
     }
-  }
+  };
 
   _getCookie = (cookieKey: string) => {
-    const cookieRaw = document.cookie.split('; ')
-    const cookieKeyValuePair = cookieRaw.find((KeyValue: string) => KeyValue.startsWith(cookieKey))
+    const cookieRaw = document.cookie.split('; ');
+    const cookieKeyValuePair = cookieRaw.find((KeyValue: string) => KeyValue.startsWith(cookieKey));
 
-    const cookieValue = cookieKeyValuePair ? cookieKeyValuePair.split('=')[1] : null
+    const cookieValue = cookieKeyValuePair ? cookieKeyValuePair.split('=')[1] : null;
 
-    return cookieValue
-  }
+    return cookieValue;
+  };
 
   _setCookie = (storeKey: string, storeData: string) => {
-    document.cookie = `${storeKey}=${storeData};path=${PATH};domain=${DOMAIN};expires=Fri, 31 Dec 9999 23:59:59 GMT";`
-  }
+    document.cookie = `${storeKey}=${storeData};path=${PATH};domain=${DOMAIN};expires=Fri, 31 Dec 9999 23:59:59 GMT";`;
+  };
 
   _deleteCookie(cookieKey: string) {
     if (!this._getCookie(cookieKey)) {
-      return
+      return;
     }
 
-    document.cookie = `${cookieKey}="";path=${PATH};domain=${DOMAIN};expires=Thu, 01 Jan 1970 00:00:01 GMT";`
+    document.cookie = `${cookieKey}="";path=${PATH};domain=${DOMAIN};expires=Thu, 01 Jan 1970 00:00:01 GMT";`;
   }
 
-  _normalizeStoreData = (storeData: any) => {
-    const normalizedStoreData = this._isComplexityStore(storeData) ? JSON.stringify(storeData) : String(storeData)
+  _normalizeStoreData = (storeData) => {
+    const normalizedStoreData = this._isComplexityStore(storeData) ? JSON.stringify(storeData) : String(storeData);
 
-    return normalizedStoreData
-  }
+    return normalizedStoreData;
+  };
 
   _setStore = ({ storeKey, storeData }: ILocalStorageManager) => {
     try {
-      const normalizedStoreData = this._normalizeStoreData(storeData)
+      const normalizedStoreData = this._normalizeStoreData(storeData);
 
       if (this._isLocalStorageAvailable() && !this._state.useCookieStore) {
-        const { localStorage } = window
+        const { localStorage } = window;
 
-        localStorage.setItem(storeKey, normalizedStoreData)
+        localStorage.setItem(storeKey, normalizedStoreData);
       } else {
-        this._setCookie(storeKey, normalizedStoreData)
+        this._setCookie(storeKey, normalizedStoreData);
       }
     } catch (e) {
-      throw new Error(`Some error during localStorage data set: ${e}`)
+      throw new Error(`Some error during localStorage data set: ${e}`);
     }
-  }
+  };
 
   /**
    * Returns a boolean indicating whether an data with the specified key exists or not.
@@ -126,23 +126,23 @@ class LocalStorageManager {
    */
   hasKey = ({ storeKey }: IKeyData) => {
     if (!storeKey) {
-      console.error(`Store key was missed: ${storeKey}`)
+      console.error(`Store key was missed: ${storeKey}`);
 
-      return null
+      return null;
     }
 
-    let currentStore = null
+    let currentStore = null;
 
     if (this._isLocalStorageAvailable() && !this._state.useCookieStore) {
-      const { localStorage } = window
+      const { localStorage } = window;
 
-      currentStore = localStorage.getItem(storeKey)
+      currentStore = localStorage.getItem(storeKey);
     } else {
-      currentStore = this._getCookie(storeKey)
+      currentStore = this._getCookie(storeKey);
     }
 
-    return isValue(currentStore)
-  }
+    return isValue(currentStore);
+  };
 
   /**
    * Allow us to set data by key inside localStorage.
@@ -152,15 +152,15 @@ class LocalStorageManager {
    */
   addStore = ({ storeKey, storeData }: ILocalStorageManager) => {
     if (!isValue(storeData) || !storeKey) {
-      console.error('Some data missed among your initialization config: ', storeKey, storeData)
+      console.error('Some data missed among your initialization config: ', storeKey, storeData);
 
-      return
+      return;
     }
 
-    this._setStore({ storeKey, storeData })
+    this._setStore({ storeKey, storeData });
 
-    return this.getStore({ storeKey })
-  }
+    return this.getStore({ storeKey });
+  };
 
   /**
    * Returns an object with data inside particular key from localStore.
@@ -171,15 +171,15 @@ class LocalStorageManager {
    */
   updateStore = ({ storeKey, storeData }: ILocalStorageManager) => {
     if (!storeKey || !isValue(storeData)) {
-      console.error(`Something wrong with init data: ${storeKey}, ${storeData}`)
+      console.error(`Something wrong with init data: ${storeKey}, ${storeData}`);
 
-      return null
+      return null;
     }
 
-    this._setStore({ storeKey, storeData })
+    this._setStore({ storeKey, storeData });
 
-    return this.getStore({ storeKey })
-  }
+    return this.getStore({ storeKey });
+  };
 
   /**
    * Returns an object with data inside particular key from localStore.
@@ -190,27 +190,27 @@ class LocalStorageManager {
    */
   getStore = ({ storeKey }: IKeyData) => {
     if (!storeKey) {
-      console.error(`Store key was missed: ${storeKey}`)
+      console.error(`Store key was missed: ${storeKey}`);
 
-      return null
+      return null;
     }
 
-    let currentStore = null
+    let currentStore = null;
 
     if (this._isLocalStorageAvailable() && !this._state.useCookieStore) {
-      const { localStorage } = window
+      const { localStorage } = window;
 
-      currentStore = localStorage.getItem(storeKey)
+      currentStore = localStorage.getItem(storeKey);
     } else {
-      currentStore = this._getCookie(storeKey)
+      currentStore = this._getCookie(storeKey);
     }
 
     try {
-      return JSON.parse(currentStore)
+      return JSON.parse(currentStore);
     } catch {
-      return currentStore
+      return currentStore;
     }
-  }
+  };
 
   /**
    * Allow delete some key-value pair from localStore.
@@ -221,16 +221,16 @@ class LocalStorageManager {
   removeStore = ({ storeKey }: IKeyData) => {
     try {
       if (this._isLocalStorageAvailable() && !this._state.useCookieStore) {
-        const { localStorage } = window
+        const { localStorage } = window;
 
-        localStorage.removeItem(storeKey)
+        localStorage.removeItem(storeKey);
       } else {
-        this._deleteCookie(storeKey)
+        this._deleteCookie(storeKey);
       }
     } catch (e) {
-      throw new Error(`Some problem occurred during storage removing, ${e}`)
+      throw new Error(`Some problem occurred during storage removing, ${e}`);
     }
-  }
+  };
 
   /**
    * Allows to set new data in some particular store by key.
@@ -238,25 +238,25 @@ class LocalStorageManager {
    * @function
    *
    */
-  addToStore = ({ storeKey, storeData }: any) => {
+  addToStore = ({ storeKey, storeData }) => {
     if (!isValue(storeData) || !storeKey) {
-      console.error('Store was not updated! Error in config: ', storeKey, storeData)
+      console.error('Store was not updated! Error in config: ', storeKey, storeData);
 
-      return null
+      return null;
     }
 
-    const prevStore = this.getStore({ storeKey })
+    const prevStore = this.getStore({ storeKey });
 
     const newData =
-      (isArray(prevStore) && [...prevStore, storeData]) || (isObject(prevStore) && { ...prevStore, ...storeData })
+      (isArray(prevStore) && [...prevStore, storeData]) || (isObject(prevStore) && { ...prevStore, ...storeData });
 
     this._setStore({
       storeKey,
       storeData: newData
-    })
+    });
 
-    return this.getStore({ storeKey })
-  }
+    return this.getStore({ storeKey });
+  };
 
   /**
    * Allows to delete some data from the store by key.
@@ -265,58 +265,58 @@ class LocalStorageManager {
    *
    */
   removeFromStore = ({ storeKey, valID, valMatch }: IDeleteFromStore) => {
-    const prevStore = this.getStore({ storeKey })
+    const prevStore = this.getStore({ storeKey });
 
     const filterArrayData = () => {
       if (valID) {
-        return [...prevStore.filter((unit: any) => unit[valID] !== valMatch)]
+        return [...prevStore.filter((unit) => unit[valID] !== valMatch)];
       }
 
-      return [...prevStore.filter((unit: any) => unit !== valMatch)]
-    }
+      return [...prevStore.filter((unit) => unit !== valMatch)];
+    };
 
     const filterObjectData = () => {
-      const newObjData = {}
+      const newObjData = {};
 
       Object.keys(prevStore).forEach((key) => {
         if (key === valID && prevStore[valID] === valMatch) {
-          return
+          return;
         }
 
-        newObjData[key] = prevStore[key]
-      })
+        newObjData[key] = prevStore[key];
+      });
 
-      return newObjData
-    }
+      return newObjData;
+    };
 
     this._setStore({
       storeKey,
       storeData: (isArray(prevStore) && filterArrayData()) || (isObject(prevStore) && filterObjectData())
-    })
+    });
 
-    return this.getStore({ storeKey })
-  }
+    return this.getStore({ storeKey });
+  };
 
   init = (props: IProps) => {
-    const { storeKey, useCookieStore } = props
-    const isLocalStorageAvailable = this._isLocalStorageAvailable()
+    const { storeKey, useCookieStore } = props;
+    const isLocalStorageAvailable = this._isLocalStorageAvailable();
 
     this._setState({
       useCookieStore: useCookieStore,
       isLocalStorageAvailable
-    })
+    });
 
     // in case we have some data stored
     // before initialization stage in cookie/localStorage
-    this._setInitPayload(isLocalStorageAvailable, storeKey)
-  }
+    this._setInitPayload(isLocalStorageAvailable, storeKey);
+  };
 }
 
-export default LocalStorageManager
+export default LocalStorageManager;
 
 /**
  * @deprecated
  *
  */
 export const { hasKey, addStore, updateStore, getStore, removeStore, removeFromStore, addToStore, init } =
-  new LocalStorageManager()
+  new LocalStorageManager();

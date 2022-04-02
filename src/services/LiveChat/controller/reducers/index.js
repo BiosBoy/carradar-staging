@@ -6,10 +6,10 @@ import {
   CONNECTION_ERROR,
   CLEAR_ERROR,
   SET_NEW_MESSAGES_COUNT
-} from '../../constants'
-import initialState from '../initialState'
+} from '../../constants';
+import initialState from '../initialState';
 
-import setErrorMessage from '../../utils/setErrorMessage'
+import setErrorMessage from '../../utils/setErrorMessage';
 
 // ------------------------------------
 // Action Handlers
@@ -62,15 +62,15 @@ const ACTION_HANDLERS = {
     ...state,
     newMessagesCount: action.count
   })
-}
+};
 
 // ------------------------------------
 // Reducer
 // ------------------------------------
 const reducer = (state = initialState, action) => {
-  const handler = ACTION_HANDLERS[action.type]
+  const handler = ACTION_HANDLERS[action.type];
 
-  return handler ? handler(state, action) : state
-}
+  return handler ? handler(state, action) : state;
+};
 
-export default reducer
+export default reducer;

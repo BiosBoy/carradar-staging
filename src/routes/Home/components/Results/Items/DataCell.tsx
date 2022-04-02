@@ -1,20 +1,20 @@
-import React from 'react'
+import React from 'react';
 
-import styles from '../index.scss'
+import styles from '../index.scss';
 
-import { toMoney } from '../../../../../utils/toMoney'
+import { toMoney } from '../../../../../utils/toMoney';
 
 export interface IProps {
-  icon: string
-  title: string
-  data: string
+  icon: string;
+  title: string;
+  data: string;
 }
 
 const DataCell = ({ icon, title, data }: IProps) => {
-  let currentData = data
+  let currentData = data;
 
   if (icon === 'price') {
-    currentData = toMoney({ value: Number(data), currency: 'USD' })
+    currentData = toMoney({ value: Number(data), currency: 'USD' });
   }
 
   return (
@@ -25,7 +25,7 @@ const DataCell = ({ icon, title, data }: IProps) => {
         <span className={styles.text}>{currentData}</span>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default DataCell
+export default DataCell;

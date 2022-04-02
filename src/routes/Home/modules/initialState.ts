@@ -1,4 +1,4 @@
-import { IStore } from '../interfaces/IStore'
+import { IStore } from '../interfaces/IStore';
 
 const initialState: IStore = {
   searchCarNumber: null,
@@ -12,6 +12,6 @@ const initialState: IStore = {
     isSearchInProgress: false
   },
   error: null
-}
+};
 
-export default initialState
+export default initialState;

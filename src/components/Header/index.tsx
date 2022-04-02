@@ -1,14 +1,14 @@
-import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 
-import Logo from './Logo'
-import Links from './Links'
-import Language from './Language'
-import Sidebar from '../Sidebar'
+import Logo from './Logo';
+import Links from './Links';
+import Language from './Language';
+import Sidebar from '../Sidebar';
 
-import styles from './index.scss'
+import styles from './index.scss';
 
-import isDesktop from '../../utils/isDesktop'
+import isDesktop from '../../utils/isDesktop';
 
 const DesktopMenuLayout = () => {
   return (
@@ -16,13 +16,13 @@ const DesktopMenuLayout = () => {
       <Links />
       <Language />
     </>
-  )
-}
+  );
+};
 
 const TouchscreenMenuLayout = () => {
-  const [isBurgerClicked, toggleBurger] = useState(false)
+  const [isBurgerClicked, toggleBurger] = useState(false);
 
-  const _handleClose = () => toggleBurger(!isBurgerClicked)
+  const _handleClose = () => toggleBurger(!isBurgerClicked);
 
   return (
     <div className={styles.mobileMenu}>
@@ -42,22 +42,22 @@ const TouchscreenMenuLayout = () => {
       </button>
       <Sidebar isOpen={isBurgerClicked} onClickClose={toggleBurger} />
     </div>
-  )
-}
+  );
+};
 
 const Header = () => {
-  const isDesktopLayout = useSelector(isDesktop)
+  const isDesktopLayout = useSelector(isDesktop);
 
   return (
-    <div className={styles.headerWrap}>
+    <div className={`${styles.headerWrap} ${!isDesktopLayout ? styles.sticky : ''}`}>
       <div id='header' className={styles.header}>
         <Logo />
         {isDesktopLayout ? <DesktopMenuLayout /> : <TouchscreenMenuLayout />}
       </div>
     </div>
-  )
-}
+  );
+};
 
-Header.displayName = 'Header'
+Header.displayName = 'Header';
 
-export default Header
+export default Header;

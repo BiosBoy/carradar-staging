@@ -1,8 +1,6 @@
-import {
-  ACCEPT_COOKIE
-} from '../../constants'
+import { ACCEPT_COOKIE } from '../../constants';
 
-import initialState from '../initialState'
+import initialState from '../initialState';
 
 // ------------------------------------
 // Action Handlers
@@ -12,15 +10,15 @@ const ACTION_HANDLERS = {
     ...state,
     isAccepted: true
   })
-}
+};
 
 // ------------------------------------
 // Reducer
 // ------------------------------------
 const reducer = (state = initialState, action) => {
-  const handler = ACTION_HANDLERS[action.type]
+  const handler = ACTION_HANDLERS[action.type];
 
-  return handler ? handler(state, action) : state
-}
+  return handler ? handler(state, action) : state;
+};
 
-export default reducer
+export default reducer;

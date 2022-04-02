@@ -1,9 +1,9 @@
-import { IKeyDown, IConfig, TKeyTypes } from './interfaces'
-import { KEY_CODES, KEY_TYPES } from './constants'
+import { IKeyDown, IConfig, TKeyTypes } from './interfaces';
+import { KEY_CODES, KEY_TYPES } from './constants';
 
 /**
  *  @name keyDownHandler
- *  @author 3p-sviat
+ *  @author info@carradar.com.ua
  *  @version 1.1.0
  *  @description helps handle keyboard event in an easy way.
  *
@@ -21,51 +21,51 @@ import { KEY_CODES, KEY_TYPES } from './constants'
 
 const keyDownHandler = ({ event, keysConfig = [] }: IKeyDown): void => {
   if (!event || Object.keys(event).length === 0) {
-    console.error('Event config is invalided: ', event)
+    console.error('Event config is invalided: ', event);
 
-    return
+    return;
   }
 
   const preventBubbling = (isPrevent: boolean) => {
     if (isPrevent) {
-      event.preventDefault()
-      event.stopPropagation()
+      event.preventDefault();
+      event.stopPropagation();
     }
-  }
+  };
 
   const emitKeyCodeEvent = (config: IConfig) => {
     if (!config || Object.keys(config).length === 0) {
-      console.error('Some error inside the keyDown config: ', config)
+      console.error('Some error inside the keyDown config: ', config);
 
-      return
+      return;
     }
 
-    const { type, onEvent, isPreventBubbling = false, isDisabled = false } = config || {}
+    const { type, onEvent, isPreventBubbling = false, isDisabled = false } = config || {};
 
     if (!type || KEY_CODES[type] !== event.keyCode || isDisabled || !onEvent) {
-      !onEvent && console.error('You forgot to throw the event handler: ', config)
-      !type && console.error('You forgot to throw the event type key: ', config)
+      !onEvent && console.error('You forgot to throw the event handler: ', config);
+      !type && console.error('You forgot to throw the event type key: ', config);
 
-      return
+      return;
     }
 
-    preventBubbling(isPreventBubbling)
-    onEvent(event)
-  }
+    preventBubbling(isPreventBubbling);
+    onEvent(event);
+  };
 
   const runWatcher = () => {
     if (!keysConfig || keysConfig.length === 0) {
-      console.error('Some error inside the keyConfigs: ', keysConfig)
+      console.error('Some error inside the keyConfigs: ', keysConfig);
 
-      return
+      return;
     }
 
-    keysConfig.forEach((config: IConfig) => emitKeyCodeEvent(config))
-  }
+    keysConfig.forEach((config: IConfig) => emitKeyCodeEvent(config));
+  };
 
-  runWatcher()
-}
+  runWatcher();
+};
 
-export { KEY_CODES, KEY_TYPES, TKeyTypes }
+export { KEY_CODES, KEY_TYPES, TKeyTypes };
 
-export default keyDownHandler
+export default keyDownHandler;
