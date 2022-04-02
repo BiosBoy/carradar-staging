@@ -43,3 +43,19 @@
     }
   }
 }
+
+:global {
+  #darkMode {
+    .rcw-sender {
+      background-color: rgb(33, 33, 33);
+    }
+
+    .rcw-new-message {
+        background-color: rgb(28, 28, 33);
+    }
+
+    .rcw-send {
+      background-color: rgb(28, 28, 33);
+    }
+  }
+}

@@ -83,3 +83,22 @@
     border-radius: 2px;
   }
 }
+
+:global {
+  #darkMode {
+    .rcw-header::after {
+        background: rgb(92, 201, 59);
+        box-shadow: rgb(18, 18, 18) 0px 0px 2px;
+    }
+
+    #chat-header.rcw-header {
+        background-color: rgb(20, 82, 40);
+        color: rgb(255, 255, 255);
+    }
+
+    .closeBtn {
+        border: 1px solid rgb(28, 28, 33);
+        color: rgb(255, 255, 255);
+    }
+  }
+}

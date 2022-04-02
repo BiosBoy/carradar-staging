@@ -64,3 +64,12 @@
     }
   }
 }
+
+:global {
+  #darkMode {
+    button.rcw-launcher {
+      background-color: rgb(20, 82, 40);
+      box-shadow: rgb(99, 99, 99) 0px 2px 10px 1px;
+    }
+  }
+}

@@ -41,3 +41,18 @@
   color: #68da03;
   text-decoration: none;
 }
+
+:global(#darkMode) {
+  .cookieWrap {
+    background: rgb(38, 38, 38);
+    box-shadow: rgb(8, 8, 8) 0px -8px 15px;
+  }
+
+  .text {
+    color: rgb(255, 255, 255);
+  }
+
+  .link {
+    color: rgb(189, 230, 153);
+  }
+}

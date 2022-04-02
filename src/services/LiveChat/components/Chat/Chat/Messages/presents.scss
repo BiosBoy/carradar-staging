@@ -30,3 +30,17 @@
     margin: 5px;
   }
 }
+
+:global {
+  #darkMode {
+    .presetBlock {
+        background: rgba(20, 82, 40, 0.46);
+        color: rgb(255, 255, 255);
+        text-shadow: rgba(18, 18, 18, 0.19) 0px 1px 2px;
+    }
+
+    .presetsInfo {
+        color: rgb(204, 204, 204);
+    }
+  }
+}

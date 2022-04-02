@@ -198,3 +198,45 @@
     }
   }
 }
+
+:global {
+  #darkMode {
+    .rcw-messages-container {
+      background-color: rgb(28, 28, 33);
+    }
+
+    .rcw-snippet-details {
+      border-left: 2px solid rgb(71, 209, 104);
+      margin-top: 5px;
+      padding-left: 10px;
+    }
+
+    .rcw-message-text p {
+      color: rgb(191, 191, 191);
+      font-family: Arial;
+      font-size: 14px;
+    }
+
+    #input.rcw-new-message::placeholder {
+      color: rgb(191, 191, 191);
+    }
+
+    .rcw-timestamp,
+    .senderName {
+      color: rgb(191, 191, 191);
+    }
+
+    .rcw-client .rcw-message-text.errorMessage {
+      background-color: rgb(204, 51, 51);
+      color: rgb(255, 255, 255);
+    }
+
+    .rcw-client .rcw-message-text.errorMessage p {
+      color: rgb(255, 255, 255);
+    }
+
+    .rcw-client .rcw-message-text.errorMessage::before {
+      color: rgb(230, 153, 153);
+    }
+  }
+}

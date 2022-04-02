@@ -51,3 +51,21 @@
     }
   }
 }
+
+:global {
+  #darkMode {
+    .newMessagesWrapper {
+      background: linear-gradient(rgb(36, 120, 143), rgb(75, 190, 210));
+      border: 1px solid rgb(75, 190, 210);
+      box-shadow: rgb(41, 145, 163) 0px 1px 6px;
+    }
+
+    .messageTExt {
+        color: rgb(255, 255, 255);
+    }
+
+    .new-messages-anim {
+        box-shadow: rgb(99, 99, 99) 0px 2px 10px 1px;
+    }
+  }
+}

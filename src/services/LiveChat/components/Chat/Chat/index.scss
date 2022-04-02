@@ -71,3 +71,15 @@
     }
   }
 }
+
+:global {
+  #darkMode {
+    .rcw-conversation-container {
+      box-shadow: rgb(99, 99, 99) 0px 2px 10px 1px;
+    }
+
+    .chat-anim {
+      box-shadow: rgb(99, 99, 99) 0px 2px 10px 1px;
+    }
+  }
+}

@@ -7,3 +7,9 @@
 .rcw-launcher {
   background-color: #5cc302;
 }
+
+:global(#darkMode) {
+  .rcw-launcher {
+    background-color: rgb(20, 82, 40);
+  }
+}
