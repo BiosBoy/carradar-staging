@@ -17,6 +17,7 @@ const getPrerenderToken = require('./prerender/getPrerenderToken');
 const loginStateManager = require('./session/loginStateManager');
 const getSessionData = require('./session/getSessionData');
 const getCarsxeToken = require('./carsxe/getToket');
+const getRiaToken = require('./db/ria/getToket');
 const runCrons = require('./crons');
 
 const PORT = process.env.ENV_LOCAL === 'true' ? 3002 : process.env.PORT;
@@ -34,6 +35,7 @@ const func = async () => {
   await getSessionData();
   await getPrerenderToken();
   await getCarsxeToken();
+  await getRiaToken();
 
   runCrons();
 

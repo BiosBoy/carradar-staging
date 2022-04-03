@@ -41,3 +41,18 @@ jobs:
 
     - name: Build fresh chunks
       run: yarn compile:csr
+
+    - name: Commit changes
+      run: |
+          git config user.name biosboy
+          git config user.email svyat770@github.com
+          git add .
+          git diff --quiet && git diff --staged --quiet || git commit -am "Apply formatting changes [skip ci]"
+          git push -f
+
+    - name: Deploy to Heroku
+      uses: AkhileshNS/heroku-deploy@v3.12.12
+      with:
+        heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+        heroku_app_name: "carradar"
+        heroku_email: "svyat770@gmail.com"

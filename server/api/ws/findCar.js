@@ -62,14 +62,14 @@ const findCarEndpoint = (ws, req) => {
       })
     };
 
+    await setCarCollection(req, responseData);
+
     ws.send(
       JSON.stringify({
         data: responseData,
         type: 'home/CAR_SAVED'
       })
     );
-
-    await setCarCollection(req, responseData);
   });
 };
 
