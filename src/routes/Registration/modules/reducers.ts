@@ -1,7 +1,7 @@
 // some reducers here. The same link in on top level
 import initialState from './initialState';
 
-import { REGISTRATION_ATTEMPT, REGISTRATION_SAVED, REGISTRATION_ERROR, REGISTRATION_INPUT } from '../constants';
+import { REGISTRATION_ATTEMPT, REGISTRATION_SAVED, REGISTRATION_ERROR, REGISTRATION_INPUT, SOCIAL_REGISTRATION_DATA } from '../constants';
 import { IStore } from '../interfaces/IStore';
 import { IFetchError, IRegistrationInput } from '../interfaces/IController';
 
@@ -10,6 +10,18 @@ import { IFetchError, IRegistrationInput } from '../interfaces/IController';
 // ------------------------------------
 // you need to fill all of your reducers cases inside this object like an arrow functions
 const ACTION_HANDLERS = {
+  [SOCIAL_REGISTRATION_DATA]: (state: IStore, action: any) => ({
+    ...state,
+    email: action.email,
+    error: null,
+    password: '',
+    passwordConfirmation: '',
+    username: action.username,
+    usersurname: action.usersurname,
+    imageurl: action.imagesrc,
+    isRegistrationFetch: true,
+    isSocialRegistration: true
+  }),
   [REGISTRATION_ATTEMPT]: (state: IStore) => ({
     ...state,
     isRegistrationFetch: true
@@ -21,7 +33,9 @@ const ACTION_HANDLERS = {
     isRegistrationFetch: false,
     password: '',
     passwordConfirmation: '',
-    username: ''
+    username: '',
+    usersurname: '',
+    imageurl: ''
   }),
   [REGISTRATION_ERROR]: (state: IStore, action: IFetchError) => ({
     ...state,

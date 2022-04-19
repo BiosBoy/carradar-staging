@@ -1,28 +1,36 @@
+/* eslint-disable complexity */
+const jwt = require('jsonwebtoken');
+
 const findOne = require('../../db/mongodb/findOne');
 const putOne = require('../../db/mongodb/putOne');
 
 const { USERS_COLLECTION_ID } = require('../../db/mongodb/constants');
+const { TOKEN_COOKIE_NAME, JWT_SECRET } = require('../../constants/tokens');
+
+const getGoogleUserData = require('../../tokens/getGoogleOathData');
 
 const createPass = require('../../utils/createPass');
 
 const registration = async (req, res) => {
-  if (req.session.email) {
+  const { session, body } = req;
+
+  if (session.email) {
     return res.send(JSON.stringify({ error: 'You are logged in. Please logout first' }));
   }
 
-  if (!req.body.email || !req.body.username || !req.body.password || !req.body.passwordConfirmation) {
+  if (!body.email || !body.username || (!body.isSocialRegistration && (!body.password || !body.passwordConfirmation))) {
     return res.send(JSON.stringify({ error: 'Not all data required was provided' }));
   }
 
-  if (req.body.password !== req.body.passwordConfirmation) {
+  if ((!body.isSocialRegistration && (!body.password !== !body.passwordConfirmation))) {
     return res.send(JSON.stringify({ error: 'passwords dont match' }));
   }
 
   const user = await findOne({
     collectionName: USERS_COLLECTION_ID,
     entityData: {
-      email: req?.body?.email,
-      username: req?.body?.username
+      email: body?.email,
+      username: body?.username
     }
   });
 
@@ -34,21 +42,38 @@ const registration = async (req, res) => {
     return res.send(JSON.stringify({ error: payload }));
   }
 
+  if (body.isSocial) {
+    const googleUser = await getGoogleUserData(body.token?.access_token, body.token?.id_token);
+
+    if (!googleUser) {
+      return res.send(JSON.stringify({ error: 'User token is invalid' }));
+    }
+
+    res.cookie(
+      TOKEN_COOKIE_NAME,
+      jwt.sign({ data: googleUser }, JWT_SECRET),
+      { maxAge: 900000, httpOnly: true, secure: false }
+    );
+  }
+
   const resultSave = await putOne({
     collectionName: USERS_COLLECTION_ID,
     entityData: {
-      email: req.body.email,
-      username: req.body.username,
-      password: await createPass(req.body.password),
+      email: body.email,
+      username: body.username,
+      password: body.password ? await createPass(body.password) : '',
       bio: '',
-      usersurname: '',
-      mobile: ''
+      usersurname: body.usersurname || '',
+      mobile: '',
+      image: '',
+      imageurl: body.imageurl || ''
     }
   });
 
-  req.session.email = req.body.email;
-  req.session.password = req?.body?.password;
+  console.log('User is registered:', session.email);
 
+  session.email = body.email;
+  res.cookie('isLogged', true, { maxAge: 86400000, httpOnly: false });
   res.send(JSON.stringify(resultSave));
 };
 

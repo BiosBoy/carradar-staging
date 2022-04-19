@@ -4,13 +4,14 @@ import { Route, Switch } from 'react-router-dom';
 
 import { NotifyPopUp, Header, Body, Footer, ScrollToTop } from '../components';
 import { Home, PageNotFound, Privacy, AboutUs, Contact, Logout, Login, Registration, Profile } from '../routes';
-import { LiveChat, CookiePanel } from '../services';
+import { LiveChat, CookiePanel, OathWrapper } from '../services';
 
 import getLangPrefix from '../utils/gelLangPrefix';
 
 import { IStore } from '../interfaces/IStore';
 // eslint-disable-next-line import/no-unassigned-import
 import '../../i18nextConf';
+
 
 import '../styles/index.scss';
 import styles from './index.scss';
@@ -24,27 +25,32 @@ const CoreLayout = ({ language, isDarkMode }: IProps) => {
   const lang = getLangPrefix(language);
 
   return (
-    <div id={isDarkMode ? 'darkMode' : ''} className={styles.appWrapper}>
-      <NotifyPopUp />
-      <Header />
-      <Body>
-        <Switch>
-          <Route exact={true} path={lang} component={Home} />
-          <Route path={`${lang}contact`} component={Contact} />
-          <Route path={`${lang}about-us`} component={AboutUs} />
-          <Route path={`${lang}sign-out`} component={Logout} />
-          <Route path={`${lang}sign-in`} component={Login} />
-          <Route path={`${lang}sign-up`} component={Registration} />
-          <Route path={`${lang}profile`} component={Profile} />
-          <Route path={`${lang}policy`} component={Privacy} />
-          <Route path='*' component={PageNotFound} />
-        </Switch>
-      </Body>
-      <Footer />
-      <LiveChat />
-      <ScrollToTop />
-      <CookiePanel />
-    </div>
+    <OathWrapper>
+      <div id={isDarkMode ? 'darkMode' : ''} className={styles.appWrapper}>
+        <NotifyPopUp />
+        <Header />
+        <Body>
+          <Switch>
+            <Route
+              exact={true} path={lang}
+              component={Home}
+            />
+            <Route path={`${lang}contact`} component={Contact} />
+            <Route path={`${lang}about-us`} component={AboutUs} />
+            <Route path={`${lang}sign-out`} component={Logout} />
+            <Route path={`${lang}sign-in`} component={Login} />
+            <Route path={`${lang}sign-up`} component={Registration} />
+            <Route path={`${lang}profile`} component={Profile} />
+            <Route path={`${lang}policy`} component={Privacy} />
+            <Route path='*' component={PageNotFound} />
+          </Switch>
+        </Body>
+        <Footer />
+        <LiveChat />
+        <ScrollToTop />
+        <CookiePanel />
+      </div>
+    </OathWrapper>
   );
 };
 

@@ -1,15 +1,16 @@
 export interface ISearchHistory {
   timestamp: number;
   carData: {
-    image: string
-    uid: string
-  }
+    image: string;
+    uid: string;
+  };
 }
 
 export interface IStore {
   id: string;
   username: string;
   usersurname: string;
+  imageurl: string;
   mobile: string;
   bio: string;
   email: string;

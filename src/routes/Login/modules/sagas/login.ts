@@ -12,11 +12,13 @@ import { requestError, setLogged } from '../../../../controller/actions';
 function* loadLoginData() {
   const { login }: IStore = yield getState();
 
-  const { userdata, password } = login;
+  const { token, userdata, password, isSocial } = login;
 
   const response = yield fetchUrl(`${getServerURL()}/api/login`, {
+    token,
     userdata,
-    password
+    password,
+    isSocial
   });
 
   if (response.error) {

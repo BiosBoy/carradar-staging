@@ -12,13 +12,17 @@ import { requestError, setLogged } from '../../../../controller/actions';
 function* loadRegistrationData() {
   const { registration }: IStore = yield getState();
 
-  const { username, email, password, passwordConfirmation } = registration;
+  console.log(registration, 'registration')
+  const { username, usersurname, email, password, passwordConfirmation, imageurl, isSocialRegistration } = registration;
 
   const response = yield fetchUrl(`${getServerURL()}/api/registration`, {
     username,
     email,
     password,
-    passwordConfirmation
+    passwordConfirmation,
+    isSocialRegistration,
+    usersurname,
+    imageurl
   });
 
   if (response.error) {

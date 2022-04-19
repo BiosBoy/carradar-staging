@@ -4,6 +4,7 @@ const initialState: IStore = {
   id: '',
   username: '',
   usersurname: '',
+  imageurl: '',
   mobile: '',
   bio: '',
   email: '',

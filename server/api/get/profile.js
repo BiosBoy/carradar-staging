@@ -4,9 +4,9 @@ const isLogged = require('../../utils/isLogged');
 const { USERS_COLLECTION_ID, CARS_COLLECTION_ID } = require('../../db/mongodb/constants');
 
 const profile = async (req, res) => {
-  console.log('retrieving profile data', req.session);
+  console.log('retrieving profile data', req.session, req.cookies);
 
-  if (!isLogged(req.session)) {
+  if (!isLogged(req.session, req.cookies)) {
     return res.redirect('/');
   }
 
@@ -34,6 +34,7 @@ const profile = async (req, res) => {
       username: user.entity.username,
       mobile: user.entity.mobile,
       usersurname: user.entity.usersurname,
+      imageurl: user.entity.imageurl,
       bio: user.entity.bio,
       searchHistory: cars.entity.searchHistory || null
     })

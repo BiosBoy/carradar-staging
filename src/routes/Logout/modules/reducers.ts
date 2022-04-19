@@ -14,10 +14,11 @@ const ACTION_HANDLERS = {
     ...state,
     isLogoutFetch: true
   }),
-  [LOGOUT_SAVED]: (state: IStore) => ({
+  [LOGOUT_SAVED]: (state: IStore, action: any) => ({
     ...state,
     isManualReload: true,
-    isLogoutFetch: false
+    isLogoutFetch: false,
+    error: action.error || state.error
   }),
   [LOGOUT_ERROR]: (state: IStore, action: IFetchError) => ({
     ...state,

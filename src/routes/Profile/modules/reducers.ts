@@ -31,6 +31,7 @@ const ACTION_HANDLERS = {
     mobile: action.mobile,
     bio: action.bio,
     usersurname: action.usersurname,
+    imageurl: action.imageurl,
     searchHistory: action.searchHistory,
     isProfileFetch: false
   }),

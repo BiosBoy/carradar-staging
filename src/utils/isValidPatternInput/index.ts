@@ -1,3 +1,3 @@
-const isValidPatternInput = (value: string) => value && /^[А-Я]{2}[0-9]{4}[А-Я]{2}$/i.test(value);
+const isValidPatternInput = (value: string) => value && /^[А-Я|A-Z]{2}[0-9]{4}[А-Я|A-Z]{2}$/i.test(value);
 
 export default isValidPatternInput;

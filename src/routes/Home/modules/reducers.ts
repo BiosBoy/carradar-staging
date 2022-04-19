@@ -38,7 +38,8 @@ const ACTION_HANDLERS = {
   [WS_DISCONNECTED]: (state: IStore) => ({
     ...state,
     statuses: {
-      isSearchError: true,
+      // eslint-disable-next-line react/destructuring-assignment
+      isSearchError: state.statuses.isSearchInProgress,
       isSearchInProgress: false
     },
     error: null

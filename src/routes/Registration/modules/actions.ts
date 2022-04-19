@@ -1,9 +1,14 @@
-import { REGISTRATION_ATTEMPT, REGISTRATION_SAVED, REGISTRATION_ERROR, REGISTRATION_INPUT } from '../constants';
+import { SOCIAL_REGISTRATION_DATA, REGISTRATION_ATTEMPT, REGISTRATION_SAVED, REGISTRATION_ERROR, REGISTRATION_INPUT } from '../constants';
 
 import { IRegistrationInput, IType, IFetchError } from '../interfaces/IController';
 
 export const loadRegistrationDataAttempt = (): IType => ({
   type: REGISTRATION_ATTEMPT
+});
+
+export const setSocialRegistrationData = (payload: any): { payload: any; } & IType => ({
+  ...payload,
+  type: SOCIAL_REGISTRATION_DATA
 });
 
 export const loadRegistrationDataSaved = (): IType => ({

@@ -1,0 +1,6 @@
+{
+	"appId": "com.carradar.app",
+	"appName": "carradar",
+	"webDir": "build",
+	"bundledWebRuntime": false
+}

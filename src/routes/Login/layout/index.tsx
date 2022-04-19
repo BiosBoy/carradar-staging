@@ -3,9 +3,10 @@ import { push } from 'connected-react-router';
 import { withRouter } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';
 
+import GoogleOAthLoginButton from '../../../services/OAth/LoginButton';
 import Button from '../../../components/Button';
 
-import { setLoginInput, loadLoginDataAttempt } from '../modules/actions';
+import { setLoginInput, setSocialData, loadLoginDataAttempt } from '../modules/actions';
 
 import useLocales from '../hooks/useLocales';
 import getLangPrefix from '../../../utils/gelLangPrefix';
@@ -45,6 +46,10 @@ const Login = memo(() => {
     dispatch(loadLoginDataAttempt());
   };
 
+  const _handleSocialSubmit = userData => {
+    dispatch(setSocialData(userData));
+  };
+
   const _handleSubmitKeyDown = (event) => {
     event.code === 'Enter' && _handleSubmit();
   };
@@ -61,6 +66,7 @@ const Login = memo(() => {
           name='userdata'
           type='text'
           ref={ref}
+          disabled={isLoginFetch}
           className={styles.input}
           value={userdata}
           onChange={_handleInput}
@@ -74,6 +80,7 @@ const Login = memo(() => {
         <input
           id='password'
           className={styles.input}
+          disabled={isLoginFetch}
           name='password'
           type='password'
           value={password}
@@ -89,6 +96,10 @@ const Login = memo(() => {
         label={SUBMIT}
       />
       {error && <span className={styles.error}>{error}</span>}
+      <div className={styles.socialWrap}>
+        <span className={styles.label}>Use Social Links to Login:</span>
+        <GoogleOAthLoginButton callback={_handleSocialSubmit} />
+      </div>
     </div>
   );
 });

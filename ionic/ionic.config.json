@@ -1,0 +1,7 @@
+{
+  "name": "carradar",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}

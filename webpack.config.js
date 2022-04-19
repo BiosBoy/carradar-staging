@@ -201,7 +201,7 @@ const extraPluginsByModes = {
   production: [
     new HtmlWebpackPlugin({
       template: path.resolve('./src/index.html'),
-      filename: 'view.html',
+      filename: 'index.html',
       inject: 'body',
       chunksSortMode: 'auto'
     }),

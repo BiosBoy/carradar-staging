@@ -40,6 +40,10 @@ $button: #5ac2008f;
   width: 100%;
   outline: none;
   margin:0;
+
+  &:disabled {
+    background: #e6e6e640 !important;
+  }
 }
 
 .input[type="text"],
@@ -86,6 +90,22 @@ $button: #5ac2008f;
   color: red;
   font-size: 12px;
   margin-top: 10px;
+}
+
+.socialWrap {
+  margin-top: 50px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+
+  .label {
+    color: #111;
+    margin-bottom: 25px;
+  }
 }
 
 :global(#darkMode) {

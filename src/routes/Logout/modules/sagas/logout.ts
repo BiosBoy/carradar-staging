@@ -10,6 +10,12 @@ import { requestError, setLogged } from '../../../../controller/actions';
 function* loadLogoutData() {
   const response = yield fetchUrl(`${getServerURL()}/api/logout`);
 
+  if (response.error) {
+    yield put(loadLogoutDataSaved(response.error));
+
+    return;
+  }
+
   try {
     yield put(setManualLogout(true));
     yield put(setLogged(false));

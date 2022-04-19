@@ -2,13 +2,17 @@ import React, { useEffect, useRef, memo } from 'react';
 import { push } from 'connected-react-router';
 import { withRouter } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';
+import { GApiProvider } from 'react-gapi-auth2';
 
 import Button from '../../../components/Button';
+import GoogleOAthLoginButton from '../../../services/OAth/LoginButton';
 
-import { setRegistrationInput, loadRegistrationDataAttempt } from '../modules/actions';
+import { setRegistrationInput, setSocialRegistrationData, loadRegistrationDataAttempt } from '../modules/actions';
 import useLocales from '../hooks/useLocales';
 import getLangPrefix from '../../../utils/gelLangPrefix';
 import validateEmail from '../../../utils/validateEmail';
+
+import { OATH_CONFIG } from '../../../services/OAth/constants';
 
 import styles from './index.scss';
 
@@ -46,6 +50,11 @@ const Registration = memo(() => {
     dispatch(loadRegistrationDataAttempt());
   };
 
+  const _handleSubmitSocial = (userData) => {
+    console.log(userData, 'userData');
+    dispatch(setSocialRegistrationData(userData));
+  };
+
   const _handleSubmitKeyDown = (event) => {
     event.code === 'Enter' && _handleSubmit();
   };
@@ -71,6 +80,7 @@ const Registration = memo(() => {
           value={username}
           onChange={_handleInput}
           onKeyDown={_handleSubmitKeyDown}
+          disabled={isRegistrationFetch}
         />
       </div>
       <div className={styles.contentWrap}>
@@ -85,6 +95,7 @@ const Registration = memo(() => {
           value={email}
           onChange={_handleInput}
           onKeyDown={_handleSubmitKeyDown}
+          disabled={isRegistrationFetch}
         />
         {isInvalidEmail && <span className={styles.error}>{FORM.EMAIL_TIP}</span>}
       </div>
@@ -100,6 +111,7 @@ const Registration = memo(() => {
           value={password}
           onChange={_handleInput}
           onKeyDown={_handleSubmitKeyDown}
+          disabled={isRegistrationFetch}
         />
         {isWeakPassword && <span className={styles.error}>{FORM.PASSWORD_TIP}</span>}
       </div>
@@ -115,6 +127,7 @@ const Registration = memo(() => {
           value={passwordConfirmation}
           onChange={_handleInput}
           onKeyDown={_handleSubmitKeyDown}
+          disabled={isRegistrationFetch}
         />
         {isPasswordsNotMatch && <span className={styles.error}>{FORM.PASSWORDS_MATCH}</span>}
       </div>
@@ -126,6 +139,12 @@ const Registration = memo(() => {
         label={FORM.SUBMIT}
       />
       {error && <span className={styles.error}>{error}</span>}
+      <div className={styles.socialWrap}>
+        <span className={styles.label}>Use Social Links to Register:</span>
+        <GApiProvider clientConfig={OATH_CONFIG}>
+          <GoogleOAthLoginButton callback={_handleSubmitSocial} />
+        </GApiProvider>
+      </div>
     </div>
   );
 });

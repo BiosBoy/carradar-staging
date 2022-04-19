@@ -1,7 +1,7 @@
 // some reducers here. The same link in on top level
 import initialState from './initialState';
 
-import { LOGIN_ATTEMPT, LOGIN_SAVED, LOGIN_ERROR, LOGIN_INPUT } from '../constants';
+import { USER_SOCIAL_DATA, LOGIN_ATTEMPT, LOGIN_SAVED, LOGIN_ERROR, LOGIN_INPUT } from '../constants';
 import { IStore } from '../interfaces/IStore';
 import { IFetchError, ILoginInput } from '../interfaces/IController';
 
@@ -12,6 +12,13 @@ import { IFetchError, ILoginInput } from '../interfaces/IController';
 const ACTION_HANDLERS = {
   [LOGIN_ATTEMPT]: (state: IStore) => ({
     ...state,
+    isLoginFetch: true
+  }),
+  [USER_SOCIAL_DATA]: (state: IStore, action: any) => ({
+    ...state,
+    isSocial: true,
+    userdata: action.email,
+    token: action.token,
     isLoginFetch: true
   }),
   [LOGIN_SAVED]: (state: IStore) => ({

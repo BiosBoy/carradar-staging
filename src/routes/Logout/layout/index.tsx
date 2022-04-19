@@ -1,7 +1,9 @@
+// @ts-nocheck
 import React, { useEffect, memo } from 'react';
 import { push } from 'connected-react-router';
 import { useSelector, useDispatch } from 'react-redux';
 import { withRouter } from 'react-router';
+import { useGoogleAuth } from 'react-gapi-auth2';
 
 import Button from '../../../components/Button';
 import Preloader from '../../../components/Preloader';
@@ -19,16 +21,21 @@ const Logout = memo(() => {
   const dispatch = useDispatch();
   const { isManualReload, isLogoutFetch } = useSelector(({ logout }: IStore) => logout);
   const { isLogged, locale } = useSelector(({ app }: IStore) => app);
-
-  useEffect(() => {
-    dispatch(loadLogoutDataAttempt());
-  }, [dispatch]);
+  const { googleAuth } = useGoogleAuth();
 
   useEffect(() => {
     if (!isLogged && !isManualReload) {
-      dispatch(push(getLangPrefix(locale)));
+      dispatch(push(`${getLangPrefix(locale)}`));
     }
-  }, [dispatch, locale, isLogged, isManualReload]);
+  }, []);
+
+  useEffect(() => {
+    if (!isManualReload) {
+      dispatch(loadLogoutDataAttempt());
+      googleAuth && googleAuth.signOut();
+    }
+    // googleAuth && googleAuth.signOut();
+  }, [dispatch, isManualReload, googleAuth, isLogged, locale]);
 
   const _handleManualLogout = () => {
     dispatch(setManualLogout(false));

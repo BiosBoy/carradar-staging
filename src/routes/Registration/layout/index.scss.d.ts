@@ -15,7 +15,9 @@ interface CssExports {
   'formWrap': string;
   'headline': string;
   'input': string;
+  'label': string;
   'registrationWrap': string;
+  'socialWrap': string;
   'text': string;
 }
 export const cssExports: CssExports;

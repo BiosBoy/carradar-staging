@@ -14,6 +14,7 @@ export interface IFetchSaved {
   mobile?: string;
   bio?: string;
   usersurname?: string;
+  imageurl?: string;
   searchHistory?: ISearchHistory;
 }
 

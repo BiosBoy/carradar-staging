@@ -6,8 +6,10 @@ import useLocales from '../../hooks/useLocales';
 
 import styles from './index.scss';
 
+const IMG_PLACEHOLDER = 'https://kiranworkspace.com/demo/projects/code-snippets/dashboard-comp/account-settings/img/user2.jpg';
+
 const SideBar = ({ activePanel, setActivePanel }: { activePanel: string; setActivePanel: (id: string) => void }) => {
-  const { username, usersurname } = useSelector(({ profile }: IStore) => profile);
+  const { username, usersurname, imageurl } = useSelector(({ profile }: IStore) => profile);
   const { SIDEBAR } = useLocales();
 
   const _handleActivePanelClick = ({ target }) => {
@@ -18,7 +20,7 @@ const SideBar = ({ activePanel, setActivePanel }: { activePanel: string; setActi
     <div className={styles.sidebarContainer}>
       <div className={styles.imageBlock}>
         <img
-          src='https://kiranworkspace.com/demo/projects/code-snippets/dashboard-comp/account-settings/img/user2.jpg'
+          src={imageurl || IMG_PLACEHOLDER}
           className={styles.image}
           alt=''
         />

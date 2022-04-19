@@ -4,7 +4,9 @@ const initialState: IStore = {
   userdata: '',
   password: '',
   isLoginFetch: false,
-  error: null
+  isSocial: false,
+  error: null,
+  token: null
 };
 
 export default initialState;

@@ -22,6 +22,7 @@ function* loadProfileData() {
         response.mobile,
         response.bio,
         response.usersurname,
+        response.imageurl,
         response.searchHistory
       )
     );

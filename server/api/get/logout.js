@@ -1,15 +1,14 @@
 const isLogged = require('../../utils/isLogged');
 
 const logout = (req, res) => {
-  if (!isLogged(req.session)) {
+  if (!isLogged(req.session, req.cookies)) {
     return res.redirect('/');
   }
 
-  console.log(req.session, 'logout done');
   req.session.destroy();
 
   res.cookie('isLogged', false, { maxAge: 86400000, httpOnly: false });
-  res.json(JSON.stringify({ status: 'Logged out successfully!' }));
+  res.send(JSON.stringify({ status: 'Logged out successfully!' }));
 };
 
 module.exports = logout;

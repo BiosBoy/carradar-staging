@@ -17,7 +17,7 @@ const manifest = require('../../public/assets-manifest');
 const helmet = Helmet.renderStatic();
 
 const ssr = async (_req, res) => {
-  const indexFile = path.resolve(__dirname, '../../public/view.html');
+  const indexFile = path.resolve(__dirname, '../../public/index.html');
   const htmlData = await fs.readFileSync(indexFile, 'utf8');
 
   const context = {};

@@ -2,16 +2,11 @@
   "name": "check-my-car",
   "version": "1.0.0",
   "description": "service for checking car data in ukraine",
-  "main": "index.tsx",
+  "main": "./electron/index.js",
   "author": "Sviat Kuzhelev",
   "private": true,
   "email": "svyat770@gmail.com",
   "license": "MIT",
-  "engines": {
-    "node": "^16",
-    "npm": "^6.14.8",
-    "yarn": "^1.22.10"
-  },
   "lint-staged": {
     "*.json": [
       "jsonlint --formatter=verbose"
@@ -120,7 +115,11 @@
     "@babel/preset-env": "^7.13.15",
     "@babel/preset-react": "^7.13.13",
     "@babel/preset-typescript": "^7.13.0",
+    "@capacitor/android": "3.4.3",
+    "@capacitor/cli": "^3.4.3",
+    "@capacitor/ios": "3.4.3",
     "@cypress/webpack-preprocessor": "^5.4.11",
+    "@ionic/cli": "^6.19.0",
     "@sambego/storybook-state": "^2.0.1",
     "@storybook/addon-actions": "^6.4.17",
     "@storybook/addon-backgrounds": "^6.4.17",
@@ -134,7 +133,7 @@
     "@tensorflow/tfjs": "^3.13.0",
     "@types/classnames": "^2.3.1",
     "@types/enzyme": "^3.10.11",
-    "@types/google.maps": "^3.48.2",
+    "@types/gapi.auth2": "^0.0.56",
     "@types/history": "^5.0.0",
     "@types/jest": "^27.4.0",
     "@types/node": "^17.0.13",
@@ -150,6 +149,7 @@
     "autoprefixer": "^10.2.5",
     "awesome-typescript-loader": "^5.2.1",
     "aws-sdk": "^2.953.0",
+    "axios": "^0.26.1",
     "babel-core": "^6.26.3",
     "babel-eslint": "^10.1.0",
     "babel-jest": "^27.4.6",
@@ -178,7 +178,6 @@
     "cypress": "^6.0.0",
     "debug": "^4.3.3",
     "dotenv": "^15.0.0",
-    "electron-squirrel-startup": "^1.0.0",
     "enzyme": "^3.11.0",
     "enzyme-to-json": "^3.6.2",
     "eslint": "^8.8.0",
@@ -217,6 +216,7 @@
     "jest-cli": "^27.4.7",
     "json-loader": "^0.5.7",
     "jsonlint": "^1.6.3",
+    "jsonwebtoken": "^8.5.1",
     "lerna": "^3.22.1",
     "lint-staged": "^10.5.2",
     "memorystore": "^1.6.6",
@@ -241,11 +241,13 @@
     "prettier": "^2.5.1",
     "prop-types": "^15.8.1",
     "prun-ws": "^1.0.2",
+    "querystring": "^0.2.1",
     "react": "^17.0.2",
     "react-chat-widget": "^3.1.4",
     "react-dom": "^17.0.2",
     "react-easy-emoji": "^1.5.0",
     "react-frontload": "1.1.0",
+    "react-gapi-auth2": "^1.0.4",
     "react-helmet": "^6.1.0",
     "react-i18next": "^11.11.0",
     "react-loadable": "^5.5.0",
@@ -253,7 +255,6 @@
     "react-router": "5.2.0",
     "react-router-dom": "5.2.0",
     "react-transition-group": "^4.4.2",
-    "react_ujs": "^2.6.1",
     "redux": "^4.1.2",
     "redux-logger": "^3.0.6",
     "redux-responsive": "^4.3.8",
@@ -298,42 +299,5 @@
     "webpack-sources": "^3.2.3",
     "whatwg-fetch": "^3.5.0",
     "ws": "^7.5.3"
-  },
-  "devDependencies": {
-    "@electron-forge/cli": "^6.0.0-beta.63",
-    "@electron-forge/maker-deb": "^6.0.0-beta.63",
-    "@electron-forge/maker-rpm": "^6.0.0-beta.63",
-    "@electron-forge/maker-squirrel": "^6.0.0-beta.63",
-    "@electron-forge/maker-zip": "^6.0.0-beta.63",
-    "@storybook/addon-interactions": "^6.4.20",
-    "@storybook/testing-library": "^0.0.9",
-    "electron": "^18.0.0"
-  },
-  "config": {
-    "forge": {
-      "packagerConfig": {},
-      "makers": [
-        {
-          "name": "@electron-forge/maker-squirrel",
-          "config": {
-            "name": "check_my_car"
-          }
-        },
-        {
-          "name": "@electron-forge/maker-zip",
-          "platforms": [
-            "darwin"
-          ]
-        },
-        {
-          "name": "@electron-forge/maker-deb",
-          "config": {}
-        },
-        {
-          "name": "@electron-forge/maker-rpm",
-          "config": {}
-        }
-      ]
-    }
   }
 }

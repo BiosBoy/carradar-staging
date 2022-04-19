@@ -12,9 +12,7 @@ import keyDownHandler, { KEY_TYPES } from '../../../../utils/keyDownHandler';
 
 import CarNumberMask from '../../../../utils/CarNumberMask';
 import isValidPatternInput from '../../../../utils/isValidPatternInput';
-import isCyrillicInput from '../../../../utils/isCyrillicInput';
 import isSpecialSymbols from '../../../../utils/isSpecialSymbols';
-import isLatinInput from '../../../../utils/isLatinInput';
 import isDigitInput from '../../../../utils/isDigitInput';
 import scrollTo from '../../../../utils/smoothScroll';
 
@@ -23,6 +21,7 @@ import useLocales from './useLocales';
 import { MAX_STRING_LENGTH } from './constants';
 import isDesktop from '../../../../utils/isDesktop';
 import isTablet from '../../../../utils/isTablet';
+import translator from '../../../../utils/translator';
 
 export interface IProps {
   carNumberReceived: string;
@@ -114,8 +113,7 @@ const Search = memo(
         setSpecialSymbolsError(true);
         setInputError(true);
         setValue(inputValue);
-      } else if (!isDigitInput(value) && (!isCyrillicInput(value) || isLatinInput(value))) {
-        setCyrillicError(true);
+      } else if (isDigitInput(value)) {
         setInputError(true);
         value.length > 1 && setValue(inputValue.substr(0, inputValue.length));
       } else if (!CarNumberMask(value)) {
@@ -130,7 +128,7 @@ const Search = memo(
     };
 
     const handleSearch = (incomingValue?: string) => {
-      const valueToProcess = incomingValue || inputValue;
+      const valueToProcess = typeof incomingValue === 'string' ? incomingValue : inputValue;
 
       // if we emit the same request in the row
       if (
@@ -155,9 +153,9 @@ const Search = memo(
       }
 
       setInputError(false);
-      runLoadData(valueToProcess);
+      runLoadData(translator(valueToProcess));
       scrollTo({ id: 'results', duration: 1000 });
-      setLastSearchesStorage(valueToProcess);
+      setLastSearchesStorage(translator(valueToProcess));
     };
 
     const handleKeyDownChange = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -176,26 +174,28 @@ const Search = memo(
       });
     };
 
+    const getInputErrorMessage = () => {
+      if (!inputValue) {
+        return NOT_EMPTY_ERROR;
+      }
+
+      if (isNotSpecialSymbol) {
+        return NOT_SPECIAL_SYMBOLS;
+      }
+
+      if (isNotCyrillicAlphabet) {
+        console.log(CYRILLIC_ALPHABET, 'error!');
+      }
+
+      if (isBadPatternError) {
+        return BAD_PATTERN_ERROR;
+      }
+
+      return null;
+    };
+
     const renderInput = () => {
-      const getErrorMessage = () => {
-        if (!inputValue) {
-          return NOT_EMPTY_ERROR;
-        }
-
-        if (isNotSpecialSymbol) {
-          return NOT_SPECIAL_SYMBOLS;
-        }
-
-        if (isNotCyrillicAlphabet) {
-          return CYRILLIC_ALPHABET;
-        }
-
-        if (isBadPatternError) {
-          return BAD_PATTERN_ERROR;
-        }
-
-        return null;
-      };
+      const isInputError = getInputErrorMessage();
 
       return (
         <>
@@ -211,7 +211,7 @@ const Search = memo(
             className={`${styles.searchInput} ${isBadPatternError ? styles.error : ''}`}
             disabled={isSearchInProgress}
           />
-          {isBadPatternError && <span className={styles.errorMessage}>{getErrorMessage()}</span>}
+          {isBadPatternError && <span className={styles.errorMessage}>{isInputError}</span>}
         </>
       );
     };

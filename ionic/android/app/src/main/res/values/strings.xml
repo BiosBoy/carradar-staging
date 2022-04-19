@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">carradar</string>
+    <string name="title_activity_main">carradar</string>
+    <string name="package_name">com.carradar.app</string>
+    <string name="custom_url_scheme">com.carradar.app</string>
+</resources>

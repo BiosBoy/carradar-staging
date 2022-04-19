@@ -22,6 +22,7 @@ export const loadProfileDataSaved = (
   mobile: string,
   bio: string,
   usersurname: string,
+  imageurl: string,
   searchHistory: ISearchHistory
 ): IFetchSaved & IType => ({
   username,
@@ -29,6 +30,7 @@ export const loadProfileDataSaved = (
   mobile,
   bio,
   usersurname,
+  imageurl,
   searchHistory,
   type: PROFILE_SAVED
 });
