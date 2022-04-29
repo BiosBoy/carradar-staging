@@ -46,7 +46,7 @@ const Login = memo(() => {
     dispatch(loadLoginDataAttempt());
   };
 
-  const _handleSocialSubmit = userData => {
+  const _handleSocialSubmit = (userData) => {
     dispatch(setSocialData(userData));
   };
 

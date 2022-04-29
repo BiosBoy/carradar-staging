@@ -6,7 +6,7 @@ export const loadLoginDataAttempt = (): IType => ({
   type: LOGIN_ATTEMPT
 });
 
-export const setSocialData = (userData: any): { userData: any; } & IType => ({
+export const setSocialData = (userData: any): { userData: any } & IType => ({
   ...userData,
   type: USER_SOCIAL_DATA
 });

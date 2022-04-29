@@ -3,10 +3,10 @@ import { SignInButton } from 'react-gapi-auth2';
 
 import styles from './index.scss';
 
-const GoogleOAthLoginButton = ({ callback }: { callback: (data: any) => void; }) => {
+const GoogleOAthLoginButton = ({ callback }: { callback: (data: any) => void }) => {
   const [userData, setUserData] = useState(null);
 
-  const getOnSignInData = googleUser => {
+  const getOnSignInData = (googleUser) => {
     const profile = googleUser.getBasicProfile();
 
     const newUserData = {
@@ -29,14 +29,14 @@ const GoogleOAthLoginButton = ({ callback }: { callback: (data: any) => void; })
       width: 200,
       height: 50,
       theme: 'light' as 'light',
-      onsuccess: data => {
+      onsuccess: (data) => {
         if (userData) {
           return;
         }
 
         callback(getOnSignInData(data));
       },
-      onfailure: error => console.log(error, 'error')
+      onfailure: (error) => console.log(error, 'error')
     };
   };
 

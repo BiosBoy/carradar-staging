@@ -5,7 +5,7 @@ import Logout from './Logout';
 
 import { OATH_CONFIG } from './constants';
 
-const OathWrapper = ({ children }: { children: any; }) => {
+const OathWrapper = ({ children }: { children: any }) => {
   return (
     <GApiProvider clientConfig={OATH_CONFIG}>
       <Logout />

@@ -1,7 +1,13 @@
 // some reducers here. The same link in on top level
 import initialState from './initialState';
 
-import { REGISTRATION_ATTEMPT, REGISTRATION_SAVED, REGISTRATION_ERROR, REGISTRATION_INPUT, SOCIAL_REGISTRATION_DATA } from '../constants';
+import {
+  REGISTRATION_ATTEMPT,
+  REGISTRATION_SAVED,
+  REGISTRATION_ERROR,
+  REGISTRATION_INPUT,
+  SOCIAL_REGISTRATION_DATA
+} from '../constants';
 import { IStore } from '../interfaces/IStore';
 import { IFetchError, IRegistrationInput } from '../interfaces/IController';
 

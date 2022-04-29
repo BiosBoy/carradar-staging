@@ -6,7 +6,7 @@ export const loadLogoutDataAttempt = (): IType => ({
   type: LOGOUT_ATTEMPT
 });
 
-export const loadLogoutDataSaved = (error?: string): { error: string; } & IType => ({
+export const loadLogoutDataSaved = (error?: string): { error: string } & IType => ({
   error,
   type: LOGOUT_SAVED
 });

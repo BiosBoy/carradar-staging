@@ -12,7 +12,6 @@ import { IStore } from '../interfaces/IStore';
 // eslint-disable-next-line import/no-unassigned-import
 import '../../i18nextConf';
 
-
 import '../styles/index.scss';
 import styles from './index.scss';
 
@@ -31,10 +30,7 @@ const CoreLayout = ({ language, isDarkMode }: IProps) => {
         <Header />
         <Body>
           <Switch>
-            <Route
-              exact={true} path={lang}
-              component={Home}
-            />
+            <Route exact={true} path={lang} component={Home} />
             <Route path={`${lang}contact`} component={Contact} />
             <Route path={`${lang}about-us`} component={AboutUs} />
             <Route path={`${lang}sign-out`} component={Logout} />
