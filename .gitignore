@@ -13,5 +13,3 @@ lerna-debug.log
 .travis.yml
 storybook-static
 .DS_Store
-
-out/
