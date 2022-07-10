@@ -130,6 +130,7 @@
     "@storybook/addon-viewport": "^6.4.17",
     "@storybook/cli": "^6.4.17",
     "@storybook/react": "^6.4.17",
+    "@storybook/testing-library": "^0.0.12",
     "@tensorflow/tfjs": "^3.13.0",
     "@types/classnames": "^2.3.1",
     "@types/enzyme": "^3.10.11",
